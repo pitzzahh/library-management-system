@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="quick upload">
+    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="add button css">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/validator/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/validator/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/addStudents/addStudentsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/addStudents/addStudentsPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,28 +37,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Pits/library-management-system/src/main/resources/io/github/pitzzahh/libraryManagementSystem/css&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Pits/library-management-system/src/main/resources/io/github/pitzzahh/libraryManagementSystem",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Pits\library-management-system\src\main\resources\io\github\pitzzahh\libraryManagementSystem" />
       <recent name="C:\Pits\library-management-system\src\main\resources\io\github\pitzzahh\libraryManagementSystem\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Pits\library-management-system\src\main\resources\io\github\pitzzahh\libraryManagementSystem\img" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="io.github.pitzzahh.libraryManagementSystem.validator" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.LibraryManagementSystem">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.github.pitzzahh.libraryManagementSystem.App" />
       <module name="library-management-system" />
@@ -87,8 +91,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
         <item itemvalue="Application.LibraryManagementSystem" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -101,7 +105,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669684210166</updated>
       <workItem from="1669684211944" duration="4749000" />
-      <workItem from="1669700000269" duration="2246000" />
+      <workItem from="1669700000269" duration="4868000" />
     </task>
     <task id="LOCAL-00001" summary="quick update">
       <created>1669684292367</created>
@@ -166,7 +170,28 @@
       <option name="project" value="LOCAL" />
       <updated>1669701358424</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fixed import and use of field from Validator class">
+      <created>1669702266025</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1669702266025</updated>
+    </task>
+    <task id="LOCAL-00011" summary="quick upload">
+      <created>1669702310088</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1669702310088</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add button css">
+      <created>1669704091346</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1669704091346</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,7 +212,9 @@
     <MESSAGE value="quick update" />
     <MESSAGE value="fix README.md" />
     <MESSAGE value="add css for adding student page" />
+    <MESSAGE value="fixed import and use of field from Validator class" />
     <MESSAGE value="quick upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="quick upload" />
+    <MESSAGE value="add button css" />
+    <option name="LAST_COMMIT_MESSAGE" value="add button css" />
   </component>
 </project>
