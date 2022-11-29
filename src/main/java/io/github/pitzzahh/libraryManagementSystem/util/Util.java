@@ -6,10 +6,13 @@ import io.github.pitzzahh.util.utilities.classes.DynamicArray;
 import io.github.pitzzahh.util.utilities.SecurityUtil;
 import java.util.concurrent.atomic.AtomicReference;
 import static java.lang.String.format;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.KeyEvent;
 import java.util.function.Consumer;
+import javafx.scene.input.KeyCode;
+import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -244,10 +247,13 @@ public interface Util {
         return String.valueOf(new Random().nextInt(999999999) + 1);
     }
 
-    static String generateRandomPin() {
-        return String.valueOf(new Random().nextInt(9999) + 1);
+    /**
+     * Get the event handler for toggling full screen
+     * @return a {@code EventHandler<KeyEvent>}
+     */
+    static EventHandler<KeyEvent> getToggleFullScreenEvent() {
+        return Fields.eventHandler;
     }
-
 }
 
 /**
@@ -259,4 +265,7 @@ class Fields {
      */
     static DynamicArray<Parent> parents = new DynamicArray<>();
     static DynamicArray<Button> activeButtons = new DynamicArray<>();
+    static EventHandler<KeyEvent> eventHandler = event -> {
+        if (KeyCode.F11.equals(event.getCode())) getStage().setFullScreen(!getStage().isFullScreen());
+    };
 }
