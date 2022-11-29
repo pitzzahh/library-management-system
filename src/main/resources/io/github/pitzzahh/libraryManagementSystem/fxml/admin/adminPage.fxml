@@ -19,7 +19,7 @@
                     <Insets left="20.0" />
                 </padding>
                 <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../../img/adminPage/logo_100px.png" />
+                    <Image url="@../../img/logo_100px.png" />
                 </ImageView>
                 <Label styleClass="app-name" stylesheets="@../../css/adminPage.css" text="Library Management System">
                     <padding>
