@@ -59,9 +59,9 @@
                               </ChoiceBox>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="181.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="247.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <ImageView fitHeight="209.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="242.0" fitWidth="261.0" pickOnBounds="true" HBox.hgrow="ALWAYS">
                                  <image>
                                     <Image url="@../../../img/adminPage/book.gif" />
                                  </image>
@@ -71,9 +71,9 @@
                               <Insets />
                            </VBox.margin>
                         </HBox>
-                        <VBox alignment="BOTTOM_CENTER" prefHeight="12.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="71.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="75.0" prefWidth="509.0">
+                              <HBox alignment="CENTER" prefHeight="72.0" prefWidth="509.0">
                                  <effect>
                                     <Glow />
                                  </effect>
