@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="add page for adding books">
+    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="add book gif">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/mainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/mainPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669684210166</updated>
       <workItem from="1669684211944" duration="4749000" />
-      <workItem from="1669700000269" duration="14724000" />
+      <workItem from="1669700000269" duration="16002000" />
     </task>
     <task id="LOCAL-00001" summary="quick update">
       <created>1669684292367</created>
@@ -237,7 +236,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669716030872</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="quick upload">
+      <created>1669717529807</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1669717529807</updated>
+    </task>
+    <task id="LOCAL-00020" summary="add book gif">
+      <created>1669717537102</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1669717537102</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,8 +275,9 @@
     <MESSAGE value="add button css" />
     <MESSAGE value="add enum value" />
     <MESSAGE value="add tooltip on buttons hover" />
-    <MESSAGE value="quick upload" />
     <MESSAGE value="add page for adding books" />
-    <option name="LAST_COMMIT_MESSAGE" value="add page for adding books" />
+    <MESSAGE value="quick upload" />
+    <MESSAGE value="add book gif" />
+    <option name="LAST_COMMIT_MESSAGE" value="add book gif" />
   </component>
 </project>
