@@ -96,9 +96,7 @@ public class LoginController {
             getStage().setTitle("Administrator");
             getStage().setResizable(true);
             getStage().centerOnScreen();
-            getStage().addEventHandler(KeyEvent.KEY_PRESSED, event -> {
-                if (KeyCode.F11.equals(event.getCode())) getStage().setFullScreen(!getStage().isFullScreen());
-            });
+            getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
             getStage().show();
             progressBar.setVisible(false);
             credentialField.clear();
