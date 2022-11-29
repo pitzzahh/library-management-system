@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -71,6 +72,9 @@
                                  <image>
                                     <Image url="@../../../img/adminPage/students.gif" />
                                  </image>
+                                 <effect>
+                                    <InnerShadow />
+                                 </effect>
                               </ImageView>
                            </children>
                         </HBox>
