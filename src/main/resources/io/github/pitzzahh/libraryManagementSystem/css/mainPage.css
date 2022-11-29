@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../fonts/JetBrainsMono.ttf');
+}
+
+.main-label {
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-font-size: 70px;
+    -fx-text-fill: #fefae0;
+    -fx-font-weight: bold;
+}
+
+.main-label:hover {
+    -fx-text-fill: #d4a373;
+    -fx-cursor: hand;
+}
+
+.subtitle {
+    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 20px;
+    -fx-text-fill: #ccd5ae;
+    -fx-font-weight: bold;
+}
+
+.message {
+    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 20px;
+    -fx-text-fill: #d62828;
+    -fx-font-weight: bold;
+}
+
+.credentials {
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-font-size: 30px;
+    -fx-text-fill: transparent;
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent transparent #2c4642 transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.credentials:hover {
+    -fx-text-fill: #FDFAE0;
+}
+
+.progress-bar {
+    -fx-background-color: #138370;
+}

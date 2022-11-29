@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="645.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.ClientController">
+    <BorderPane prefHeight="545.0" prefWidth="669.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <bottom>
+            <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="65.0" prefWidth="600.0" styleClass="bottom-info" stylesheets="@../../css/clientPage.css" BorderPane.alignment="CENTER">
+                <BorderPane.margin>
+                    <Insets />
+                </BorderPane.margin>
+                <padding>
+                    <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+                </padding>
+                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../../img/mainPage/logo_100px.png" />
+                </ImageView>
+                <Label styleClass="bank-name" stylesheets="@../../css/clientPage.css" text="Pitzzahh United Bank" textFill="#006871">
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </Label>
+            </HBox>
+        </bottom>
+        <center>
+            <GridPane BorderPane.alignment="CENTER">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: red;" />
+                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: green;" GridPane.columnIndex="1" />
+                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: blue;" GridPane.rowIndex="1" />
+                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: yellow;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: indigo;" GridPane.rowIndex="2" />
+                <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: cyan;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </GridPane>
+        </center>
+    </BorderPane>
+</AnchorPane>

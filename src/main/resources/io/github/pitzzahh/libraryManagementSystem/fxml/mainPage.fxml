@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="627.0" snapToPixel="false" stylesheets="@../css/mainPage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.LoginController">
+   <center>
+      <AnchorPane prefHeight="421.0" prefWidth="596.0" stylesheets="@../css/mainPage.css" BorderPane.alignment="CENTER">
+         <ImageView fitHeight="429.0" fitWidth="636.0" layoutY="-7.0" pickOnBounds="true" smooth="false">
+            <Image url="@../img/mainPage/background_image.jpg" />
+            <effect>
+               <GaussianBlur />
+            </effect>
+         </ImageView>
+         <Label alignment="TOP_CENTER" layoutX="149.0" layoutY="60.0" prefHeight="174.0" prefWidth="321.0" styleClass="main-label" stylesheets="@../css/mainPage.css" text="LMS" textAlignment="CENTER">
+         </Label>
+         <Text fill="WHITE" fontSmoothingType="LCD" layoutX="169.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" style="fx-font-family: JetBrains Mono; -fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;" text="Library Mangement System" textAlignment="CENTER" wrappingWidth="285.896484375" />
+         <HBox alignment="CENTER" fillHeight="false" layoutX="7.0" layoutY="175.0" prefHeight="117.0" prefWidth="610.0" AnchorPane.bottomAnchor="129.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="175.0">
+            <padding>
+               <Insets top="50.0" />
+            </padding>
+            <children>
+               <TextField alignment="CENTER" prefHeight="58.0" prefWidth="433.0" styleClass="credentials" stylesheets="@../css/mainPage.css" HBox.hgrow="NEVER">
+                  <font>
+                     <Font size="6.0" />
+                  </font>
+               </TextField>
+            </children>
+         </HBox>
+         <HBox alignment="CENTER" layoutX="1.0" layoutY="301.0" prefHeight="62.0" prefWidth="618.0">
+            <Label fx:id="message" alignment="CENTER" prefHeight="18.0" prefWidth="333.0" styleClass="message" />
+         </HBox>
+         <ProgressBar fx:id="progressBar" blendMode="SRC_ATOP" cache="true" cacheHint="SPEED" layoutX="4.0" layoutY="406.0" prefHeight="16.0" prefWidth="633.0" progress="1.0" stylesheets="@../css/mainPage.css" />
+      </AnchorPane>
+   </center>
+</BorderPane>

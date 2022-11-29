@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../fonts/JetBrainsMono.ttf');
+}
+
+.start-info {
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-font-weight: bold;
+}
+
+.topBox {
+    -fx-background-color: #006d77;
+}
+
+.leftBox {
+    -fx-background-color: #83c5be;
+}
+
+.button {
+    -fx-background-color: #2d6a4f;
+    -fx-text-fill: #006d77;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-opacity: 0.5;
+}
+
+.add_client_button {
+    -fx-background-color: #043033;
+    -fx-font-size: 1.2em;
+    -fx-text-fill: #ffffff;
+}
+
+.bank-name {
+    -fx-font-size: 2em;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
