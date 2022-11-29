@@ -14,6 +14,7 @@ public class Book {
     private String title;
     private String author;
     private Category category;
+    private Student student;
     private LocalDate dateBorrowed;
     private LocalDate dateReturned;
 }

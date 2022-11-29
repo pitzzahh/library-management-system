@@ -29,13 +29,11 @@
             <padding>
                <Insets top="50.0" />
             </padding>
-            <children>
-               <TextField alignment="CENTER" prefHeight="58.0" prefWidth="433.0" styleClass="credentials" stylesheets="@../css/mainPage.css" HBox.hgrow="NEVER">
-                  <font>
-                     <Font size="6.0" />
-                  </font>
-               </TextField>
-            </children>
+            <TextField fx:id="credentialField" alignment="CENTER" onKeyPressed="#onEnter" onKeyTyped="#onKeyTyped" onMouseEntered="#onMouseEntered" prefHeight="58.0" prefWidth="433.0" styleClass="credentials" stylesheets="@../css/mainPage.css" HBox.hgrow="NEVER">
+               <font>
+                  <Font size="6.0" />
+               </font>
+            </TextField>
          </HBox>
          <HBox alignment="CENTER" layoutX="1.0" layoutY="301.0" prefHeight="62.0" prefWidth="618.0">
             <Label fx:id="message" alignment="CENTER" prefHeight="18.0" prefWidth="333.0" styleClass="message" />

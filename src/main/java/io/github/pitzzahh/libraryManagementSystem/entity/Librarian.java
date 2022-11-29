@@ -10,5 +10,4 @@ import lombok.*;
 @NoArgsConstructor
 public class Librarian {
     private String name;
-
 }

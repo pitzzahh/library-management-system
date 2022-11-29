@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -161,9 +162,9 @@ public interface Util {
      */
     static Optional<Label> getMessageLabel(Parent parent) {
         return parent.getChildrenUnmodifiable().stream().findAny()
-                .map(n -> (Pane) n)
-                .map(Pane::getChildren)
-                .map(e -> e.get(e.size() - 5))
+                .map(n -> (AnchorPane) n)
+                .map(AnchorPane::getChildren)
+                .map(e -> e.get(e.size() - 2))
                 .map(e -> (HBox) e)
                 .map(HBox::getChildren)
                 .map(e -> (Label) e.get(0))

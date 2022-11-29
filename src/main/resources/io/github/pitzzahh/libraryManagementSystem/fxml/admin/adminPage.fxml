@@ -30,7 +30,7 @@
         </top>
         <left>
             <VBox styleClass="leftBox" stylesheets="@../../css/adminPage.css" BorderPane.alignment="CENTER">
-                <Button fx:id="addClients" graphicTextGap="20.0" mnemonicParsing="false" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Add Students" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="addStudents" graphicTextGap="20.0" mnemonicParsing="false" onMouseEntered="#onMouseEnteredAddStudentsButton" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Add Students" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -43,7 +43,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="removeClients" graphicTextGap="40.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Add Books" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="addBooks" graphicTextGap="40.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseEntered="#onMouseEnteredAddBooksButton" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Add Books" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -56,7 +56,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="viewClients" graphicTextGap="0.0" layoutX="15.0" layoutY="59.0" mnemonicParsing="false" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="View All Students" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="manageStudents" graphicTextGap="0.0" layoutX="15.0" layoutY="59.0" mnemonicParsing="false" onMouseEntered="#onMouseEnteredManageStudentsButton" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Manage Students" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -69,7 +69,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
                 </Button>
-                <Button fx:id="manageLockedAccounts" layoutX="10.0" layoutY="98.0" mnemonicParsing="false" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Manage Borrowed Books" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="manageBooks" layoutX="10.0" layoutY="98.0" mnemonicParsing="false" onMouseEntered="#onMouseEnteredManageBooksButton" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Manage Borrowed Books" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -82,7 +82,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </VBox.margin>
                 </Button>
-            <Button fx:id="logout" graphicTextGap="60.0" layoutX="15.0" layoutY="335.0" mnemonicParsing="false" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Logout" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+            <Button fx:id="logout" graphicTextGap="60.0" layoutX="15.0" layoutY="335.0" mnemonicParsing="false" onAction="#onLogout" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Logout" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="1.0" />
                </font>
