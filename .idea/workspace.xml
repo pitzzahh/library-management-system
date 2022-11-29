@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="modify image effect">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="quick upload" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +106,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669684210166</updated>
       <workItem from="1669684211944" duration="4749000" />
-      <workItem from="1669700000269" duration="16666000" />
+      <workItem from="1669700000269" duration="16969000" />
     </task>
     <task id="LOCAL-00001" summary="quick update">
       <created>1669684292367</created>
@@ -278,7 +276,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669718479580</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="changed admin page preferred width and height">
+      <created>1669718840640</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1669718840640</updated>
+    </task>
+    <task id="LOCAL-00026" summary="quick upload">
+      <created>1669718853684</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1669718853684</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,8 +319,9 @@
     <MESSAGE value="add book gif" />
     <MESSAGE value="add gifs" />
     <MESSAGE value="add students gif" />
-    <MESSAGE value="quick upload" />
     <MESSAGE value="modify image effect" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify image effect" />
+    <MESSAGE value="changed admin page preferred width and height" />
+    <MESSAGE value="quick upload" />
+    <option name="LAST_COMMIT_MESSAGE" value="quick upload" />
   </component>
 </project>
