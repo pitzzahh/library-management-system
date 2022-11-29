@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="add book gif">
+    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="modify image effect">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669684210166</updated>
       <workItem from="1669684211944" duration="4749000" />
-      <workItem from="1669700000269" duration="16002000" />
+      <workItem from="1669700000269" duration="16666000" />
     </task>
     <task id="LOCAL-00001" summary="quick update">
       <created>1669684292367</created>
@@ -250,7 +250,35 @@
       <option name="project" value="LOCAL" />
       <updated>1669717537102</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="add gifs">
+      <created>1669718149064</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1669718149064</updated>
+    </task>
+    <task id="LOCAL-00022" summary="add students gif">
+      <created>1669718157495</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1669718157495</updated>
+    </task>
+    <task id="LOCAL-00023" summary="quick upload">
+      <created>1669718167967</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1669718167967</updated>
+    </task>
+    <task id="LOCAL-00024" summary="modify image effect">
+      <created>1669718479580</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1669718479580</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,8 +304,11 @@
     <MESSAGE value="add enum value" />
     <MESSAGE value="add tooltip on buttons hover" />
     <MESSAGE value="add page for adding books" />
-    <MESSAGE value="quick upload" />
     <MESSAGE value="add book gif" />
-    <option name="LAST_COMMIT_MESSAGE" value="add book gif" />
+    <MESSAGE value="add gifs" />
+    <MESSAGE value="add students gif" />
+    <MESSAGE value="quick upload" />
+    <MESSAGE value="modify image effect" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify image effect" />
   </component>
 </project>
