@@ -35,6 +35,18 @@ public class AdminController {
     @FXML
     private Button logout;
 
+    @FXML
+    private Button addStudentTable;
+
+    @FXML
+    private Button removeStudentsTable;
+
+    @FXML
+    private Button removeAllStudentsTable;
+
+    @FXML
+    private Button saveALlStudentsTable;
+
     /**
      * Shows a tooltip when the mouse is hovered over the add clients button.
      * @param mouseEvent the mouse event.
@@ -139,8 +151,52 @@ public class AdminController {
         stage.show();
     }
 
+    @FXML
     public void onAddStudents(ActionEvent actionEvent) {
         setCenterScreenOfBorderPane(actionEvent, "add_students_window");
+    }
+
+    @FXML
+    public void onHoverAddStudent(MouseEvent event) {
+        var tooltip = initToolTip(
+                "Add Student",
+                event,
+                adminButtonFunctionsToolTipStyle()
+        );
+        tooltip.setShowDuration(Duration.seconds(3));
+        addStudentTable.setTooltip(tooltip);
+    }
+
+    @FXML
+    public void onHoverRemoveStudent(MouseEvent event) {
+        var tooltip = initToolTip(
+                "Remove Student",
+                event,
+                adminButtonFunctionsToolTipStyle()
+        );
+        tooltip.setShowDuration(Duration.seconds(3));
+        removeStudentsTable.setTooltip(tooltip);
+    }
+
+
+    public void onHoverRemoveAll(MouseEvent event) {
+        var tooltip = initToolTip(
+                "Remove All Students records from the table",
+                event,
+                adminButtonFunctionsToolTipStyle()
+        );
+        tooltip.setShowDuration(Duration.seconds(3));
+        removeAllStudentsTable.setTooltip(tooltip);
+    }
+
+    public void onHoverSaveAll(MouseEvent event) {
+        var tooltip = initToolTip(
+                "Save all students records from the table to the database",
+                event,
+                adminButtonFunctionsToolTipStyle()
+        );
+        tooltip.setShowDuration(Duration.seconds(3));
+        saveALlStudentsTable.setTooltip(tooltip);
     }
 }
 
