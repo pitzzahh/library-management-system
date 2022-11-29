@@ -9,7 +9,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Student {
-    private String accountNumber;
-    private String name;
-    private String address;
+    private String studentNumber;
+    private String firstName;
+    private String lastName;
+    private Course course;
 }

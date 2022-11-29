@@ -79,13 +79,16 @@ public class LibraryManagementSystem extends Application {
         var mainPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/mainPage.fxml"), "Cannot find mainPage.fxml"));
         var adminPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/adminPage.fxml"), "Cannot find adminPage.fxml"));
         var addStudentsPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addStudents/addStudentsPage.fxml"), "Cannot find addStudentsPage.fxml"));
+        var addBooksPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addStudents/addBooksPage.fxml"), "Cannot find addBooksPage.fxml"));
         adminPage.setId("admin_window");
         mainPage.setId("main_window");
         addStudentsPage.setId("add_students_window");
+        addBooksPage.setId("add_books_window");
         addParents.accept(new Parent[] {
                 mainPage,
                 adminPage,
-                addStudentsPage
+                addStudentsPage,
+                addBooksPage
         });
     }
 

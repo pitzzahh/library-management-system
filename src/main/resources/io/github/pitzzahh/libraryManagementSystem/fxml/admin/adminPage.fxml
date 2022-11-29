@@ -43,7 +43,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="addBooks" graphicTextGap="40.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseEntered="#onMouseEnteredAddBooksButton" prefWidth="192.0" stylesheets="@../../css/adminPage.css" text="Add Books" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="addBooks" graphicTextGap="40.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onAddBooks" onMouseEntered="#onMouseEnteredAddBooksButton" prefWidth="192.0" stylesheets="@../../css/adminPage.css" text="Add Books" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -105,7 +105,7 @@
         </left>
       <center>
           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #CDCDCD;" BorderPane.alignment="CENTER">
-              <Label styleClass="start-info" stylesheets="@../../css/adminPage.css" text="Select an option from the left">
+              <Label styleClass="start-info" stylesheets="@../../css/adminPage.css" text="Select an option from the left" wrapText="true">
                  <font>
                      <Font name="Segoe UI Bold" size="34.0" />
                  </font>

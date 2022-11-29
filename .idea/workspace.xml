@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="add button css">
+    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="add tooltip on buttons hover">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/LibraryManagementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/LibraryManagementSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/controllers/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/entity/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/entity/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/css/addStudentsPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/css/addStudentsPage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/addStudents/addStudentsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/addStudents/addStudentsPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/adminPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/adminPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +32,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/App.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/controllers/AdminController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/controllers/LoginController.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -43,7 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Pits/library-management-system/src/main/resources/io/github/pitzzahh/libraryManagementSystem",
+    "last_opened_file_path": "C:/Pits/library-management-system/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -52,10 +59,12 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Pits\library-management-system\src\main\resources\io\github\pitzzahh\libraryManagementSystem\fxml\admin" />
       <recent name="C:\Pits\library-management-system\src\main\resources\io\github\pitzzahh\libraryManagementSystem" />
       <recent name="C:\Pits\library-management-system\src\main\resources\io\github\pitzzahh\libraryManagementSystem\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Pits\library-management-system\src\main\resources\io\github\pitzzahh\libraryManagementSystem\fxml\admin\addStudents" />
       <recent name="C:\Pits\library-management-system\src\main\resources\io\github\pitzzahh\libraryManagementSystem\img" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -105,7 +114,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669684210166</updated>
       <workItem from="1669684211944" duration="4749000" />
-      <workItem from="1669700000269" duration="4868000" />
+      <workItem from="1669700000269" duration="13930000" />
     </task>
     <task id="LOCAL-00001" summary="quick update">
       <created>1669684292367</created>
@@ -191,7 +200,28 @@
       <option name="project" value="LOCAL" />
       <updated>1669704091346</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="quick upload">
+      <created>1669705018944</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1669705018944</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add enum value">
+      <created>1669706126509</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1669706126509</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add tooltip on buttons hover">
+      <created>1669706143065</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1669706143065</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,8 +243,10 @@
     <MESSAGE value="fix README.md" />
     <MESSAGE value="add css for adding student page" />
     <MESSAGE value="fixed import and use of field from Validator class" />
-    <MESSAGE value="quick upload" />
     <MESSAGE value="add button css" />
-    <option name="LAST_COMMIT_MESSAGE" value="add button css" />
+    <MESSAGE value="quick upload" />
+    <MESSAGE value="add enum value" />
+    <MESSAGE value="add tooltip on buttons hover" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tooltip on buttons hover" />
   </component>
 </project>
