@@ -3,11 +3,6 @@ package io.github.pitzzahh.libraryManagementSystem.controllers;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
-import io.github.pitzzahh.libraryManagementSystem.entity.Student;
-import io.github.pitzzahh.libraryManagementSystem.entity.Course;
-import io.github.pitzzahh.util.utilities.Print;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
@@ -23,24 +18,8 @@ import javafx.fxml.FXML;
  */
 public class AdminController {
 
-
     @FXML
     public Button addStudents;
-
-    @FXML
-    public TableView<Student> studentTable;
-
-    @FXML
-    public TextField studentId;
-
-    @FXML
-    public TextField firstName;
-
-    @FXML
-    public TextField lastName;
-
-    @FXML
-    public ChoiceBox<Course> course;
 
     @FXML
     private Button addBooks;
@@ -53,20 +32,6 @@ public class AdminController {
 
     @FXML
     private Button logout;
-
-    @FXML
-    private Button addStudentTable;
-
-    @FXML
-    private Button removeStudentsTable;
-
-    @FXML
-    private Button removeAllStudentsTable;
-
-    @FXML
-    private Button saveALlStudentsTable;
-
-    private final ObservableList<Student> dataSource = FXCollections.observableArrayList();
 
     /**
      * Shows a tooltip when the mouse is hovered over the add clients button.
@@ -180,59 +145,6 @@ public class AdminController {
     @FXML
     public void onAddBooks(ActionEvent actionEvent) {
         setCenterScreenOfBorderPane(actionEvent, "add_books_window");
-    }
-
-    @FXML
-    public void onHoverAddStudent(MouseEvent event) {
-        var tooltip = initToolTip(
-                "Add Student",
-                event,
-                adminButtonFunctionsToolTipStyle()
-        );
-        tooltip.setShowDuration(Duration.seconds(3));
-        addStudentTable.setTooltip(tooltip);
-    }
-
-    @FXML
-    public void onHoverRemoveStudent(MouseEvent event) {
-        var tooltip = initToolTip(
-                "Remove Student",
-                event,
-                adminButtonFunctionsToolTipStyle()
-        );
-        tooltip.setShowDuration(Duration.seconds(3));
-        removeStudentsTable.setTooltip(tooltip);
-    }
-
-    @FXML
-    public void onHoverRemoveAll(MouseEvent event) {
-        var tooltip = initToolTip(
-                "Remove All Students records from the table",
-                event,
-                adminButtonFunctionsToolTipStyle()
-        );
-        tooltip.setShowDuration(Duration.seconds(3));
-        removeAllStudentsTable.setTooltip(tooltip);
-    }
-
-    @FXML
-    public void onHoverSaveAll(MouseEvent event) {
-        var tooltip = initToolTip(
-                "Save all students records from the table to the database",
-                event,
-                adminButtonFunctionsToolTipStyle()
-        );
-        tooltip.setShowDuration(Duration.seconds(3));
-        saveALlStudentsTable.setTooltip(tooltip);
-    }
-
-    @FXML
-    public void onAddStudent(ActionEvent actionEvent) {
-        dataSource.add(new Student(generateRandomAccountNumber(), "John", "Doe", Course.BSIT));
-        studentTable.setItems(dataSource);
-        getLogger().debug("Added student to table");
-        getLogger().debug("Student table size: " + studentTable.getItems().size());
-        studentTable.getItems().forEach(Print::println);
     }
 
 }
