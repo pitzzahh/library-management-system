@@ -3,6 +3,23 @@
     src: url('../fonts/JetBrainsMono.ttf');
 }
 
+.button {
+    -fx-background-color: #e9c46a;
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-font-size: 1.2em;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #f4a261;
+}
+
+.button:pressed {
+    -fx-background-color: #e76f51;
+}
+
 .nav-bar {
     -fx-background-color: #043033;
     -fx-background-radius: 0;
@@ -41,5 +58,8 @@
 
 .text-field {
     -fx-font-size: 15;
-    -fx-font-family: "Arial";
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-font-weight: bold;
 }
+
+
