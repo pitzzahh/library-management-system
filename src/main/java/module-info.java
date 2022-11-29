@@ -8,5 +8,6 @@ module io.github.pitzzahh.libraryMangementSystem {
     requires lombok;
 
     opens io.github.pitzzahh.libraryManagementSystem.controllers to javafx.fxml;
+    opens io.github.pitzzahh.libraryManagementSystem.entity to javafx.base;
     exports io.github.pitzzahh.libraryManagementSystem;
 }

@@ -22,19 +22,19 @@
 
 .nav-bar {
     -fx-background-color: #043033;
-    -fx-background-radius: 0;
+    -fx-background-radius: 0px;
     -fx-border-color: #1a1a1a;
-    -fx-border-radius: 0;
-    -fx-border-width: 0;
-    -fx-padding: 0;
-    -fx-spacing: 0;
+    -fx-border-radius: 0px;
+    -fx-border-width: 0px;
+    -fx-padding: 0px;
+    -fx-spacing: 0px;
 }
 
 .nav-bar-title {
-    -fx-font-size: 30;
+    -fx-font-size: 30px;
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff;
-    -fx-padding: 10;
+    -fx-padding: 10px;
 }
 
 .left-pane {
@@ -49,7 +49,7 @@
     -fx-font-size: 20;
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff;
-    -fx-padding: 10;
+    -fx-padding: 10px;
 }
 
 .field-vbox {
@@ -57,7 +57,7 @@
 }
 
 .text-field, .choice-box {
-    -fx-font-size: 15;
+    -fx-font-size: 15px;
     -fx-font-family: "JetBrains Mono Medium";
     -fx-font-weight: bold;
 }
@@ -66,30 +66,32 @@
     -fx-cursor: hand;
 }
 
-/*.table-view .column-header,*/
-/*.table-view .column-header-background .filler {*/
-/*    -fx-background-color: #8ecae6;*/
-/*}*/
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: #006D77;
+}
 
-/*.table-view .column-header .label{*/
-/*    -fx-text-fill: #042040;*/
-/*    -fx-font-weight: bold;*/
-/*    -fx-alignment: CENTER;*/
-/*}*/
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
 
-/*.table-view .cell{*/
-/*    -fx-cell-size: 35;*/
-/*    -fx-alignment: center-left;*/
-/*    -fx-background-color: #F6B574;*/
-/*    -fx-text-alignment: center;*/
-/*    -fx-border-width: 1px;*/
-/*    -fx-border-color: #043033;*/
-/*    -fx-text-fill: red;*/
-/*}*/
+.table-view .cell {
+    -fx-cell-size: 35;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-alignment: center-left;
+    -fx-background-color: #EFD589;
+    -fx-text-alignment: center;
+    -fx-border-width: 1px;
+    -fx-border-color: #043033;
+    -fx-text-fill: black;
+}
 
-/*.table-row-cell:selected {*/
-/*    -fx-background-color: whitesmoke;*/
-/*    -fx-text-background-color:  #6622CC;*/
-/*    -fx-text-fill: red;*/
-/*}*/
+.table-row-cell:selected {
+    -fx-background-color: whitesmoke;
+    -fx-text-background-color: #6622CC;
+    -fx-text-fill: white;
+}
 
