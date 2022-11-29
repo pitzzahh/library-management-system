@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="538.0" prefWidth="1000.0" style="-fx-background-color: #D6DCF1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.AdminController">
+<AnchorPane prefHeight="538.0" prefWidth="1000.0" style="-fx-background-color: #D6DCF1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.AddStudentsPageController">
    <BorderPane layoutX="111.0" layoutY="100.0" prefHeight="400.0" prefWidth="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <top>
          <HBox alignment="CENTER" prefHeight="58.0" prefWidth="600.0" styleClass="nav-bar" stylesheets="@../../../css/addStudentsPage.css" BorderPane.alignment="CENTER_RIGHT">
@@ -67,56 +67,59 @@
                            </ChoiceBox>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="185.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <ImageView fitHeight="196.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                                 <image>
-                                    <Image url="@../../../img/adminPage/students.gif" />
-                                 </image>
-                                 <effect>
-                                    <InnerShadow />
-                                 </effect>
-                              </ImageView>
-                           </children>
+                           <ImageView fitHeight="196.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true"
+                                      HBox.hgrow="ALWAYS">
+                              <effect>
+                                 <InnerShadow/>
+                              </effect>
+                              <Image url="@../../../img/adminPage/students.gif"/>
+                           </ImageView>
                         </HBox>
                         <VBox alignment="BOTTOM_CENTER" prefHeight="90.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <HBox alignment="CENTER" prefHeight="75.0" prefWidth="509.0">
-                                 <effect>
-                                    <Glow />
-                                 </effect>
-                                 <children>
-                                    <Button fx:id="addStudentTable" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onAction="#onAddStudent" onMouseEntered="#onHoverAddStudent" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="ADD">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="removeStudentsTable" mnemonicParsing="false" onMouseEntered="#onHoverRemoveStudent" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="REMOVE">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="removeAllStudentsTable" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverRemoveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="REMOVE ALL">
-                                       <HBox.margin>
-                                          <Insets right="10.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="saveALlStudentsTable" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverSaveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="SAVE ALL">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
+                           <HBox alignment="CENTER" prefHeight="75.0" prefWidth="509.0">
+                              <effect>
+                                 <Glow/>
+                              </effect>
+                              <Button fx:id="addStudentTable" layoutX="165.0" layoutY="134.0" mnemonicParsing="false"
+                                      onAction="#onAddStudent" onMouseEntered="#onHoverAddStudent" prefHeight="50.0"
+                                      prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="ADD">
+                                 <HBox.margin>
+                                    <Insets right="10.0"/>
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="15.0"/>
+                                 </font>
+                              </Button>
+                              <Button fx:id="removeStudentsTable" mnemonicParsing="false"
+                                      onMouseEntered="#onHoverRemoveStudent" prefHeight="50.0" prefWidth="110.0"
+                                      stylesheets="@../../../css/addStudentsPage.css" text="REMOVE">
+                                 <HBox.margin>
+                                    <Insets right="10.0"/>
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="15.0"/>
+                                 </font>
+                              </Button>
+                              <Button fx:id="removeAllStudentsTable" layoutX="239.0" layoutY="134.0"
+                                      mnemonicParsing="false" onMouseEntered="#onHoverRemoveAll" prefHeight="50.0"
+                                      prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css"
+                                      text="REMOVE ALL">
+                                 <HBox.margin>
+                                    <Insets right="10.0"/>
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="15.0"/>
+                                 </font>
+                              </Button>
+                              <Button fx:id="saveALlStudentsTable" layoutX="265.0" layoutY="134.0"
+                                      mnemonicParsing="false" onMouseEntered="#onHoverSaveAll" prefHeight="50.0"
+                                      prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css"
+                                      text="SAVE ALL">
+                                 <font>
+                                    <Font size="15.0"/>
+                                 </font>
+                              </Button>
+                           </HBox>
                         </VBox>
                      </VBox>
                   </left>
