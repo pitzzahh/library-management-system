@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="add tooltip on buttons hover">
+    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="add page for adding books">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/LibraryManagementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/LibraryManagementSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/controllers/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/entity/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/entity/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/css/addStudentsPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/css/addStudentsPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/addStudents/addStudentsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/addStudents/addStudentsPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/adminPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/adminPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/css/mainPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/css/mainPage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669684210166</updated>
       <workItem from="1669684211944" duration="4749000" />
-      <workItem from="1669700000269" duration="13930000" />
+      <workItem from="1669700000269" duration="14263000" />
     </task>
     <task id="LOCAL-00001" summary="quick update">
       <created>1669684292367</created>
@@ -221,7 +217,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669706143065</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="quick upload">
+      <created>1669715558708</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1669715558708</updated>
+    </task>
+    <task id="LOCAL-00017" summary="add page for adding books">
+      <created>1669715575606</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1669715575606</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,9 +254,10 @@
     <MESSAGE value="add css for adding student page" />
     <MESSAGE value="fixed import and use of field from Validator class" />
     <MESSAGE value="add button css" />
-    <MESSAGE value="quick upload" />
     <MESSAGE value="add enum value" />
     <MESSAGE value="add tooltip on buttons hover" />
-    <option name="LAST_COMMIT_MESSAGE" value="add tooltip on buttons hover" />
+    <MESSAGE value="quick upload" />
+    <MESSAGE value="add page for adding books" />
+    <option name="LAST_COMMIT_MESSAGE" value="add page for adding books" />
   </component>
 </project>

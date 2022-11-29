@@ -36,11 +36,11 @@
     -fx-background-color: transparent;
     -fx-font-weight: bold;
     -fx-border-color: transparent transparent #2c4642 transparent;
-    -fx-border-width: 0 0 2 0;
+    -fx-border-width: 0 0 5 0;
 }
 
 .credentials:hover {
-    -fx-text-fill: #FDFAE0;
+    -fx-text-fill: #D4A373;
 }
 
 .progress-bar {

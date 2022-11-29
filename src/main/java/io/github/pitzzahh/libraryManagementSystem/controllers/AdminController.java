@@ -5,7 +5,6 @@ import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
 import io.github.pitzzahh.libraryManagementSystem.entity.Course;
-import javafx.scene.control.cell.PropertyValueFactory;
 import io.github.pitzzahh.util.utilities.Print;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -235,7 +234,6 @@ public class AdminController {
         getLogger().debug("Student table size: " + studentTable.getItems().size());
         studentTable.getItems().forEach(Print::println);
     }
-
 
 }
 
