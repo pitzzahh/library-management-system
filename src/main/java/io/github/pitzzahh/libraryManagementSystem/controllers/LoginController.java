@@ -64,7 +64,7 @@ public class LoginController {
             message.setStyle("" +
                     "-fx-font-family: JetBrains Mono;" +
                     "fx-font-size: 20px;" +
-                    "-fx-text-fill: #2100C4;" +
+                    "-fx-text-fill: #F1EED5;" +
                     "-fx-font-weight: bold;"
             );
         });
@@ -138,7 +138,7 @@ public class LoginController {
      */
     @FXML
     public void onKeyTyped(KeyEvent keyEvent) {
-        addTextLimiter(credentialField, 9);
+        addTextLimiter(credentialField, getMaxInputLength());
         if (credentialField.getText().isEmpty() && keyEvent.getCode() != KeyCode.ENTER) {
             getLogger().debug("EMPTY CREDENTIAL FIELD");
             message.setText("");

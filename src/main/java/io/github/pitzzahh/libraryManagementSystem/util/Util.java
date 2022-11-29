@@ -6,11 +6,14 @@ import io.github.pitzzahh.util.utilities.classes.DynamicArray;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.File;
@@ -256,6 +259,10 @@ public interface Util {
         return String.valueOf(new Random().nextInt(9999) + 1);
     }
 
+    static int getMaxInputLength() {
+        return Fields.MAX_LENGTH;
+    }
+
 }
 
 /**
@@ -267,4 +274,5 @@ class Fields {
      */
     static DynamicArray<Parent> parents = new DynamicArray<>();
     static DynamicArray<Button> activeButtons = new DynamicArray<>();
+    static final int MAX_LENGTH = 10;
 }

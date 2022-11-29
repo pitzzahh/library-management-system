@@ -1,6 +1,8 @@
 package io.github.pitzzahh.libraryManagementSystem.validator;
 
+import static io.github.pitzzahh.libraryManagementSystem.util.Util.getMaxInputLength;
 import static io.github.pitzzahh.util.utilities.validation.Validator.isWholeNumber;
+import static java.lang.String.format;
 
 /**
  * Validates the account number entered by the user.
@@ -13,9 +15,9 @@ public final class Validator {
      * @return true if the account number is valid, false otherwise.
      */
     public static boolean doesAccountExist(String accountNumber) {
-        if (accountNumber.isEmpty()) throw new RuntimeException("Please enter your account number");
-        else if (accountNumber.length() != 9) throw new IllegalArgumentException("Account number must be 9 digits long");
-        else if (isWholeNumber().negate().test(accountNumber)) throw new IllegalArgumentException("Account number must be a number");
+        if (accountNumber.isEmpty()) throw new RuntimeException("Please enter your Student number");
+        else if (accountNumber.length() != getMaxInputLength() && isWholeNumber().test(accountNumber)) throw new IllegalArgumentException(format("Student number must be %d digits long", getMaxInputLength()));
+        else if (isWholeNumber().negate().test(accountNumber)) throw new IllegalArgumentException("Student number must be a number");
         // TODO: add checking for student account number
         return true;
     }

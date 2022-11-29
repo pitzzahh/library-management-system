@@ -1,18 +1,18 @@
 package io.github.pitzzahh.libraryManagementSystem.controllers;
 
-import org.controlsfx.control.textfield.TextFields;
+import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
+import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
+import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
+
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.util.Duration;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
-
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
-import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 
 /**
  * FXML Controller class for Admin page
@@ -34,8 +34,6 @@ public class AdminController {
 
     @FXML
     private Button logout;
-
-    private boolean isOk;
 
     /**
      * Shows a tooltip when the mouse is hovered over the add clients button.
@@ -124,7 +122,6 @@ public class AdminController {
         var parent = (AnchorPane) ((((Button) actionEvent.getSource()).getParent().getParent())).getParent();
         var stage = (Stage) parent.getScene().getWindow();
         stage.close();
-
         var mainWindow = getParent("main_window");
         getMessageLabel(mainWindow).ifPresent(label -> label.setText(""));
         getMainProgressBar(mainWindow).ifPresent(pb -> pb.setVisible(false));
@@ -135,9 +132,15 @@ public class AdminController {
         stage.setResizable(false);
         stage.centerOnScreen();
         stage.setScene(mainWindow.getScene());
+        getStage().addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+            if (KeyCode.F11.equals(event.getCode())) getStage().setFullScreen(false);
+        });
         getLogger().debug("Loading main window");
         stage.show();
     }
 
+    public void onAddStudents(ActionEvent actionEvent) {
+        setCenterScreenOfBorderPane(actionEvent, "add_students_window");
+    }
 }
 

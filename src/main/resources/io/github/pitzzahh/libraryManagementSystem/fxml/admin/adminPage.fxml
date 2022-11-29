@@ -30,7 +30,7 @@
         </top>
         <left>
             <VBox styleClass="leftBox" stylesheets="@../../css/adminPage.css" BorderPane.alignment="CENTER">
-                <Button fx:id="addStudents" graphicTextGap="20.0" mnemonicParsing="false" onMouseEntered="#onMouseEnteredAddStudentsButton" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Add Students" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="addStudents" graphicTextGap="20.0" mnemonicParsing="false" onAction="#onAddStudents" onMouseEntered="#onMouseEnteredAddStudentsButton" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Add Students" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -82,7 +82,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </VBox.margin>
                 </Button>
-            <Button fx:id="logout" graphicTextGap="60.0" layoutX="15.0" layoutY="335.0" mnemonicParsing="false" onAction="#onLogout" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Logout" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+            <Button fx:id="logout" graphicTextGap="60.0" layoutX="15.0" layoutY="335.0" mnemonicParsing="false" onAction="#onLogout" onMouseEntered="#onMouseEnteredLogout" prefWidth="192.0" styleClass="add_client_button" stylesheets="@../../css/adminPage.css" text="Logout" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="1.0" />
                </font>

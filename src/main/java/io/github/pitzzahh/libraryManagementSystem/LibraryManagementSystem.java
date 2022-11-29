@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import static java.util.Objects.requireNonNull;
@@ -75,12 +76,16 @@ public class LibraryManagementSystem extends Application {
      * @throws IOException if the parent cannot be loaded.
      */
     private void initParents() throws IOException {
-        var mainPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/mainPage.fxml")));
-        var adminPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/adminPage.fxml")));
+        var mainPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/mainPage.fxml"), "Cannot find mainPage.fxml"));
+        var adminPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/adminPage.fxml"), "Cannot find adminPage.fxml"));
+        var addStudentsPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addStudents/addStudentsPage.fxml"), "Cannot find addStudentsPage.fxml"));
         adminPage.setId("admin_window");
         mainPage.setId("main_window");
+        addStudentsPage.setId("add_students_window");
         addParents.accept(new Parent[] {
-                mainPage, adminPage
+                mainPage,
+                adminPage,
+                addStudentsPage
         });
     }
 

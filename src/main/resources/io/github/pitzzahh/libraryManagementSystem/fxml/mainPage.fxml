@@ -36,7 +36,7 @@
             </TextField>
          </HBox>
          <HBox alignment="CENTER" layoutX="1.0" layoutY="301.0" prefHeight="62.0" prefWidth="618.0">
-            <Label fx:id="message" alignment="CENTER" prefHeight="18.0" prefWidth="333.0" styleClass="message" />
+            <Label fx:id="message" alignment="CENTER" prefHeight="46.0" prefWidth="588.0" styleClass="message" />
          </HBox>
          <ProgressBar fx:id="progressBar" blendMode="SRC_ATOP" cache="true" cacheHint="SPEED" layoutX="4.0" layoutY="406.0" prefHeight="16.0" prefWidth="633.0" progress="1.0" stylesheets="@../css/mainPage.css" />
       </AnchorPane>

@@ -4,20 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="quick update">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/entity/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/validator/Validator.java" afterDir="false" />
+    <list default="true" id="37c8aae0-854b-484d-8adf-9f196fae61c2" name="Changes" comment="fix README.md">
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/controllers/AddStudentsPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/addStudents/addStudentsPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library-management-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/library-management-system.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/LibraryManagementSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/LibraryManagementSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/controllers/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/entity/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/entity/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/entity/Librarian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/entity/Librarian.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/util/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/validator/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/pitzzahh/libraryManagementSystem/validator/Validator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/adminPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/admin/adminPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/mainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/io/github/pitzzahh/libraryManagementSystem/fxml/mainPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/java/LocationsTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -49,6 +48,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Pits/library-management-system/src/main/resources/io/github/pitzzahh/libraryManagementSystem/css",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -56,6 +56,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Pits\library-management-system\src\main\resources\io\github\pitzzahh\libraryManagementSystem\css" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="io.github.pitzzahh.libraryManagementSystem.validator" />
     </key>
@@ -88,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1669684210166</updated>
-      <workItem from="1669684211944" duration="1782000" />
+      <workItem from="1669684211944" duration="4321000" />
     </task>
     <task id="LOCAL-00001" summary="quick update">
       <created>1669684292367</created>
@@ -97,7 +100,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669684292367</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="quick update">
+      <created>1669686134616</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669686134616</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix README.md">
+      <created>1669686182909</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669686182909</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +133,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="quick update" />
-    <option name="LAST_COMMIT_MESSAGE" value="quick update" />
+    <MESSAGE value="fix README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix README.md" />
   </component>
 </project>
