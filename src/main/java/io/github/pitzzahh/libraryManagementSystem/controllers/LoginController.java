@@ -5,6 +5,7 @@ import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import io.github.pitzzahh.libraryManagementSystem.util.PBar;
+import io.github.pitzzahh.libraryManagementSystem.util.Util;
 import io.github.pitzzahh.libraryManagementSystem.validator.Validator;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
@@ -139,7 +140,7 @@ public class LoginController {
      */
     @FXML
     public void onKeyTyped(KeyEvent keyEvent) {
-        addTextLimiter(credentialField, getMaxInputLength());
+        addTextLimiter(credentialField, MAX_LENGTH);
         if (credentialField.getText().isEmpty() && keyEvent.getCode() != KeyCode.ENTER) {
             getLogger().debug("EMPTY CREDENTIAL FIELD");
             message.setText("");

@@ -1,36 +1,24 @@
 package io.github.pitzzahh.libraryManagementSystem.util;
 
-import io.github.pitzzahh.util.utilities.FileUtil;
-import io.github.pitzzahh.util.utilities.SecurityUtil;
+import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
+import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
 import io.github.pitzzahh.util.utilities.classes.DynamicArray;
-import javafx.event.ActionEvent;
-import javafx.scene.Parent;
-import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import io.github.pitzzahh.util.utilities.SecurityUtil;
+import java.util.concurrent.atomic.AtomicReference;
+import static java.lang.String.format;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import java.util.function.Consumer;
+import javafx.event.ActionEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
 import javafx.util.Duration;
-
-import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Arrays;
+import javafx.scene.Parent;
 import java.util.Optional;
 import java.util.Random;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
-import static java.lang.String.format;
 
 /**
  * Utility interface for the ATM application.
@@ -41,6 +29,7 @@ public interface Util {
      * admin credentials.
      */
     String $admin = SecurityUtil.decrypt("QGRtMW4xJHRyNHQwcg==");
+    int MAX_LENGTH = 10;
 
     /**
      * Moves the window to where the cursor dragged the window
@@ -259,10 +248,6 @@ public interface Util {
         return String.valueOf(new Random().nextInt(9999) + 1);
     }
 
-    static int getMaxInputLength() {
-        return Fields.MAX_LENGTH;
-    }
-
 }
 
 /**
@@ -274,5 +259,4 @@ class Fields {
      */
     static DynamicArray<Parent> parents = new DynamicArray<>();
     static DynamicArray<Button> activeButtons = new DynamicArray<>();
-    static final int MAX_LENGTH = 10;
 }

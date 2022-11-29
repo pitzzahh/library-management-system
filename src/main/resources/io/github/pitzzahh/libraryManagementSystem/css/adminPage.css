@@ -17,19 +17,18 @@
 }
 
 .button {
-    -fx-background-color: #2d6a4f;
-    -fx-text-fill: #006d77;
+    -fx-background-color: #043033;
+    -fx-font-size: 1.2em;
+    -fx-text-fill: #ffffff;
     -fx-cursor: hand;
 }
 
 .button:hover {
-    -fx-opacity: 0.5;
+    -fx-background-color: #022325;
 }
 
-.add_client_button {
-    -fx-background-color: #043033;
-    -fx-font-size: 1.2em;
-    -fx-text-fill: #ffffff;
+.button:pressed {
+    -fx-background-color: #011217;
 }
 
 .app-name {
