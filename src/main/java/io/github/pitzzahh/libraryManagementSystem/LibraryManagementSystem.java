@@ -1,22 +1,18 @@
 package io.github.pitzzahh.libraryManagementSystem;
 
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.List;
-
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import static java.util.Objects.requireNonNull;
+import javafx.application.Application;
+import javafx.scene.image.Image;
+import javafx.stage.StageStyle;
+import org.slf4j.LoggerFactory;
+import javafx.fxml.FXMLLoader;
+import java.io.IOException;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import org.slf4j.Logger;
 
 public class LibraryManagementSystem extends Application {
 
@@ -52,7 +48,7 @@ public class LibraryManagementSystem extends Application {
                 });
         getStage().setResizable(false);
         getStage().initStyle(StageStyle.DECORATED);
-        getStage().getIcons().add(new Image(requireNonNull(LibraryManagementSystem.class.getResourceAsStream("img/adminPage/logo_100px.png"), "logo not found")));
+        getStage().getIcons().add(new Image(requireNonNull(LibraryManagementSystem.class.getResourceAsStream("img/logo.png"), "logo not found")));
         moveWindow(parent);
         getStage().setScene(scene);
         getStage().centerOnScreen();
