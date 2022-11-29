@@ -56,10 +56,14 @@
     -fx-background-color: #006d77;
 }
 
-.text-field {
+.text-field, .choice-box {
     -fx-font-size: 15;
     -fx-font-family: "JetBrains Mono Medium";
     -fx-font-weight: bold;
+}
+
+.choice-box:hover {
+    -fx-cursor: hand;
 }
 
 /*.table-view .column-header,*/
