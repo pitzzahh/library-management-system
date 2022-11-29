@@ -32,7 +32,7 @@
     -fx-text-fill: #ffffff;
 }
 
-.bank-name {
+.app-name {
     -fx-font-size: 2em;
     -fx-text-fill: #ffffff;
     -fx-font-weight: bold;

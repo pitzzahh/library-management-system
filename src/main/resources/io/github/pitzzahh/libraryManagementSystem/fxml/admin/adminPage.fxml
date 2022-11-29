@@ -21,7 +21,7 @@
                 <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@../../img/adminPage/logo_100px.png" />
                 </ImageView>
-                <Label styleClass="bank-name" stylesheets="@../../css/adminPage.css" text="Library Management System">
+                <Label styleClass="app-name" stylesheets="@../../css/adminPage.css" text="Library Management System">
                     <padding>
                         <Insets left="10.0" />
                     </padding>
@@ -104,15 +104,15 @@
             </VBox>
         </left>
       <center>
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #CDCDCD;" BorderPane.alignment="CENTER">
-            <children>
-               <Label styleClass="start-info" stylesheets="@../../css/adminPage.css" text="Select an option from the left">
-                  <font>
-                     <Font name="Segoe UI Bold" size="34.0" />
-                  </font>
-               </Label>
-            </children>
-         </HBox>
+          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #CDCDCD;"
+                BorderPane.alignment="CENTER">
+              <Label styleClass="start-info" stylesheets="@../../css/adminPage.css"
+                     text="Select an option from the left">
+                 <font>
+                     <Font name="Segoe UI Bold" size="34.0"/>
+                 </font>
+              </Label>
+          </HBox>
       </center>
     </BorderPane>
 </AnchorPane>
