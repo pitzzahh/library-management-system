@@ -89,9 +89,13 @@
     -fx-text-fill: black;
 }
 
-.table-row-cell:selected {
-    -fx-background-color: whitesmoke;
+.table-view:hover {
+    -fx-cursor: hand;
+}
+
+.table-view:selected:focused {
+    -fx-background-color: cyan;
     -fx-text-background-color: #6622CC;
-    -fx-text-fill: white;
+    -fx-text-fill: red;
 }
 
