@@ -110,7 +110,8 @@ public class LoginController {
                 final boolean doesAccountExist = Validator.doesAccountExist(fieldText);
                 if (doesAccountExist) {
                     debugMessage.set("Account exists");
-                    var clientWindow = getParent("client_window");
+                    // TODO: new window for student
+                    var clientWindow = getParent("student_window");
                     getStage().close();
                     moveWindow(clientWindow);
                     if (clientWindow.getScene() != null) getStage().setScene(clientWindow.getScene()); // if scene is present, get it
