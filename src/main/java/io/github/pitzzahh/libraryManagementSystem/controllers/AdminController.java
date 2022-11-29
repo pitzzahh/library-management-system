@@ -3,14 +3,11 @@ package io.github.pitzzahh.libraryManagementSystem.controllers;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.KeyCode;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.util.Duration;
-import javafx.stage.Stage;
 import javafx.fxml.FXML;
 
 /**
@@ -112,29 +109,25 @@ public class AdminController {
     /**
      * Logs out the current session.
      * Returns to the main page.
-     * @param actionEvent the action event.
+     * @param ignoredActionEvent the action event.
      */
     @FXML
-    public void onLogout(ActionEvent actionEvent) {
+    public void onLogout(ActionEvent ignoredActionEvent) {
         getLogger().info("Logging out...");
-        var parent = (AnchorPane) ((((Button) actionEvent.getSource()).getParent().getParent())).getParent();
-        var stage = (Stage) parent.getScene().getWindow();
-        stage.close();
+        getStage().removeEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
+        getStage().close();
         var mainWindow = getParent("main_window");
         getMessageLabel(mainWindow).ifPresent(label -> label.setText(""));
         getMainProgressBar(mainWindow).ifPresent(pb -> pb.setVisible(false));
         getStage().setFullScreen(false);
-        stage.setTitle("ATM");
-        stage.setFullScreen(false);
-        stage.setMaximized(false);
-        stage.setResizable(false);
-        stage.centerOnScreen();
-        stage.setScene(mainWindow.getScene());
-        getStage().addEventHandler(KeyEvent.KEY_PRESSED, event -> {
-            if (KeyCode.F11.equals(event.getCode())) getStage().setFullScreen(false);
-        });
+        getStage().setTitle("Library Management System");
+        getStage().setFullScreen(false);
+        getStage().setMaximized(false);
+        getStage().setResizable(false);
+        getStage().centerOnScreen();
+        getStage().setScene(mainWindow.getScene());
         getLogger().debug("Loading main window");
-        stage.show();
+        getStage().show();
     }
 
     @FXML
