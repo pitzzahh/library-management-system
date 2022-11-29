@@ -9,6 +9,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -32,7 +34,7 @@
                   <left>
                      <VBox maxWidth="800.0" prefHeight="473.0" prefWidth="509.0" styleClass="field-vbox" stylesheets="@../../../css/addStudentsPage.css" BorderPane.alignment="CENTER">
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
-                           <Label prefHeight="50.0" prefWidth="153.0" styleClass="input-label" stylesheets="@../../../css/addStudentsPage.css" text="Book Title" />
+                           <Label prefHeight="50.0" prefWidth="165.0" styleClass="input-label" stylesheets="@../../../css/addStudentsPage.css" text="Book Title" />
                            <TextField fx:id="studentId" prefHeight="25.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
@@ -40,64 +42,74 @@
                            </TextField>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" VBox.vgrow="NEVER">
-                           <Label prefHeight="50.0" prefWidth="153.0" styleClass="input-label" stylesheets="@../../../css/addStudentsPage.css" text="First Name" />
+                           <Label prefHeight="50.0" prefWidth="165.0" styleClass="input-label" stylesheets="@../../../css/addStudentsPage.css" text="Book Author" />
                            <TextField fx:id="firstName" prefHeight="25.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
                            </TextField>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" VBox.vgrow="NEVER">
-                           <Label prefHeight="50.0" prefWidth="153.0" styleClass="input-label" stylesheets="@../../../css/addStudentsPage.css" text="Last Name" />
-                           <TextField fx:id="lastName" prefHeight="25.0" prefWidth="233.0" HBox.hgrow="ALWAYS">
-                              <HBox.margin>
-                                 <Insets right="10.0" />
-                              </HBox.margin>
-                           </TextField>
-                        </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="160.0">
-                           <Label prefHeight="50.0" prefWidth="153.0" styleClass="input-label" stylesheets="@../../../css/addStudentsPage.css" text="Course" />
-                           <ChoiceBox fx:id="course" prefHeight="25.0" prefWidth="345.0" HBox.hgrow="ALWAYS">
-                              <HBox.margin>
-                                 <Insets right="10.0" />
-                              </HBox.margin>
-                           </ChoiceBox>
+                           <children>
+                              <Label prefHeight="50.0" prefWidth="165.0" styleClass="input-label" stylesheets="@../../../css/addStudentsPage.css" text="Book Category" />
+                              <ChoiceBox fx:id="course1" prefHeight="25.0" prefWidth="345.0" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </ChoiceBox>
+                           </children>
                         </HBox>
-                        <VBox alignment="CENTER" prefHeight="277.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
-                           <HBox alignment="CENTER" prefHeight="275.0" prefWidth="509.0">
-                              <effect>
-                                 <Glow />
-                              </effect>
-                              <Button fx:id="addStudentTable" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onAction="#onAddStudent" onMouseEntered="#onHoverAddStudent" prefHeight="65.0" prefWidth="120.0" stylesheets="@../../../css/addStudentsPage.css" text="ADD">
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="removeStudentsTable" mnemonicParsing="false" onMouseEntered="#onHoverRemoveStudent" prefHeight="65.0" prefWidth="120.0" stylesheets="@../../../css/addStudentsPage.css" text="REMOVE">
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="removeAllStudentsTable" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverRemoveAll" prefHeight="65.0" prefWidth="120.0" stylesheets="@../../../css/addStudentsPage.css" text="REMOVE ALL">
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="saveALlStudentsTable" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverSaveAll" prefHeight="65.0" prefWidth="120.0" stylesheets="@../../../css/addStudentsPage.css" text="SAVE ALL">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                           </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="181.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="209.0" fitWidth="226.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/adminPage/book.gif" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="12.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="75.0" prefWidth="509.0">
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <children>
+                                    <Button fx:id="addStudentTable" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onAction="#onAddStudent" onMouseEntered="#onHoverAddStudent" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="ADD">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="removeStudentsTable" mnemonicParsing="false" onMouseEntered="#onHoverRemoveStudent" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="REMOVE">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="removeAllStudentsTable" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverRemoveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="REMOVE ALL">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="saveALlStudentsTable" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverSaveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="SAVE ALL">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
                         </VBox>
                      </VBox>
                   </left>
@@ -109,9 +121,9 @@
                                  <TableView fx:id="studentTable" editable="true" stylesheets="@../../../css/addStudentsPage.css" HBox.hgrow="ALWAYS">
                                     <columns>
                                        <TableColumn prefWidth="75.0" text="ID" />
-                                       <TableColumn prefWidth="75.0" text="FIRST NAME" />
-                                       <TableColumn prefWidth="75.0" text="LAST NAME" />
-                                       <TableColumn prefWidth="75.0" text="COURSE" />
+                                       <TableColumn prefWidth="75.0" text="BOOK TITLE" />
+                                       <TableColumn prefWidth="75.0" text="BOOK AUTHOR" />
+                                       <TableColumn prefWidth="75.0" text="BOOK CATEGORY" />
                                     </columns>
                                     <columnResizePolicy>
                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

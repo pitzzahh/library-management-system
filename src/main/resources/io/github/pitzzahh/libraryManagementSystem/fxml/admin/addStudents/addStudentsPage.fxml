@@ -63,41 +63,45 @@
                               </HBox.margin>
                            </ChoiceBox>
                         </HBox>
-                        <VBox alignment="CENTER" prefHeight="277.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
-                           <HBox alignment="CENTER" prefHeight="275.0" prefWidth="509.0">
-                              <effect>
-                                 <Glow />
-                              </effect>
-                              <Button fx:id="addStudentTable" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onAction="#onAddStudent" onMouseEntered="#onHoverAddStudent" prefHeight="65.0" prefWidth="120.0" stylesheets="@../../../css/addStudentsPage.css" text="ADD">
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="removeStudentsTable" mnemonicParsing="false" onMouseEntered="#onHoverRemoveStudent" prefHeight="65.0" prefWidth="120.0" stylesheets="@../../../css/addStudentsPage.css" text="REMOVE">
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="removeAllStudentsTable" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverRemoveAll" prefHeight="65.0" prefWidth="120.0" stylesheets="@../../../css/addStudentsPage.css" text="REMOVE ALL">
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="saveALlStudentsTable" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverSaveAll" prefHeight="65.0" prefWidth="120.0" stylesheets="@../../../css/addStudentsPage.css" text="SAVE ALL">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                           </HBox>
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="275.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="75.0" prefWidth="509.0">
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                                 <children>
+                                    <Button fx:id="addStudentTable" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onAction="#onAddStudent" onMouseEntered="#onHoverAddStudent" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="ADD">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="removeStudentsTable" mnemonicParsing="false" onMouseEntered="#onHoverRemoveStudent" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="REMOVE">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="removeAllStudentsTable" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverRemoveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="REMOVE ALL">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="saveALlStudentsTable" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverSaveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="SAVE ALL">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
                         </VBox>
                      </VBox>
                   </left>

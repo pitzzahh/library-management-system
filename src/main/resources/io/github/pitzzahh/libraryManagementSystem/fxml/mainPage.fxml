@@ -24,7 +24,7 @@
          </ImageView>
          <Label alignment="TOP_CENTER" layoutX="149.0" layoutY="60.0" prefHeight="174.0" prefWidth="321.0" styleClass="main-label" stylesheets="@../css/mainPage.css" text="LMS" textAlignment="CENTER">
          </Label>
-         <Text fill="WHITE" fontSmoothingType="LCD" layoutX="141.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" style="fx-font-family: JetBrains Mono; -fx-font-size: 25px; -fx-text-fill: white; -fx-font-weight: bold;" text="Library Mangement System" textAlignment="CENTER" wrappingWidth="337.896484375" />
+         <Text fill="WHITE" fontSmoothingType="LCD" layoutX="141.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" style="fx-font-family: JetBrains Mono; -fx-font-size: 25px; -fx-text-fill: white; -fx-font-weight: bold;" text="Library Management System" textAlignment="CENTER" wrappingWidth="337.896484375" />
          <HBox alignment="CENTER" fillHeight="false" layoutX="7.0" layoutY="175.0" prefHeight="117.0" prefWidth="610.0" AnchorPane.bottomAnchor="129.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="175.0">
             <padding>
                <Insets top="50.0" />
