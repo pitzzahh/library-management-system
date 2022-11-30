@@ -12,10 +12,12 @@
     -fx-font-weight: bold;
     -fx-alignment: CENTER;
     -fx-text-fill: white;
+    -fx-font-size: 15px;
 }
 
 .table-view .table-cell {
     -fx-border-color: transparent;
+    -fx-font-size: 17px;
     -fx-padding: 2px 0px 2px 10px;
 }
 
