@@ -2,9 +2,13 @@ package io.github.pitzzahh.libraryManagementSystem;
 
 
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
+import io.github.pitzzahh.libraryManagementSystem.entity.Course;
 import io.github.pitzzahh.libraryManagementSystem.util.Util;
 import static java.util.Objects.requireNonNull;
+import javafx.collections.FXCollections;
 import javafx.application.Application;
+import javafx.scene.control.ChoiceBox;
+import java.util.stream.Collectors;
 import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
 import org.slf4j.LoggerFactory;
@@ -13,6 +17,7 @@ import java.io.IOException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.util.Arrays;
 import org.slf4j.Logger;
 
 public class LibraryManagementSystem extends Application {
@@ -46,11 +51,18 @@ public class LibraryManagementSystem extends Application {
         getStage().setResizable(false);
         getStage().initStyle(StageStyle.DECORATED);
         getStage().getIcons().add(new Image(requireNonNull(LibraryManagementSystem.class.getResourceAsStream("img/logo.png"), "logo not found")));
-        moveWindow(parent);
         getStage().setScene(scene);
         getStage().centerOnScreen();
         getStage().toFront();
         getStage().setTitle("Library Management System");
+
+        ChoiceBox<Object> courseChoiceBox = Util.getChoiceBox(getParent("add_students_window"), 3);
+
+        courseChoiceBox.getItems().addAll(FXCollections.observableArrayList(
+                Arrays.stream(Course.values()).collect(Collectors.toList())
+        ));
+        courseChoiceBox.getSelectionModel().selectFirst();
+
         getStage().show();
         LOGGER.info("Application started");
     }
