@@ -1,0 +1,71 @@
+.table-view {
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-background-color: transparent;
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    -fx-font-size: 15px;
+}
+
+.table-view .column-header-background .filler .column-header .label .corner {
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-background-color: #006d77;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+}
+
+.table-view .table-cell {
+    -fx-border-color: transparent;
+    -fx-padding: 2px 0px 2px 10px;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #0ca1a6;
+    -fx-background-insets: 0px, 0px 0px 1px 0px;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #5accd9;
+    -fx-background-insets: 0px, 0px 0px 1px 0px;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:hover {
+    -fx-cursor: hand;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #EE3E54;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2px;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  linear-gradient(to bottom, #006d77, #93f9b944);
+}
+
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color:  linear-gradient(to right, #006d77, #93f9b944);
+}
+
+.table-row-cell:selected {
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-text-background-color: white;
+    -fx-background-color: #006d77;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-font-weight: bold;
+}
