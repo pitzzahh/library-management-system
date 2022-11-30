@@ -14,14 +14,14 @@
 <AnchorPane prefHeight="690.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.AdminController">
     <BorderPane layoutY="-2.0" prefHeight="598.0" prefWidth="1000.0" snapToPixel="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <top>
-            <HBox alignment="CENTER_LEFT" focusTraversable="true" prefHeight="61.0" styleClass="topBox" stylesheets="@../../css/adminPage.css" BorderPane.alignment="CENTER_LEFT">
+            <HBox alignment="CENTER_LEFT" focusTraversable="true" prefHeight="61.0" styleClass="topBox" stylesheets="@../../css/adminPage/adminPage.css" BorderPane.alignment="CENTER_LEFT">
                 <padding>
                     <Insets left="20.0" />
                 </padding>
                 <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@../../img/logo_100px.png" />
                 </ImageView>
-                <Label styleClass="app-name" stylesheets="@../../css/adminPage.css" text="Library Management System">
+                <Label styleClass="app-name" stylesheets="@../../css/adminPage/adminPage.css" text="Library Management System">
                     <padding>
                         <Insets left="10.0" />
                     </padding>
@@ -29,8 +29,8 @@
             </HBox>
         </top>
         <left>
-            <VBox styleClass="leftBox" stylesheets="@../../css/adminPage.css" BorderPane.alignment="CENTER">
-                <Button fx:id="addStudents" graphicTextGap="20.0" mnemonicParsing="false" onAction="#onAddStudents" onMouseEntered="#onMouseEnteredAddStudentsButton" prefWidth="192.0" stylesheets="@../../css/adminPage.css" text="Add Students" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+            <VBox styleClass="leftBox" stylesheets="@../../css/adminPage/adminPage.css" BorderPane.alignment="CENTER">
+                <Button fx:id="addStudents" graphicTextGap="20.0" mnemonicParsing="false" onAction="#onAddStudents" onMouseEntered="#onMouseEnteredAddStudentsButton" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="Add Students" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -43,7 +43,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="addBooks" graphicTextGap="40.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onAddBooks" onMouseEntered="#onMouseEnteredAddBooksButton" prefWidth="192.0" stylesheets="@../../css/adminPage.css" text="Add Books" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="addBooks" graphicTextGap="40.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onAddBooks" onMouseEntered="#onMouseEnteredAddBooksButton" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="Add Books" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -56,7 +56,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="manageStudents" graphicTextGap="0.0" layoutX="15.0" layoutY="59.0" mnemonicParsing="false" onMouseEntered="#onMouseEnteredManageStudentsButton" prefWidth="192.0" stylesheets="@../../css/adminPage.css" text="Manage Students" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="manageStudents" graphicTextGap="0.0" layoutX="15.0" layoutY="59.0" mnemonicParsing="false" onMouseEntered="#onMouseEnteredManageStudentsButton" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="Manage Students" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -69,7 +69,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
                 </Button>
-                <Button fx:id="manageBooks" layoutX="10.0" layoutY="98.0" mnemonicParsing="false" onMouseEntered="#onMouseEnteredManageBooksButton" prefWidth="192.0" stylesheets="@../../css/adminPage.css" text="Manage Borrowed Books" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="manageBooks" layoutX="10.0" layoutY="98.0" mnemonicParsing="false" onMouseEntered="#onMouseEnteredManageBooksButton" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="Manage Borrowed Books" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -82,7 +82,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </VBox.margin>
                 </Button>
-            <Button fx:id="logout" graphicTextGap="60.0" layoutX="15.0" layoutY="335.0" mnemonicParsing="false" onAction="#onLogout" onMouseEntered="#onMouseEnteredLogout" prefWidth="192.0" stylesheets="@../../css/adminPage.css" text="Logout" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+            <Button fx:id="logout" graphicTextGap="60.0" layoutX="15.0" layoutY="335.0" mnemonicParsing="false" onAction="#onLogout" onMouseEntered="#onMouseEnteredLogout" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="Logout" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="1.0" />
                </font>
@@ -105,7 +105,7 @@
         </left>
       <center>
           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #CDCDCD;" BorderPane.alignment="CENTER">
-              <Label styleClass="start-info" stylesheets="@../../css/adminPage.css" text="Select an option from the left" wrapText="true">
+              <Label styleClass="start-info" stylesheets="@../../css/adminPage/adminPage.css" text="Select an option from the left" wrapText="true">
                  <font>
                      <Font name="Segoe UI Bold" size="34.0" />
                  </font>
