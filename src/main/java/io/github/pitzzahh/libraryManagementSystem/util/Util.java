@@ -1,26 +1,25 @@
 package io.github.pitzzahh.libraryManagementSystem.util;
 
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
+import io.github.pitzzahh.libraryManagementSystem.entity.Student;
 import io.github.pitzzahh.util.utilities.classes.DynamicArray;
 import io.github.pitzzahh.util.utilities.SecurityUtil;
 import java.util.concurrent.atomic.AtomicReference;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 import static java.lang.String.format;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
 import java.util.function.Consumer;
 import javafx.scene.input.KeyCode;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.util.Duration;
-import java.time.LocalDate;
 import javafx.scene.Parent;
 import java.util.Optional;
+import javafx.scene.Node;
 import java.util.Random;
 
 /**
@@ -38,6 +37,7 @@ public interface Util {
      * Moves the window to where the cursor dragged the window
      * @param parent the parent node.
      */
+    @Deprecated(forRemoval = true)
     static void moveWindow(Parent parent) {
         var horizontal = new AtomicReference<>(0.0);
         var vertical = new AtomicReference<>(0.0);
@@ -179,65 +179,53 @@ public interface Util {
                 .findAny();
     }
 
-    static boolean checkInputs(Button button, MouseEvent event, String firstName, String lastName, String address, DatePicker date) {
-
-        assert date != null;
-        Optional<LocalDate> value = Optional.ofNullable(date.getValue());
-        getLogger().error(format("IS DATE NULL: %s", value));
-
-        if (firstName.isEmpty() && lastName.isEmpty() && address.isEmpty() && value.isEmpty()) {
+    static boolean checkInputs(
+            Button button,
+            MouseEvent event,
+            String studentNumber,
+            String firstName,
+            String lastName
+    ) {
+        Optional<Tooltip> tooltip1 = Optional.ofNullable(button.getTooltip());
+        tooltip1.ifPresent(t -> button.setTooltip(null));
+        if (studentNumber.isEmpty() && firstName.isEmpty() && lastName.isEmpty()) {
             Tooltip tooltip = initToolTip(
-                    "Cannot Add Client, All Required Input are empty",
+                    "Cannot Add Student, All Required Input are empty",
                     event,
                     errorToolTipStyle()
             );
             tooltip.setShowDuration(Duration.seconds(3));
             button.setTooltip(tooltip);
-            getLogger().error("NO INPUT");
             return false;
         }
-        else if (firstName.isEmpty() && (lastName.isEmpty() || address.isEmpty() || value.isEmpty())) {
+        else if (studentNumber.isEmpty() && (firstName.isEmpty() || lastName.isEmpty())) {
             Tooltip tooltip = initToolTip(
-                    "Cannot Add Client, First Name is empty",
+                    "Cannot Add Student, Student Number is empty",
                     event,
                     errorToolTipStyle()
             );
             tooltip.setShowDuration(Duration.seconds(3));
             button.setTooltip(tooltip);
-            getLogger().error("NO FIRST NAME");
             return false;
         }
-        else if (lastName.isEmpty() && (address.isEmpty() || value.isEmpty())) {
+        else if (firstName.isEmpty() && lastName.isEmpty()) {
             Tooltip tooltip = initToolTip(
-                    "Cannot Add Client, Last Name is empty",
+                    "Cannot Add Student, First Name is empty",
                     event,
                     errorToolTipStyle()
             );
             tooltip.setShowDuration(Duration.seconds(3));
             button.setTooltip(tooltip);
-            getLogger().error("NO LAST NAME");
             return false;
         }
-        else if (address.isEmpty() && value.isEmpty()) {
+        else if (lastName.isEmpty()) {
             Tooltip tooltip = initToolTip(
-                    "Cannot Add Client, Address is empty",
+                    "Cannot Add Student, Last Name is empty",
                     event,
                     errorToolTipStyle()
             );
             tooltip.setShowDuration(Duration.seconds(3));
             button.setTooltip(tooltip);
-            getLogger().error("NO ADDRESS");
-            return false;
-        }
-        else if (value.isEmpty()) {
-            Tooltip tooltip = initToolTip(
-                    "Cannot Add Client, Date is empty",
-                    event,
-                    errorToolTipStyle()
-            );
-            tooltip.setShowDuration(Duration.seconds(3));
-            button.setTooltip(tooltip);
-            getLogger().error("NO DATE");
             return false;
         }
         return true;
@@ -254,6 +242,34 @@ public interface Util {
     static EventHandler<KeyEvent> getToggleFullScreenEvent() {
         return Fields.eventHandler;
     }
+
+    static void hideProgressBar(ProgressBar progressBar) {
+        progressBar.setVisible(false);
+        progressBar.setStyle("-fx-accent: cyan;");
+    }
+
+    @SuppressWarnings("unchecked")
+    static ChoiceBox<Object> getChoiceBox(Parent parent, int index) {
+        BorderPane borderPane = (BorderPane) parent.getChildrenUnmodifiable().get(0);
+
+        BorderPane borderPaneCenterPane = (BorderPane) borderPane.getCenter();
+
+        BorderPane centerPaneCenterPane = (BorderPane) borderPaneCenterPane.getCenter();
+        VBox centerVBox = (VBox) centerPaneCenterPane.getLeft(); // left vbox where inputs contained in HBox
+        Node node = centerVBox.getChildren().get(index);
+        assert node instanceof HBox;
+        return (ChoiceBox<Object>) ((HBox)node).getChildren().get(1);
+    }
+
+    static boolean isStudentAlreadyAdded(String studentNumber) {
+        return getDataSource()
+                .stream()
+                .anyMatch(e -> e.getStudentNumber().equals(studentNumber));
+    }
+
+    static ObservableList<Student> getDataSource() {
+        return Fields.dataSource;
+    }
 }
 
 /**
@@ -265,6 +281,7 @@ class Fields {
      */
     static DynamicArray<Parent> parents = new DynamicArray<>();
     static DynamicArray<Button> activeButtons = new DynamicArray<>();
+    static ObservableList<Student> dataSource = FXCollections.observableArrayList();
     static EventHandler<KeyEvent> eventHandler = event -> {
         if (KeyCode.F11.equals(event.getCode())) getStage().setFullScreen(!getStage().isFullScreen());
     };
