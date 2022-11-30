@@ -142,12 +142,7 @@ public interface Util {
      * @return an {@code Optional<ProgressBar>}.
      */
     static Optional<ProgressBar> getMainProgressBar(Parent parent) {
-        return parent.getChildrenUnmodifiable().stream().findAny()
-                .map(n -> (Pane) n)
-                .map(Pane::getChildren)
-                .map(e -> e.get(e.size() - 1))
-                .map(e -> (ProgressBar) e)
-                .stream().findAny();
+        return Optional.ofNullable((ProgressBar) parent.lookup("#progressBar"));
     }
 
     /**
@@ -155,6 +150,7 @@ public interface Util {
      * @param parent the main window parent.
      * @return an {@code Optional<Label>}.
      */
+    //TODO: fix bug
     static Optional<Label> getMessageLabel(Parent parent) {
         return parent.getChildrenUnmodifiable().stream().findAny()
                 .map(n -> (AnchorPane) n)
