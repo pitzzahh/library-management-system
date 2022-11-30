@@ -4,13 +4,12 @@ import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
 import io.github.pitzzahh.libraryManagementSystem.entity.Course;
-import io.github.pitzzahh.util.utilities.Print;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
+import javafx.scene.control.*;
 import javafx.util.Duration;
 import javafx.fxml.FXML;
 
@@ -59,10 +58,6 @@ public class AddStudentsPageController {
         studentCourseColumn.setStyle("-fx-alignment: CENTER;");
         studentCourseColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
         studentTable.setItems(dataSource);
-        studentTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        getLogger().debug("Added student to table");
-        getLogger().debug("Student table size: " + studentTable.getItems().size());
-        studentTable.getItems().forEach(Print::println);
     }
 
     @FXML
