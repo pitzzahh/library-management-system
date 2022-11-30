@@ -34,7 +34,7 @@ public class LoginController {
     @FXML
     private Label message;
 
-    private Stage stage;
+    private Stage stage; // TODO: move to Util interface
 
     /**
      * Checks if the Enter key is pressed and invokes the check() method.
@@ -90,7 +90,6 @@ public class LoginController {
         if (fieldText.equals($admin)) {
             var adminWindow = getParent("admin_window");
             getStage().close();
-            moveWindow(adminWindow);
             if (adminWindow.getScene() != null) getStage().setScene(adminWindow.getScene()); // if scene is present, get it
             else getStage().setScene(new Scene(adminWindow)); // create new scene if new login
             getStage().setTitle("Administrator");
@@ -112,7 +111,6 @@ public class LoginController {
                     // TODO: new window for student
                     var clientWindow = getParent("student_window");
                     getStage().close();
-                    moveWindow(clientWindow);
                     if (clientWindow.getScene() != null) getStage().setScene(clientWindow.getScene()); // if scene is present, get it
                     else getStage().setScene(new Scene(clientWindow)); // create new scene if new login
                     getStage().setTitle("Client");
