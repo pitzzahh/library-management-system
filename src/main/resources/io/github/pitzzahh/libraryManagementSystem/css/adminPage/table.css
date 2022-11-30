@@ -1,12 +1,16 @@
 .table-view {
     -fx-font-family: "JetBrains Mono Medium";
     -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom, #006d77, #93f9b944);
     -fx-background-radius: 0px;
     -fx-border-radius: 0px;
     -fx-font-size: 15px;
 }
 
-.table-view .column-header-background .filler .column-header .label .corner {
+.table-view .column-header,
+.table-view .column-header .filler,
+.table-view .column-header .label,
+.table-view .column-header-background .filler {
     -fx-font-family: "JetBrains Mono Medium";
     -fx-background-color: #006d77;
     -fx-font-weight: bold;
@@ -65,9 +69,10 @@
 
 .table-row-cell:selected {
     -fx-font-family: "JetBrains Mono Medium";
-    -fx-text-background-color: white;
+    -fx-text-background-color: #EFD589;
     -fx-background-color: #006d77;
     -fx-background-radius: 10px;
+    -fx-border-color: #EFD589;
     -fx-border-radius: 10px;
     -fx-font-weight: bold;
 }
