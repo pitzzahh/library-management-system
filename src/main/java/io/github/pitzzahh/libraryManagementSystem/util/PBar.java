@@ -32,7 +32,7 @@ public class PBar {
                 @Override
                 protected Void call() throws Exception {
                     for (int i = 0; i <= 100; i++) {
-                        Thread.sleep(random.nextInt(50) + 1);
+                        Thread.sleep(random.nextInt(10) + 1);
                         updateProgress(i, 100);
                     }
                     return null;
