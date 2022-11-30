@@ -1,6 +1,5 @@
 package io.github.pitzzahh.libraryManagementSystem.controllers;
 
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
 import io.github.pitzzahh.libraryManagementSystem.entity.Course;
