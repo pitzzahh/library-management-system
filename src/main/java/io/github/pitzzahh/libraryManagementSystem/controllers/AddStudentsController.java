@@ -4,8 +4,6 @@ import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
 import io.github.pitzzahh.libraryManagementSystem.entity.Course;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.collections.ObservableList;
-import javafx.collections.FXCollections;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.*;
 import javafx.util.Duration;
@@ -41,15 +39,16 @@ public class AddStudentsController {
     public TableView<Student> studentTable;
 
     // TODO: move to Util interface
-    private final ObservableList<Student> dataSource = FXCollections.observableArrayList();
+
 
     private boolean passed;
 
     @FXML
     public void onAddStudent(MouseEvent event) {
+        event.consume();
         if (passed) {
-            if (!isStudentAlreadyAdded(studentTable, studentId.getText().trim())) {
-                dataSource.add(new Student(
+            if (!isStudentAlreadyAdded(studentId.getText().trim())) {
+                getDataSource().add(new Student(
                         studentId.getText().trim(),
                         firstName.getText().trim(),
                         lastName.getText().trim(),
@@ -68,18 +67,15 @@ public class AddStudentsController {
                 studentCourseColumn.setStyle("-fx-alignment: CENTER;");
                 studentCourseColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
 
-                studentTable.setItems(dataSource);
+                studentTable.setItems(getDataSource());
             }
             else {
-                Tooltip tooltip = initToolTip(
-                        "Cannot add student, Student with student number already added",
-                        event,
-                        adminButtonFunctionsToolTipStyle()
-                );
+                Tooltip tooltip  = new Tooltip("Cannot add student, Student with student number already added");
+                tooltip.setStyle(errorToolTipStyle());
                 tooltip.setAutoHide(true);
                 tooltip.setShowDuration(Duration.seconds(3));
-                addStudentTable.setTooltip(tooltip);
-                addStudentTable.getTooltip().show(getParent("add_students_window").getScene().getWindow());
+                studentId.setTooltip(tooltip);
+                studentId.getTooltip().show(getParent("add_students_window").getScene().getWindow());
             }
         }
     }
