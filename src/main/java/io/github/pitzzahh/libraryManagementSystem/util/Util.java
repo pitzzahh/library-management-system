@@ -18,9 +18,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
 import javafx.scene.Parent;
-import java.util.Optional;
 import javafx.scene.Node;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Utility interface for the ATM application.
@@ -55,6 +54,7 @@ public interface Util {
      * Adds a parent to the parents array.
      * @param parent the parent to add.
      */
+    @Deprecated(forRemoval = true)
     static void addParent(Parent parent) {
         Fields.parents.insert(parent);
     }
@@ -168,9 +168,9 @@ public interface Util {
     }
 
     static void addActiveButtons(Button button) {
-        boolean b = Fields.activeButtons.stream()
-                .anyMatch(button1 -> button1.getId().equals(button.getId()));
-        if (!b) Fields.activeButtons.insert(button);
+        boolean anyMatch = Fields.activeButtons.stream()
+                .anyMatch(b -> b.getId().equals(button.getId()));
+        if (!anyMatch) Fields.activeButtons.offer(button);
     }
 
     static Optional<Button> getActiveButton(String id) {
@@ -280,7 +280,7 @@ class Fields {
      * The parents array.
      */
     static DynamicArray<Parent> parents = new DynamicArray<>();
-    static DynamicArray<Button> activeButtons = new DynamicArray<>();
+    static Queue<Button> activeButtons = new LinkedList<>();
     static ObservableList<Student> dataSource = FXCollections.observableArrayList();
     static EventHandler<KeyEvent> eventHandler = event -> {
         if (KeyCode.F11.equals(event.getCode())) getStage().setFullScreen(!getStage().isFullScreen());
