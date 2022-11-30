@@ -3,6 +3,11 @@
     src: url('../fonts/JetBrainsMono.ttf');
 }
 
+.root {
+    -fx-background-image: url("../img/mainPage/background_image.jpg");
+    -fx-background-size: cover;
+}
+
 .main-label {
     -fx-font-family: "JetBrains Mono Medium";
     -fx-font-size: 70px;
