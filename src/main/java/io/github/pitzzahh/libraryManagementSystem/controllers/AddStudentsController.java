@@ -61,7 +61,7 @@ public class AddStudentsController {
 
     @FXML
     public void onHoverAddStudent(MouseEvent event) {
-        var tooltip = initToolTip(
+        Tooltip tooltip = initToolTip(
                 "Add Student",
                 event,
                 adminButtonFunctionsToolTipStyle()
@@ -72,7 +72,7 @@ public class AddStudentsController {
 
     @FXML
     public void onHoverRemoveStudent(MouseEvent event) {
-        var tooltip = initToolTip(
+        Tooltip tooltip = initToolTip(
                 "Remove Student",
                 event,
                 adminButtonFunctionsToolTipStyle()
@@ -83,7 +83,7 @@ public class AddStudentsController {
 
     @FXML
     public void onHoverRemoveAll(MouseEvent event) {
-        var tooltip = initToolTip(
+        Tooltip tooltip = initToolTip(
                 "Remove All Students records from the table",
                 event,
                 adminButtonFunctionsToolTipStyle()
@@ -94,7 +94,7 @@ public class AddStudentsController {
 
     @FXML
     public void onHoverSaveAll(MouseEvent event) {
-        var tooltip = initToolTip(
+        Tooltip tooltip = initToolTip(
                 "Save all students records from the table to the database",
                 event,
                 adminButtonFunctionsToolTipStyle()
