@@ -8,13 +8,13 @@ public enum Course {
     BSCPE("Bachelor of Science in Computer Engineering"),
     BSAIS("Bachelor of Science in Accountancy Information System");
 
-    private String courseName;
+    private final String COURSE_NAME;
 
     Course(String courseName) {
-        this.courseName = courseName;
+        COURSE_NAME = courseName;
     }
 
     public String getCourseName() {
-        return courseName;
+        return COURSE_NAME;
     }
 }
