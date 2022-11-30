@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'JetBrains Mono';
-    src: url('../fonts/JetBrainsMono.ttf');
+    src: url('../../../fonts/JetBrainsMono.ttf');
 }
 
 .button {
@@ -66,36 +66,5 @@
     -fx-cursor: hand;
 }
 
-.table-view .column-header,
-.table-view .column-header-background .filler {
-    -fx-background-color: #006D77;
-}
 
-.table-view .column-header .label{
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-alignment: CENTER;
-}
-
-.table-view .cell {
-    -fx-cell-size: 35;
-    -fx-font-weight: bold;
-    -fx-font-size: 15px;
-    -fx-alignment: center-left;
-    -fx-background-color: #EFD589;
-    -fx-text-alignment: center;
-    -fx-border-width: 1px;
-    -fx-border-color: #043033;
-    -fx-text-fill: black;
-}
-
-.table-view:hover {
-    -fx-cursor: hand;
-}
-
-.table-view:selected:focused {
-    -fx-background-color: cyan;
-    -fx-text-background-color: #6622CC;
-    -fx-text-fill: red;
-}
 
