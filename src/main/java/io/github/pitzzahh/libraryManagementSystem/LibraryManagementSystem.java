@@ -2,6 +2,7 @@ package io.github.pitzzahh.libraryManagementSystem;
 
 
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
+import io.github.pitzzahh.libraryManagementSystem.util.Util;
 import static java.util.Objects.requireNonNull;
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -41,11 +42,7 @@ public class LibraryManagementSystem extends Application {
         var scene = new Scene(parent);
         LibraryManagementSystem.stage = primaryStage;
         var mainProgressBar = getMainProgressBar(parent);
-        mainProgressBar
-                .ifPresent(pb -> {
-                    pb.setVisible(false);
-                    pb.setStyle("-fx-accent: cyan;");
-                });
+        mainProgressBar.ifPresent(Util::hideProgressBar);
         getStage().setResizable(false);
         getStage().initStyle(StageStyle.DECORATED);
         getStage().getIcons().add(new Image(requireNonNull(LibraryManagementSystem.class.getResourceAsStream("img/logo.png"), "logo not found")));
@@ -74,8 +71,8 @@ public class LibraryManagementSystem extends Application {
     private void initParents() throws IOException {
         var mainPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/mainPage.fxml"), "Cannot find mainPage.fxml"));
         var adminPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/adminPage.fxml"), "Cannot find adminPage.fxml"));
-        var addStudentsPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addStudents/addStudentsPage.fxml"), "Cannot find addStudentsPage.fxml"));
-        var addBooksPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addBooks/addBooksPage.fxml"), "Cannot find addBooksPage.fxml"));
+        var addStudentsPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addStudents/addStudents.fxml"), "Cannot find addStudents.fxml"));
+        var addBooksPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addBooks/addBooks.fxml"), "Cannot find addBooks.fxml"));
         adminPage.setId("admin_window");
         mainPage.setId("main_window");
         addStudentsPage.setId("add_students_window");
