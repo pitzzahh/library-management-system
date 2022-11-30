@@ -21,8 +21,8 @@
 <AnchorPane prefHeight="538.0" prefWidth="1000.0" style="-fx-background-color: #D6DCF1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.AddStudentsPageController">
    <BorderPane layoutX="111.0" layoutY="100.0" prefHeight="400.0" prefWidth="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <top>
-         <HBox alignment="CENTER" prefHeight="58.0" prefWidth="600.0" styleClass="nav-bar" stylesheets="@../../../css/addStudentsPage.css" BorderPane.alignment="CENTER_RIGHT">
-            <Label styleClass="nav-bar-title" stylesheets="@../../../css/addStudentsPage.css" text="Add Students" />
+         <HBox alignment="CENTER" prefHeight="58.0" prefWidth="600.0" styleClass="nav-bar" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" BorderPane.alignment="CENTER_RIGHT">
+            <Label styleClass="nav-bar-title" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" text="Add Students" />
          </HBox>
       </top>
       <center>
@@ -33,9 +33,9 @@
                      <Blend />
                   </effect>
                   <left>
-                     <VBox maxWidth="800.0" prefHeight="473.0" prefWidth="509.0" styleClass="field-vbox" stylesheets="@../../../css/addStudentsPage.css" BorderPane.alignment="CENTER">
+                     <VBox maxWidth="800.0" prefHeight="473.0" prefWidth="509.0" styleClass="field-vbox" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" BorderPane.alignment="CENTER">
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
-                           <Label prefHeight="50.0" prefWidth="153.0" styleClass="input-label" stylesheets="@../../../css/addStudentsPage.css" text="Student Id" />
+                           <Label prefHeight="50.0" prefWidth="153.0" styleClass="input-label" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" text="Student Id" />
                            <TextField fx:id="studentId" prefHeight="25.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
@@ -43,7 +43,7 @@
                            </TextField>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" VBox.vgrow="NEVER">
-                           <Label prefHeight="50.0" prefWidth="153.0" styleClass="input-label" stylesheets="@../../../css/addStudentsPage.css" text="First Name" />
+                           <Label prefHeight="50.0" prefWidth="153.0" styleClass="input-label" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" text="First Name" />
                            <TextField fx:id="firstName" prefHeight="25.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
@@ -51,7 +51,7 @@
                            </TextField>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" VBox.vgrow="NEVER">
-                           <Label prefHeight="50.0" prefWidth="153.0" styleClass="input-label" stylesheets="@../../../css/addStudentsPage.css" text="Last Name" />
+                           <Label prefHeight="50.0" prefWidth="153.0" styleClass="input-label" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" text="Last Name" />
                            <TextField fx:id="lastName" prefHeight="25.0" prefWidth="233.0" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
@@ -59,7 +59,7 @@
                            </TextField>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="160.0">
-                           <Label prefHeight="50.0" prefWidth="153.0" styleClass="input-label" stylesheets="@../../../css/addStudentsPage.css" text="Course" />
+                           <Label prefHeight="50.0" prefWidth="153.0" styleClass="input-label" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" text="Course" />
                            <ChoiceBox fx:id="course" prefHeight="25.0" prefWidth="345.0" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
@@ -79,7 +79,7 @@
                               <effect>
                                  <Glow />
                               </effect>
-                              <Button fx:id="addStudentTable" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onAction="#onAddStudent" onMouseEntered="#onHoverAddStudent" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="ADD">
+                              <Button fx:id="addStudentTable" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onAction="#onAddStudent" onMouseEntered="#onHoverAddStudent" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" text="ADD">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
@@ -87,7 +87,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="removeStudentsTable" mnemonicParsing="false" onMouseEntered="#onHoverRemoveStudent" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="REMOVE">
+                              <Button fx:id="removeStudentsTable" mnemonicParsing="false" onMouseEntered="#onHoverRemoveStudent" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" text="REMOVE">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
@@ -95,7 +95,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="removeAllStudentsTable" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverRemoveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="REMOVE ALL">
+                              <Button fx:id="removeAllStudentsTable" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverRemoveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" text="REMOVE ALL">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
@@ -103,7 +103,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="saveALlStudentsTable" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverSaveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/addStudentsPage.css" text="SAVE ALL">
+                              <Button fx:id="saveALlStudentsTable" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseEntered="#onHoverSaveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" text="SAVE ALL">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -117,7 +117,7 @@
                         <center>
                            <HBox alignment="CENTER" prefHeight="397.0" prefWidth="611.0" BorderPane.alignment="CENTER">
                               <children>
-                                 <TableView fx:id="studentTable" editable="true" prefHeight="473.0" prefWidth="502.0" stylesheets="@../../../css/addStudentsPage.css" HBox.hgrow="ALWAYS">
+                                 <TableView fx:id="studentTable" editable="true" prefHeight="473.0" prefWidth="502.0" stylesheets="@../../../css/adminPage/table.css" HBox.hgrow="ALWAYS">
                                     <columns>
                                        <TableColumn prefWidth="75.0" text="ID" />
                                        <TableColumn prefWidth="75.0" text="FIRST NAME" />
