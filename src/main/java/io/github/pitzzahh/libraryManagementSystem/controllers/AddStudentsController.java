@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.util.Duration;
 import javafx.fxml.FXML;
 
-public class AddStudentsPageController {
+public class AddStudentsController {
 
     @FXML
     public TextField studentId;
