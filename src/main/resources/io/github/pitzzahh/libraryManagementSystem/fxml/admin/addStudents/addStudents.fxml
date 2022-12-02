@@ -87,7 +87,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="removeStudentsTable" mnemonicParsing="false" onMouseEntered="#onHoverRemoveStudent" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" text="REMOVE">
+                              <Button fx:id="removeStudentsTable" mnemonicParsing="false" onMouseClicked="#onRemoveStudent" onMouseEntered="#onHoverRemoveStudent" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/adminPage/addStudent/addStudentsPage.css" text="REMOVE">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
