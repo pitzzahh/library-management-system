@@ -40,33 +40,14 @@
     -fx-text-fill: transparent;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-border-color: transparent transparent #2c4642 transparent;
+    -fx-border-color: transparent transparent #be4655 transparent;
     -fx-border-width: 0 0 5 0;
 }
 
 .credentials:hover {
-    -fx-text-fill: #D4A373;
+    -fx-text-fill: #E55065;
 }
 
 .progress-bar {
     -fx-background-color: #138370;
-}
-
-@media screen and (max-width: 600px) {
-    .main-label {
-        -fx-font-size: 50px;
-    }
-
-    .subtitle {
-        -fx-font-size: 15px;
-    }
-
-    .message {
-        -fx-font-size: 15px;
-    }
-
-    .credentials {
-        -fx-font-size: 20px;
-    }
-
 }
