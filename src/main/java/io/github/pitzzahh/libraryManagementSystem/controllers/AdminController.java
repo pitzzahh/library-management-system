@@ -119,11 +119,7 @@ public class AdminController {
         var mainWindow = getParent("main_window");
         getMessageLabel(mainWindow).ifPresent(label -> label.setText(""));
         getMainProgressBar(mainWindow).ifPresent(pb -> pb.setVisible(false));
-        getStage().setFullScreen(false);
         getStage().setTitle("Library Management System");
-        getStage().setFullScreen(false);
-        getStage().setMaximized(false);
-        getStage().setResizable(false);
         getStage().centerOnScreen();
         getStage().setScene(mainWindow.getScene());
         getLogger().debug("Loading main window");
