@@ -1,0 +1,8 @@
+package io.github.pitzzahh.libraryManagementSystem.entity;
+
+public enum Page {
+    ADD_STUDENTS,
+    ADD_BOOKS,
+    MANAGE_STUDENTS,
+    MANAGE_BOOKS
+}
