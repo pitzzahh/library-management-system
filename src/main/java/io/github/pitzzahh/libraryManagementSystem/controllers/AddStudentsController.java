@@ -38,9 +38,6 @@ public class AddStudentsController {
     @FXML
     public TableView<Student> studentTable;
 
-    // TODO: move to Util interface
-
-
     private boolean passed;
 
     @FXML
