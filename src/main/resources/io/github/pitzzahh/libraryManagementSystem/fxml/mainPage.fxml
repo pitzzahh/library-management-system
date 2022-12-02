@@ -4,41 +4,78 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="627.0" snapToPixel="false" stylesheets="@../css/mainPage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.LoginController">
+<BorderPane minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" snapToPixel="false" stylesheets="@../css/mainPage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.LoginController">
+   <bottom>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="646.0">
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+               <ImageView accessibleText="book icon" blendMode="SRC_ATOP" fitHeight="50.0" fitWidth="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                  <effect>
+                     <Blend />
+                  </effect>
+                  <Image url="@../img/adminPage/addStudent.png" />
+               </ImageView>
+               <ImageView blendMode="SRC_ATOP" fitHeight="50.0" fitWidth="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                  <effect>
+                     <Blend />
+                  </effect>
+                  <Image url="@../img/adminPage/addBook.png" />
+               </ImageView>
+               <ImageView blendMode="SRC_ATOP" fitHeight="50.0" fitWidth="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                  <effect>
+                     <Blend />
+                  </effect>
+                  <Image url="@../img/adminPage/viewAllStudents.png" />
+               </ImageView>
+               <ImageView accessibleText="book icon" blendMode="SRC_ATOP" fitHeight="50.0" fitWidth="50.0" layoutX="462.0" layoutY="13.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                  <effect>
+                     <Blend />
+                  </effect>
+                  <Image url="@../img/adminPage/manageBooks.png" />
+               </ImageView>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="34.0" prefWidth="601.0" VBox.vgrow="ALWAYS">
+               <Label fx:id="message" alignment="CENTER" prefHeight="34.0" prefWidth="702.0" styleClass="message" HBox.hgrow="ALWAYS" />
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS">
+               <ProgressBar fx:id="progressBar" blendMode="SRC_ATOP" cache="true" cacheHint="SPEED" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="727.0" progress="0.0" stylesheets="@../css/mainPage.css" HBox.hgrow="ALWAYS" />
+            </HBox>
+         </VBox>
+      </HBox>
+   </bottom>
+   <top>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="601.0">
+            <VBox.margin>
+               <Insets top="20.0" />
+            </VBox.margin>
+            <Label alignment="TOP_CENTER" prefHeight="174.0" prefWidth="321.0" styleClass="main-label" stylesheets="@../css/mainPage.css" text="LMS" textAlignment="CENTER">
+            </Label>
+         </HBox>
+         <HBox alignment="CENTER">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="fx-font-family: JetBrains Mono; -fx-font-size: 25px; -fx-text-fill: white; -fx-font-weight: bold;" text="Library Management System" textAlignment="CENTER" wrappingWidth="337.896484375" />
+         </HBox>
+      </VBox>
+   </top>
    <center>
-      <AnchorPane prefHeight="421.0" prefWidth="596.0" stylesheets="@../css/mainPage.css" BorderPane.alignment="CENTER">
-         <ImageView fitHeight="429.0" fitWidth="636.0" layoutY="-7.0" pickOnBounds="true" smooth="false">
-            <Image url="@../img/mainPage/background_image.jpg" />
-            <effect>
-               <GaussianBlur radius="7.0" />
-            </effect>
-         </ImageView>
-         <Label alignment="TOP_CENTER" layoutX="149.0" layoutY="60.0" prefHeight="174.0" prefWidth="321.0" styleClass="main-label" stylesheets="@../css/mainPage.css" text="LMS" textAlignment="CENTER">
-         </Label>
-         <Text fill="WHITE" fontSmoothingType="LCD" layoutX="141.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" style="fx-font-family: JetBrains Mono; -fx-font-size: 25px; -fx-text-fill: white; -fx-font-weight: bold;" text="Library Management System" textAlignment="CENTER" wrappingWidth="337.896484375" />
-         <HBox alignment="CENTER" fillHeight="false" layoutX="7.0" layoutY="175.0" prefHeight="117.0" prefWidth="610.0" AnchorPane.bottomAnchor="129.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="175.0">
-            <padding>
-               <Insets top="50.0" />
-            </padding>
-            <TextField fx:id="credentialField" alignment="CENTER" onKeyPressed="#onEnter" onKeyTyped="#onKeyTyped" onMouseEntered="#onMouseEntered" prefHeight="58.0" prefWidth="433.0" styleClass="credentials" stylesheets="@../css/mainPage.css" HBox.hgrow="NEVER">
-               <font>
-                  <Font size="6.0" />
-               </font>
-            </TextField>
-         </HBox>
-         <HBox alignment="CENTER" layoutX="1.0" layoutY="301.0" prefHeight="62.0" prefWidth="618.0">
-            <Label fx:id="message" alignment="CENTER" prefHeight="46.0" prefWidth="588.0" styleClass="message" />
-         </HBox>
-         <ProgressBar fx:id="progressBar" blendMode="SRC_ATOP" cache="true" cacheHint="SPEED" layoutX="4.0" layoutY="406.0" prefHeight="16.0" prefWidth="633.0" progress="1.0" stylesheets="@../css/mainPage.css" />
-      </AnchorPane>
+      <HBox alignment="CENTER" prefHeight="34.0" prefWidth="601.0" BorderPane.alignment="CENTER">
+         <TextField fx:id="credentialField" alignment="BASELINE_CENTER" maxWidth="700.0" onKeyPressed="#onEnter" onKeyTyped="#onKeyTyped" onMouseEntered="#onMouseEntered" prefHeight="70.0" prefWidth="468.0" styleClass="credentials" stylesheets="@../css/mainPage.css">
+            <font>
+               <Font size="6.0" />
+            </font>
+         </TextField>
+      </HBox>
    </center>
 </BorderPane>

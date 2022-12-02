@@ -7,6 +7,7 @@ import io.github.pitzzahh.util.utilities.SecurityUtil;
 import java.util.concurrent.atomic.AtomicReference;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
+import javafx.scene.effect.GaussianBlur;
 import static java.lang.String.format;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
@@ -31,33 +32,6 @@ public interface Util {
      */
     String $admin = SecurityUtil.decrypt("QGRtMW4xJHRyNHQwcg==");
     int MAX_LENGTH = 10;
-
-    /**
-     * Moves the window to where the cursor dragged the window
-     * @param parent the parent node.
-     */
-    @Deprecated(forRemoval = true)
-    static void moveWindow(Parent parent) {
-        var horizontal = new AtomicReference<>(0.0);
-        var vertical = new AtomicReference<>(0.0);
-        parent.setOnMousePressed(event -> {
-            horizontal.set(event.getSceneX());
-            vertical.set(event.getSceneY());
-        });
-        parent.setOnMouseDragged(event -> {
-            getStage().setX(event.getScreenX() - horizontal.get());
-            getStage().setY(event.getScreenY() - vertical.get());
-        });
-    }
-
-    /**
-     * Adds a parent to the parents array.
-     * @param parent the parent to add.
-     */
-    @Deprecated(forRemoval = true)
-    static void addParent(Parent parent) {
-        Fields.parents.insert(parent);
-    }
 
     /**
      * Add a list parent to the parents array.
@@ -142,12 +116,7 @@ public interface Util {
      * @return an {@code Optional<ProgressBar>}.
      */
     static Optional<ProgressBar> getMainProgressBar(Parent parent) {
-        return parent.getChildrenUnmodifiable().stream().findAny()
-                .map(n -> (Pane) n)
-                .map(Pane::getChildren)
-                .map(e -> e.get(e.size() - 1))
-                .map(e -> (ProgressBar) e)
-                .stream().findAny();
+        return Optional.ofNullable((ProgressBar) parent.lookup("#progressBar"));
     }
 
     /**
@@ -155,16 +124,9 @@ public interface Util {
      * @param parent the main window parent.
      * @return an {@code Optional<Label>}.
      */
+    //TODO: fix bug
     static Optional<Label> getMessageLabel(Parent parent) {
-        return parent.getChildrenUnmodifiable().stream().findAny()
-                .map(n -> (AnchorPane) n)
-                .map(AnchorPane::getChildren)
-                .map(e -> e.get(e.size() - 2))
-                .map(e -> (HBox) e)
-                .map(HBox::getChildren)
-                .map(e -> (Label) e.get(0))
-                .stream()
-                .findAny();
+        return Optional.ofNullable((Label) parent.lookup("#message"));
     }
 
     static void addActiveButtons(Button button) {
@@ -269,6 +231,17 @@ public interface Util {
 
     static ObservableList<Student> getDataSource() {
         return Fields.dataSource;
+    }
+
+    /**
+     * Used to create a gaussian blur effect.
+     * @param radius the radius of the blur.
+     * @return a {@code GaussianBlur}.
+     */
+    static GaussianBlur gaussianBlur(double radius) {
+        GaussianBlur gaussianBlur = new GaussianBlur();
+        gaussianBlur.setRadius(radius);
+        return gaussianBlur;
     }
 }
 

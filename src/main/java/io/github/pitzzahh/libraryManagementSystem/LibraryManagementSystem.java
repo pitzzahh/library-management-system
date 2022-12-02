@@ -2,6 +2,7 @@ package io.github.pitzzahh.libraryManagementSystem;
 
 
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
+import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Course;
 import io.github.pitzzahh.libraryManagementSystem.util.Util;
 import static java.util.Objects.requireNonNull;
@@ -48,7 +49,6 @@ public class LibraryManagementSystem extends Application {
         LibraryManagementSystem.stage = primaryStage;
         var mainProgressBar = getMainProgressBar(parent);
         mainProgressBar.ifPresent(Util::hideProgressBar);
-        getStage().setResizable(false);
         getStage().initStyle(StageStyle.DECORATED);
         getStage().getIcons().add(new Image(requireNonNull(LibraryManagementSystem.class.getResourceAsStream("img/logo.png"), "logo not found")));
         getStage().setScene(scene);
@@ -62,6 +62,13 @@ public class LibraryManagementSystem extends Application {
                 Arrays.stream(Course.values()).collect(Collectors.toList())
         ));
         courseChoiceBox.getSelectionModel().selectFirst();
+
+        ChoiceBox<Object> booksCategoryChoiceBox = Util.getChoiceBox(getParent("add_books_window"), 2);
+
+        booksCategoryChoiceBox.getItems().addAll(FXCollections.observableArrayList(
+                Arrays.stream(Category.values()).collect(Collectors.toList())
+        ));
+        booksCategoryChoiceBox.getSelectionModel().selectFirst();
 
         getStage().show();
         LOGGER.info("Application started");
