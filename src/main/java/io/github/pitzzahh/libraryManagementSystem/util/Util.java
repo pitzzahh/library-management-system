@@ -34,33 +34,6 @@ public interface Util {
     int MAX_LENGTH = 10;
 
     /**
-     * Moves the window to where the cursor dragged the window
-     * @param parent the parent node.
-     */
-    @Deprecated(forRemoval = true)
-    static void moveWindow(Parent parent) {
-        var horizontal = new AtomicReference<>(0.0);
-        var vertical = new AtomicReference<>(0.0);
-        parent.setOnMousePressed(event -> {
-            horizontal.set(event.getSceneX());
-            vertical.set(event.getSceneY());
-        });
-        parent.setOnMouseDragged(event -> {
-            getStage().setX(event.getScreenX() - horizontal.get());
-            getStage().setY(event.getScreenY() - vertical.get());
-        });
-    }
-
-    /**
-     * Adds a parent to the parents array.
-     * @param parent the parent to add.
-     */
-    @Deprecated(forRemoval = true)
-    static void addParent(Parent parent) {
-        Fields.parents.insert(parent);
-    }
-
-    /**
      * Add a list parent to the parents array.
      * takes an array of parents
      */
