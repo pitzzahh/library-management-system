@@ -165,8 +165,16 @@ public class AddStudBookController {
     @SuppressWarnings({"unchecked", "SuspiciousMethodCalls"})
     public void onRemove(MouseEvent mouseEvent) {
         mouseEvent.consume();
-        getStudentsDataSource().remove(table.getSelectionModel().getSelectedItem());
-        table.setItems(getStudentsDataSource());
+        switch (getPage()) {
+            case ADD_STUDENTS -> {
+                getStudentsDataSource().remove(table.getSelectionModel().getSelectedItem());
+                table.setItems(getStudentsDataSource());
+            }
+            case ADD_BOOKS -> {
+                getBooksDataSource().remove(table.getSelectionModel().getSelectedItem());
+                table.setItems(getBooksDataSource());
+            }
+        }
     }
 
     @FXML
@@ -197,9 +205,18 @@ public class AddStudBookController {
     @SuppressWarnings({"unchecked"})
     public void onRemoveAll(MouseEvent mouseEvent) {
         mouseEvent.consume();
-        getAllStudents().clear();
-        getStudentsDataSource().clear();
-        table.setItems(getStudentsDataSource());
+        switch (getPage()) {
+            case ADD_STUDENTS -> {
+                getAllStudents().clear();
+                getStudentsDataSource().clear();
+                table.setItems(getStudentsDataSource());
+            }
+            case ADD_BOOKS -> {
+                getAllBooks().clear();
+                getBooksDataSource().clear();
+                table.setItems(getBooksDataSource());
+            }
+        }
         resetInputs(
                 id,
                 firstInput,
@@ -233,16 +250,27 @@ public class AddStudBookController {
     }
 
     @FXML
+    @SuppressWarnings({"unchecked"})
     public void onSaveAll(MouseEvent mouseEvent) {
         mouseEvent.consume();
-        saveAllStudents();
+        switch (getPage()) {
+            case ADD_STUDENTS -> {
+                saveAllStudents();
+                getStudentsDataSource().clear();
+                table.setItems(getStudentsDataSource());
+            }
+            case ADD_BOOKS -> {
+                saveAllBooks();
+                getBooksDataSource().clear();
+                table.setItems(getBooksDataSource());
+            }
+        }
         resetInputs(
                 id,
                 firstInput,
                 secondInput,
                 choiceBox
         );
-        onRemoveAll(mouseEvent);
     }
 
     @FXML
