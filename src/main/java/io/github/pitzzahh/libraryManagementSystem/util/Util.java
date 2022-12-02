@@ -312,8 +312,8 @@ class Fields {
         if (KeyCode.F11.equals(event.getCode())) getStage().setFullScreen(!getStage().isFullScreen());
     };
 
-    static List<Student> studentsList = Collections.emptyList();
-    static List<Book> booksList = Collections.emptyList();
+    static List<Student> studentsList = new ArrayList<>();
+    static List<Book> booksList = new ArrayList<>();
     static Page page;
 
 }
