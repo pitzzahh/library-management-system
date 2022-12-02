@@ -45,7 +45,7 @@ public class AddStudentsController {
         event.consume();
         if (passed) {
             if (!isStudentAlreadyAdded(studentId.getText().trim())) {
-                getDataSource().add(new Student(
+                getStudentsDataSource().add(new Student(
                         studentId.getText().trim(),
                         firstName.getText().trim(),
                         lastName.getText().trim(),
@@ -64,7 +64,13 @@ public class AddStudentsController {
                 studentCourseColumn.setStyle("-fx-alignment: CENTER;");
                 studentCourseColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
 
-                studentTable.setItems(getDataSource());
+                studentTable.setItems(getStudentsDataSource());
+                resetAddStudentFields(
+                        studentId,
+                        firstName,
+                        lastName,
+                        course
+                );
             }
             else {
                 Tooltip tooltip  = new Tooltip("Cannot add student, Student with student number already added");
@@ -97,6 +103,17 @@ public class AddStudentsController {
         }
     }
 
+    /**
+     * Removes a student record from the table
+     * @param mouseEvent the mouse event
+     */
+    @FXML
+    public void onRemoveStudent(MouseEvent mouseEvent) {
+        mouseEvent.consume();
+        getStudentsDataSource().remove(studentTable.getSelectionModel().getSelectedItem());
+        studentTable.setItems(getStudentsDataSource());
+    }
+
     @FXML
     public void onHoverRemoveStudent(MouseEvent event) {
         passed = checkInputs(
@@ -115,6 +132,20 @@ public class AddStudentsController {
             tooltip.setShowDuration(Duration.seconds(3));
             removeStudentsTable.setTooltip(tooltip);
         }
+    }
+
+    @FXML
+    public void onRemoveAll(MouseEvent mouseEvent) {
+        mouseEvent.consume();
+        getAllStudents().clear();
+        getStudentsDataSource().clear();
+        studentTable.setItems(getStudentsDataSource());
+        resetAddStudentFields(
+                studentId,
+                firstName,
+                lastName,
+                course
+        );
     }
 
     @FXML
@@ -138,6 +169,19 @@ public class AddStudentsController {
     }
 
     @FXML
+    public void onSaveAll(MouseEvent mouseEvent) {
+        mouseEvent.consume();
+        saveAllStudents();
+        resetAddStudentFields(
+                studentId,
+                firstName,
+                lastName,
+                course
+        );
+        onRemoveAll(mouseEvent);
+    }
+
+    @FXML
     public void onHoverSaveAll(MouseEvent event) {
         passed = checkInputs(
                 addStudentTable,
@@ -157,14 +201,4 @@ public class AddStudentsController {
         }
     }
 
-    /**
-     * Removes a student record from the table
-     * @param mouseEvent the mouse event
-     */
-    @FXML
-    public void onRemoveStudent(MouseEvent mouseEvent) {
-        mouseEvent.consume();
-        getDataSource().remove(studentTable.getSelectionModel().getSelectedItem());
-        studentTable.setItems(getDataSource());
-    }
 }
