@@ -7,6 +7,7 @@ import io.github.pitzzahh.util.utilities.SecurityUtil;
 import java.util.concurrent.atomic.AtomicReference;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
+import javafx.scene.effect.GaussianBlur;
 import static java.lang.String.format;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
@@ -257,6 +258,12 @@ public interface Util {
 
     static ObservableList<Student> getDataSource() {
         return Fields.dataSource;
+    }
+
+    static GaussianBlur gaussianBlur(double radius) {
+        GaussianBlur gaussianBlur = new GaussianBlur();
+        gaussianBlur.setRadius(radius);
+        return gaussianBlur;
     }
 }
 
