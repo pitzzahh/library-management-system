@@ -156,4 +156,15 @@ public class AddStudentsController {
             saveALlStudentsTable.setTooltip(tooltip);
         }
     }
+
+    /**
+     * Removes a student record from the table
+     * @param mouseEvent the mouse event
+     */
+    @FXML
+    public void onRemoveStudent(MouseEvent mouseEvent) {
+        mouseEvent.consume();
+        getDataSource().remove(studentTable.getSelectionModel().getSelectedItem());
+        studentTable.setItems(getDataSource());
+    }
 }
