@@ -16,90 +16,66 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" snapToPixel="false" stylesheets="@../css/mainPage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.LoginController">
    <bottom>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
-         <children>
-            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-               <children>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="646.0">
-                     <children>
-                        <ImageView accessibleText="book icon" blendMode="SRC_ATOP" fitHeight="50.0" fitWidth="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/adminPage/addStudent.png" />
-                           </image>
-                           <effect>
-                              <Blend />
-                           </effect>
-                        </ImageView>
-                        <ImageView blendMode="SRC_ATOP" fitHeight="50.0" fitWidth="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/adminPage/addBook.png" />
-                           </image>
-                           <effect>
-                              <Blend />
-                           </effect>
-                        </ImageView>
-                        <ImageView blendMode="SRC_ATOP" fitHeight="50.0" fitWidth="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/adminPage/viewAllStudents.png" />
-                           </image>
-                           <effect>
-                              <Blend />
-                           </effect>
-                        </ImageView>
-                        <ImageView accessibleText="book icon" blendMode="SRC_ATOP" fitHeight="50.0" fitWidth="50.0" layoutX="462.0" layoutY="13.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/adminPage/manageBooks.png" />
-                           </image>
-                           <effect>
-                              <Blend />
-                           </effect>
-                        </ImageView>
-                     </children>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="601.0">
-                     <Label fx:id="message" alignment="CENTER" prefHeight="49.0" prefWidth="598.0" styleClass="message" />
-                  </HBox>
-                  <HBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <ProgressBar fx:id="progressBar" blendMode="SRC_ATOP" cache="true" cacheHint="SPEED" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="727.0" progress="0.0" stylesheets="@../css/mainPage.css" HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
+         <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="646.0">
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+               <ImageView accessibleText="book icon" blendMode="SRC_ATOP" fitHeight="50.0" fitWidth="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                  <effect>
+                     <Blend />
+                  </effect>
+                  <Image url="@../img/adminPage/addStudent.png" />
+               </ImageView>
+               <ImageView blendMode="SRC_ATOP" fitHeight="50.0" fitWidth="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                  <effect>
+                     <Blend />
+                  </effect>
+                  <Image url="@../img/adminPage/addBook.png" />
+               </ImageView>
+               <ImageView blendMode="SRC_ATOP" fitHeight="50.0" fitWidth="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                  <effect>
+                     <Blend />
+                  </effect>
+                  <Image url="@../img/adminPage/viewAllStudents.png" />
+               </ImageView>
+               <ImageView accessibleText="book icon" blendMode="SRC_ATOP" fitHeight="50.0" fitWidth="50.0" layoutX="462.0" layoutY="13.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                  <effect>
+                     <Blend />
+                  </effect>
+                  <Image url="@../img/adminPage/manageBooks.png" />
+               </ImageView>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="601.0">
+               <Label fx:id="message" alignment="CENTER" prefHeight="34.0" prefWidth="702.0" styleClass="message" />
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS">
+               <ProgressBar fx:id="progressBar" blendMode="SRC_ATOP" cache="true" cacheHint="SPEED" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="727.0" progress="0.0" stylesheets="@../css/mainPage.css" HBox.hgrow="ALWAYS" />
+            </HBox>
+         </VBox>
       </HBox>
    </bottom>
    <top>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="601.0">
-               <children>
-                  <Label alignment="TOP_CENTER" prefHeight="174.0" prefWidth="321.0" styleClass="main-label" stylesheets="@../css/mainPage.css" text="LMS" textAlignment="CENTER">
-         </Label>
-               </children>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER">
-               <children>
-                  <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="fx-font-family: JetBrains Mono; -fx-font-size: 25px; -fx-text-fill: white; -fx-font-weight: bold;" text="Library Management System" textAlignment="CENTER" wrappingWidth="337.896484375" />
-               </children>
-            </HBox>
-         </children>
+         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="601.0">
+            <VBox.margin>
+               <Insets top="20.0" />
+            </VBox.margin>
+            <Label alignment="TOP_CENTER" prefHeight="174.0" prefWidth="321.0" styleClass="main-label" stylesheets="@../css/mainPage.css" text="LMS" textAlignment="CENTER">
+            </Label>
+         </HBox>
+         <HBox alignment="CENTER">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="fx-font-family: JetBrains Mono; -fx-font-size: 25px; -fx-text-fill: white; -fx-font-weight: bold;" text="Library Management System" textAlignment="CENTER" wrappingWidth="337.896484375" />
+         </HBox>
       </VBox>
    </top>
    <center>
       <HBox alignment="CENTER" prefHeight="34.0" prefWidth="601.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="credentialField" alignment="BASELINE_CENTER" maxWidth="700.0" onKeyPressed="#onEnter" onKeyTyped="#onKeyTyped" onMouseEntered="#onMouseEntered" prefHeight="58.0" prefWidth="433.0" styleClass="credentials" stylesheets="@../css/mainPage.css">
-               <font>
-                  <Font size="6.0" />
-               </font>
-            </TextField>
-         </children>
+         <TextField fx:id="credentialField" alignment="BASELINE_CENTER" maxWidth="700.0" onKeyPressed="#onEnter" onKeyTyped="#onKeyTyped" onMouseEntered="#onMouseEntered" prefHeight="58.0" prefWidth="433.0" styleClass="credentials" stylesheets="@../css/mainPage.css">
+            <font>
+               <Font size="6.0" />
+            </font>
+         </TextField>
       </HBox>
    </center>
 </BorderPane>
