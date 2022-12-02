@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.util.Duration;
 import javafx.fxml.FXML;
 
-public class AddStudentsController {
+public class AddStudBookController {
 
     @FXML
     public TextField id;
