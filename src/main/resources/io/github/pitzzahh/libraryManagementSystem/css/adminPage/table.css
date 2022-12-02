@@ -1,7 +1,6 @@
 .table-view {
     -fx-font-family: "JetBrains Mono Medium";
     -fx-background-color:  linear-gradient(to bottom, #006d77, #93f9b944);
-    -fx-border-color: linear-gradient(to bottom, #006d77, #93f9b944);
     -fx-background-radius: 0px;
     -fx-border-radius: 0px;
     -fx-font-size: 15px;
@@ -22,6 +21,7 @@
 
 .table-view .table-cell {
     -fx-border-color: linear-gradient(to bottom, #006d77, #93f9b944);
+    -fx-text-fill: white;
     -fx-font-size: 17px;
     -fx-padding: 2px 0px 2px 10px;
 }
