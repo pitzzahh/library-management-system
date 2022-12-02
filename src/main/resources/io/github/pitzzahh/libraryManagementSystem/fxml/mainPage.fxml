@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" snapToPixel="false" stylesheets="@../css/mainPage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.LoginController">
+<BorderPane maxHeight="765.0" maxWidth="1075.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" snapToPixel="false" stylesheets="@../css/mainPage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.LoginController">
    <bottom>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
@@ -46,8 +46,8 @@
                   <Image url="@../img/adminPage/manageBooks.png" />
                </ImageView>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="34.0" prefWidth="601.0">
-               <Label fx:id="message" alignment="CENTER" prefHeight="34.0" prefWidth="702.0" styleClass="message" />
+            <HBox alignment="CENTER" prefHeight="34.0" prefWidth="601.0" VBox.vgrow="ALWAYS">
+               <Label fx:id="message" alignment="CENTER" prefHeight="34.0" prefWidth="702.0" styleClass="message" HBox.hgrow="ALWAYS" />
             </HBox>
             <HBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS">
                <ProgressBar fx:id="progressBar" blendMode="SRC_ATOP" cache="true" cacheHint="SPEED" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="727.0" progress="0.0" stylesheets="@../css/mainPage.css" HBox.hgrow="ALWAYS" />
