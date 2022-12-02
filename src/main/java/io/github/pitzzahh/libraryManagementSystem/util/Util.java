@@ -2,9 +2,10 @@ package io.github.pitzzahh.libraryManagementSystem.util;
 
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
+import io.github.pitzzahh.libraryManagementSystem.entity.Course;
+import io.github.pitzzahh.libraryManagementSystem.entity.Book;
 import io.github.pitzzahh.util.utilities.classes.DynamicArray;
 import io.github.pitzzahh.util.utilities.SecurityUtil;
-import java.util.concurrent.atomic.AtomicReference;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.effect.GaussianBlur;
@@ -210,6 +211,7 @@ public interface Util {
         progressBar.setStyle("-fx-accent: cyan;");
     }
 
+    // TODO: refactor, use parent lookup
     @SuppressWarnings("unchecked")
     static ChoiceBox<Object> getChoiceBox(Parent parent, int index) {
         BorderPane borderPane = (BorderPane) parent.getChildrenUnmodifiable().get(0);
@@ -224,13 +226,17 @@ public interface Util {
     }
 
     static boolean isStudentAlreadyAdded(String studentNumber) {
-        return getDataSource()
+        return getStudentsDataSource()
                 .stream()
                 .anyMatch(e -> e.getStudentNumber().equals(studentNumber));
     }
 
-    static ObservableList<Student> getDataSource() {
-        return Fields.dataSource;
+    static ObservableList<Student> getStudentsDataSource() {
+        return Fields.studentsDataSource;
+    }
+
+    static ObservableList<Book> getBooksDataSource() {
+        return Fields.booksDataSource;
     }
 
     /**
@@ -244,8 +250,32 @@ public interface Util {
         return gaussianBlur;
     }
 
-    static void addStudent() {
+    static void resetAddStudentFields(
+            TextField studentId,
+            TextField firstname,
+            TextField lastname,
+            ChoiceBox<Course> course
+    ) {
+        studentId.clear();
+        firstname.clear();
+        lastname.clear();
+        course.getSelectionModel().selectFirst();
+    }
 
+    static void saveAllStudents() {
+        Fields.studentsList = new ArrayList<>(getStudentsDataSource());
+    }
+
+    static List<Student> getAllStudents() {
+        return Fields.studentsList;
+    }
+
+    static void saveAllBooks() {
+        Fields.booksList = new ArrayList<>(getBooksDataSource());
+    }
+
+    static List<Book> getAllBooks() {
+        return Fields.booksDataSource;
     }
 }
 
@@ -258,7 +288,8 @@ class Fields {
      */
     static DynamicArray<Parent> parents = new DynamicArray<>();
     static Queue<Button> activeButtons = new LinkedList<>();
-    static ObservableList<Student> dataSource = FXCollections.observableArrayList();
+    static ObservableList<Student> studentsDataSource = FXCollections.observableArrayList();
+    static ObservableList<Book> booksDataSource = FXCollections.observableArrayList();
 
     // TODO: explicitly move to Util interface as a method
     static EventHandler<KeyEvent> eventHandler = event -> {
@@ -266,4 +297,5 @@ class Fields {
     };
 
     static List<Student> studentsList = Collections.emptyList();
+    static List<Book> booksList = Collections.emptyList();
 }
