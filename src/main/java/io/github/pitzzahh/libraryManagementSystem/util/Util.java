@@ -260,6 +260,11 @@ public interface Util {
         return Fields.dataSource;
     }
 
+    /**
+     * Used to create a gaussian blur effect.
+     * @param radius the radius of the blur.
+     * @return a {@code GaussianBlur}.
+     */
     static GaussianBlur gaussianBlur(double radius) {
         GaussianBlur gaussianBlur = new GaussianBlur();
         gaussianBlur.setRadius(radius);
