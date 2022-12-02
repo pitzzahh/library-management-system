@@ -152,15 +152,7 @@ public interface Util {
      */
     //TODO: fix bug
     static Optional<Label> getMessageLabel(Parent parent) {
-        return parent.getChildrenUnmodifiable().stream().findAny()
-                .map(n -> (AnchorPane) n)
-                .map(AnchorPane::getChildren)
-                .map(e -> e.get(e.size() - 2))
-                .map(e -> (HBox) e)
-                .map(HBox::getChildren)
-                .map(e -> (Label) e.get(0))
-                .stream()
-                .findAny();
+        return Optional.ofNullable((Label) parent.lookup("#message"));
     }
 
     static void addActiveButtons(Button button) {
