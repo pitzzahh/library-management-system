@@ -1,8 +1,8 @@
 package io.github.pitzzahh.libraryManagementSystem.controllers;
 
+import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
-import io.github.pitzzahh.libraryManagementSystem.entity.Student;
-import io.github.pitzzahh.libraryManagementSystem.entity.Course;
+import io.github.pitzzahh.libraryManagementSystem.entity.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.*;
@@ -12,94 +12,148 @@ import javafx.fxml.FXML;
 public class AddStudentsController {
 
     @FXML
-    public TextField studentId;
+    public TextField id;
 
     @FXML
-    public TextField firstName;
+    public TextField firstInput;
 
     @FXML
-    public TextField lastName;
+    public TextField secondInput;
 
     @FXML
-    public ChoiceBox<Course> course;
+    public ChoiceBox<?> choiceBox;
 
     @FXML
-    private Button addStudentTable;
+    private Button add;
 
     @FXML
-    private Button removeStudentsTable;
+    private Button remove;
 
     @FXML
-    private Button removeAllStudentsTable;
+    private Button removeAll;
 
     @FXML
-    private Button saveALlStudentsTable;
+    private Button saveAll;
+
 
     @FXML
-    public TableView<Student> studentTable;
+    @SuppressWarnings("rawtypes")
+    public TableView table;
 
     private boolean passed;
 
     @FXML
-    public void onAddStudent(MouseEvent event) {
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void onAdd(MouseEvent event) {
         event.consume();
+        getLogger().debug("Passed: {}", passed);
         if (passed) {
-            if (!isStudentAlreadyAdded(studentId.getText().trim())) {
-                getStudentsDataSource().add(new Student(
-                        studentId.getText().trim(),
-                        firstName.getText().trim(),
-                        lastName.getText().trim(),
-                        course.getSelectionModel().getSelectedItem()
-                ));
+            if (!isStudentAlreadyAdded(id.getText().trim())) {
+                if (getPage().equals(Page.ADD_STUDENTS)) {
+                    getStudentsDataSource().add(new Student(
+                            id.getText().trim(),
+                            firstInput.getText().trim(),
+                            secondInput.getText().trim(),
+                            (Course) choiceBox.getSelectionModel().getSelectedItem()
+                    ));
+                    TableColumn studentNumberColumn = (TableColumn) table.getColumns().get(0);
+                    studentNumberColumn.setStyle("-fx-alignment: CENTER;");
+                    studentNumberColumn.setCellValueFactory(new PropertyValueFactory<>("studentNumber"));
 
-                TableColumn<Student, ?> studentNumberColumn = studentTable.getColumns().get(0);
-                studentNumberColumn.setStyle("-fx-alignment: CENTER;");
-                studentNumberColumn.setCellValueFactory(new PropertyValueFactory<>("studentNumber"));
+                    TableColumn firstNameColumn = (TableColumn) table.getColumns().get(1);
+                    firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 
-                studentTable.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("firstName"));
+                    TableColumn lastNameColumn = (TableColumn) table.getColumns().get(2);
+                    lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
-                studentTable.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("lastName"));
+                    TableColumn studentCourseColumn = (TableColumn) table.getColumns().get(3);
+                    studentCourseColumn.setStyle("-fx-alignment: CENTER;");
+                    studentCourseColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
 
-                TableColumn<Student, ?> studentCourseColumn = studentTable.getColumns().get(3);
-                studentCourseColumn.setStyle("-fx-alignment: CENTER;");
-                studentCourseColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
+                    table.setItems(getStudentsDataSource());
+                    resetInputs(
+                            id,
+                            firstInput,
+                            secondInput,
+                            choiceBox
+                    );
+                }
+                else if (getPage().equals(Page.ADD_BOOKS)){
+                    getBooksDataSource().add(new Book(
+                            id.getText().trim(),
+                            firstInput.getText().trim(),
+                            secondInput.getText().trim(),
+                            (Category) choiceBox.getSelectionModel().getSelectedItem(),
+                            null,
+                            null,
+                            null
+                    ));
+                    TableColumn bookNumberColumn = (TableColumn) table.getColumns().get(0);
+                    bookNumberColumn.setStyle("-fx-alignment: CENTER;");
+                    bookNumberColumn.setCellValueFactory(new PropertyValueFactory<>("bookId"));
 
-                studentTable.setItems(getStudentsDataSource());
-                resetAddStudentFields(
-                        studentId,
-                        firstName,
-                        lastName,
-                        course
-                );
+                    TableColumn firstNameColumn = (TableColumn) table.getColumns().get(1);
+                    firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+
+                    TableColumn lastNameColumn = (TableColumn) table.getColumns().get(2);
+                    lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
+
+                    TableColumn studentCourseColumn = (TableColumn) table.getColumns().get(3);
+                    studentCourseColumn.setStyle("-fx-alignment: CENTER;");
+                    studentCourseColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+
+                    table.setItems(getBooksDataSource());
+                    resetInputs(
+                            id,
+                            firstInput,
+                            secondInput,
+                            choiceBox
+                    );
+                }
+
             }
             else {
-                Tooltip tooltip  = new Tooltip("Cannot add student, Student with student number already added");
+                String message = switch (getPage()) {
+                    case ADD_STUDENTS -> "Cannot add student, Student with student id already added";
+                    case ADD_BOOKS -> "Cannot add book, Book with book id already added";
+                    case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                };
+                Tooltip tooltip  = new Tooltip(message);
                 tooltip.setStyle(errorToolTipStyle());
                 tooltip.setAutoHide(true);
                 tooltip.setShowDuration(Duration.seconds(3));
-                studentId.setTooltip(tooltip);
-                studentId.getTooltip().show(getParent("add_students_window").getScene().getWindow());
+                id.setTooltip(tooltip);
+                String window = switch (getPage()) {
+                    case ADD_STUDENTS -> "add_students_window";
+                    case ADD_BOOKS -> "add_books_window";
+                    case MANAGE_STUDENTS, MANAGE_BOOKS -> "";
+                };
+                id.getTooltip().show(getParent(window).getScene().getWindow());
             }
         }
     }
 
     @FXML
-    public void onHoverAddStudent(MouseEvent event) {
+    public void onHoverAdd(MouseEvent event) {
         passed = checkInputs(
-                addStudentTable,
+                add,
                 event,
-                studentId.getText().trim(),
-                firstName.getText().trim(),
-                lastName.getText().trim()
+                id.getText().trim(),
+                firstInput.getText().trim(),
+                secondInput.getText().trim()
         );
         if (passed) {
             Tooltip tooltip = initToolTip(
-                    "Add Student",
+                    switch (getPage()) {
+                        case ADD_STUDENTS -> "Add Student";
+                        case ADD_BOOKS -> "Add Book";
+                        case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                    },
                     event,
                     adminButtonFunctionsToolTipStyle()
             );
             tooltip.setShowDuration(Duration.seconds(3));
-            addStudentTable.setTooltip(tooltip);
+            add.setTooltip(tooltip);
         }
     }
 
@@ -108,63 +162,73 @@ public class AddStudentsController {
      * @param mouseEvent the mouse event
      */
     @FXML
-    public void onRemoveStudent(MouseEvent mouseEvent) {
+    @SuppressWarnings({"unchecked", "SuspiciousMethodCalls"})
+    public void onRemove(MouseEvent mouseEvent) {
         mouseEvent.consume();
-        getStudentsDataSource().remove(studentTable.getSelectionModel().getSelectedItem());
-        studentTable.setItems(getStudentsDataSource());
+        getStudentsDataSource().remove(table.getSelectionModel().getSelectedItem());
+        table.setItems(getStudentsDataSource());
     }
 
     @FXML
-    public void onHoverRemoveStudent(MouseEvent event) {
+    public void onHoverRemove(MouseEvent event) {
         passed = checkInputs(
-                addStudentTable,
+                add,
                 event,
-                studentId.getText().trim(),
-                firstName.getText().trim(),
-                lastName.getText().trim()
+                id.getText().trim(),
+                firstInput.getText().trim(),
+                secondInput.getText().trim()
         );
         if (passed) {
             Tooltip tooltip = initToolTip(
-                    "Remove Student",
+                    switch (getPage()) {
+                        case ADD_STUDENTS -> "Remove Student";
+                        case ADD_BOOKS -> "Remove Book";
+                        case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                    },
                     event,
                     adminButtonFunctionsToolTipStyle()
             );
             tooltip.setShowDuration(Duration.seconds(3));
-            removeStudentsTable.setTooltip(tooltip);
+            remove.setTooltip(tooltip);
         }
     }
 
     @FXML
+    @SuppressWarnings({"unchecked"})
     public void onRemoveAll(MouseEvent mouseEvent) {
         mouseEvent.consume();
         getAllStudents().clear();
         getStudentsDataSource().clear();
-        studentTable.setItems(getStudentsDataSource());
-        resetAddStudentFields(
-                studentId,
-                firstName,
-                lastName,
-                course
+        table.setItems(getStudentsDataSource());
+        resetInputs(
+                id,
+                firstInput,
+                secondInput,
+                choiceBox
         );
     }
 
     @FXML
     public void onHoverRemoveAll(MouseEvent event) {
         passed = checkInputs(
-                addStudentTable,
+                add,
                 event,
-                studentId.getText().trim(),
-                firstName.getText().trim(),
-                lastName.getText().trim()
+                id.getText().trim(),
+                firstInput.getText().trim(),
+                secondInput.getText().trim()
         );
         if (passed) {
             Tooltip tooltip = initToolTip(
-                    "Remove All Students records from the table",
+                    switch (getPage()) {
+                        case ADD_STUDENTS -> "Remove All Students records from the table";
+                        case ADD_BOOKS -> "Remove All Books records from the table";
+                        case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                    },
                     event,
                     adminButtonFunctionsToolTipStyle()
             );
             tooltip.setShowDuration(Duration.seconds(3));
-            removeAllStudentsTable.setTooltip(tooltip);
+            removeAll.setTooltip(tooltip);
         }
     }
 
@@ -172,11 +236,11 @@ public class AddStudentsController {
     public void onSaveAll(MouseEvent mouseEvent) {
         mouseEvent.consume();
         saveAllStudents();
-        resetAddStudentFields(
-                studentId,
-                firstName,
-                lastName,
-                course
+        resetInputs(
+                id,
+                firstInput,
+                secondInput,
+                choiceBox
         );
         onRemoveAll(mouseEvent);
     }
@@ -184,21 +248,24 @@ public class AddStudentsController {
     @FXML
     public void onHoverSaveAll(MouseEvent event) {
         passed = checkInputs(
-                addStudentTable,
+                add,
                 event,
-                studentId.getText().trim(),
-                firstName.getText().trim(),
-                lastName.getText().trim()
+                id.getText().trim(),
+                firstInput.getText().trim(),
+                secondInput.getText().trim()
         );
         if (passed) {
             Tooltip tooltip = initToolTip(
-                    "Save all students records from the table to the database",
+                    switch (getPage()) {
+                        case ADD_STUDENTS -> "Save All Students records to the database";
+                        case ADD_BOOKS -> "Save All Books records to the database";
+                        case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                    },
                     event,
                     adminButtonFunctionsToolTipStyle()
             );
             tooltip.setShowDuration(Duration.seconds(3));
-            saveALlStudentsTable.setTooltip(tooltip);
+            saveAll.setTooltip(tooltip);
         }
     }
-
 }
