@@ -93,7 +93,6 @@ public class LoginController {
             if (adminWindow.getScene() != null) getStage().setScene(adminWindow.getScene()); // if scene is present, get it
             else getStage().setScene(new Scene(adminWindow)); // create new scene if new login
             getStage().setTitle("Administrator");
-            getStage().setResizable(true);
             getStage().centerOnScreen();
             getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
             getStage().show();
