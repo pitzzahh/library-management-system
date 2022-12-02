@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 import javafx.scene.Parent;
+import java.util.Optional;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.util.Arrays;
@@ -56,19 +57,21 @@ public class LibraryManagementSystem extends Application {
         getStage().toFront();
         getStage().setTitle("Library Management System");
 
-        ChoiceBox<Object> courseChoiceBox = Util.getChoiceBox(getParent("add_students_window"), 3);
+        Optional<ChoiceBox<Object>> courseChoiceBox = getChoiceBox(getParent("add_students_window"), "choiceBox");
 
-        courseChoiceBox.getItems().addAll(FXCollections.observableArrayList(
-                Arrays.stream(Course.values()).collect(Collectors.toList())
-        ));
-        courseChoiceBox.getSelectionModel().selectFirst();
+        courseChoiceBox.ifPresentOrElse(e -> {
+            e.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Course.values()).collect(Collectors.toList())));
+            e.getSelectionModel().selectFirst();
+        }, () -> LOGGER.error("Course choice box not found")
+        );
 
-        ChoiceBox<Object> booksCategoryChoiceBox = Util.getChoiceBox(getParent("add_books_window"), 2);
+        Optional<ChoiceBox<Object>> booksChoiceBox = getChoiceBox(getParent("add_books_window"), "choiceBox");
 
-        booksCategoryChoiceBox.getItems().addAll(FXCollections.observableArrayList(
-                Arrays.stream(Category.values()).collect(Collectors.toList())
-        ));
-        booksCategoryChoiceBox.getSelectionModel().selectFirst();
+        booksChoiceBox.ifPresentOrElse(e -> {
+            e.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Category.values()).collect(Collectors.toList())));
+            e.getSelectionModel().selectFirst();
+        }, () -> LOGGER.error("Category choice box not found")
+        );
 
         getStage().show();
         LOGGER.info("Application started");
