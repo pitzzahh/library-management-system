@@ -2,7 +2,7 @@ package io.github.pitzzahh.libraryManagementSystem.util;
 
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
-import io.github.pitzzahh.libraryManagementSystem.entity.Course;
+import io.github.pitzzahh.libraryManagementSystem.entity.Page;
 import io.github.pitzzahh.libraryManagementSystem.entity.Book;
 import io.github.pitzzahh.util.utilities.classes.DynamicArray;
 import io.github.pitzzahh.util.utilities.SecurityUtil;
@@ -20,7 +20,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
 import javafx.scene.Parent;
-import javafx.scene.Node;
 import java.util.*;
 
 /**
@@ -33,7 +32,6 @@ public interface Util {
      */
     String $admin = SecurityUtil.decrypt("QGRtMW4xJHRyNHQwcg==");
     int MAX_LENGTH = 10;
-
     /**
      * Add a list parent to the parents array.
      * takes an array of parents
@@ -142,18 +140,23 @@ public interface Util {
                 .findAny();
     }
 
+
     static boolean checkInputs(
             Button button,
             MouseEvent event,
-            String studentNumber,
-            String firstName,
-            String lastName
+            String id,
+            String firstInput,
+            String secondInput
     ) {
         Optional<Tooltip> tooltip1 = Optional.ofNullable(button.getTooltip());
         tooltip1.ifPresent(t -> button.setTooltip(null));
-        if (studentNumber.isEmpty() && firstName.isEmpty() && lastName.isEmpty()) {
+        if (id.isEmpty() && firstInput.isEmpty() && secondInput.isEmpty()) {
             Tooltip tooltip = initToolTip(
-                    "Cannot Add Student, All Required Input are empty",
+                    switch (getPage()) {
+                        case ADD_STUDENTS -> "Cannot Add Student, All Required Input are empty";
+                        case ADD_BOOKS -> "Cannot Add Books, All Required Input are empty";
+                        default -> "Please fill in all the fields";
+                    },
                     event,
                     errorToolTipStyle()
             );
@@ -161,9 +164,13 @@ public interface Util {
             button.setTooltip(tooltip);
             return false;
         }
-        else if (studentNumber.isEmpty() && (firstName.isEmpty() || lastName.isEmpty())) {
+        else if (id.isEmpty() && (firstInput.isEmpty() || secondInput.isEmpty())) {
             Tooltip tooltip = initToolTip(
-                    "Cannot Add Student, Student Number is empty",
+                    switch (getPage()) {
+                        case ADD_STUDENTS -> "Cannot Add Student, All Required Input are empty";
+                        case ADD_BOOKS -> "Cannot Add Book, Book Id is empty";
+                        default -> "Please fill in book Id";
+                    },
                     event,
                     errorToolTipStyle()
             );
@@ -171,9 +178,13 @@ public interface Util {
             button.setTooltip(tooltip);
             return false;
         }
-        else if (firstName.isEmpty() && lastName.isEmpty()) {
+        else if (firstInput.isEmpty() && secondInput.isEmpty()) {
             Tooltip tooltip = initToolTip(
-                    "Cannot Add Student, First Name is empty",
+                    switch (getPage()) {
+                        case ADD_STUDENTS -> "Cannot Add Student, First Name is empty";
+                        case ADD_BOOKS -> "Cannot Add Book, Book Title is empty";
+                        default -> "Please fill in the blank";
+                    },
                     event,
                     errorToolTipStyle()
             );
@@ -181,9 +192,13 @@ public interface Util {
             button.setTooltip(tooltip);
             return false;
         }
-        else if (lastName.isEmpty()) {
+        else if (secondInput.isEmpty()) {
             Tooltip tooltip = initToolTip(
-                    "Cannot Add Student, Last Name is empty",
+                    switch (getPage()) {
+                        case ADD_STUDENTS -> "Cannot Add Student, Last Name is empty";
+                        case ADD_BOOKS -> "Cannot Add Book, Book Author is empty";
+                        default -> "Please fill in the blank";
+                    },
                     event,
                     errorToolTipStyle()
             );
@@ -213,16 +228,8 @@ public interface Util {
 
     // TODO: refactor, use parent lookup
     @SuppressWarnings("unchecked")
-    static ChoiceBox<Object> getChoiceBox(Parent parent, int index) {
-        BorderPane borderPane = (BorderPane) parent.getChildrenUnmodifiable().get(0);
-
-        BorderPane borderPaneCenterPane = (BorderPane) borderPane.getCenter();
-
-        BorderPane centerPaneCenterPane = (BorderPane) borderPaneCenterPane.getCenter();
-        VBox centerVBox = (VBox) centerPaneCenterPane.getLeft(); // left vbox where inputs contained in HBox
-        Node node = centerVBox.getChildren().get(index);
-        assert node instanceof HBox;
-        return (ChoiceBox<Object>) ((HBox)node).getChildren().get(1);
+    static Optional<ChoiceBox<Object>> getChoiceBox(Parent parent, String name) {
+        return Optional.ofNullable((ChoiceBox<Object>) parent.lookup(format("#%s", name)));
     }
 
     static boolean isStudentAlreadyAdded(String studentNumber) {
@@ -250,15 +257,15 @@ public interface Util {
         return gaussianBlur;
     }
 
-    static void resetAddStudentFields(
-            TextField studentId,
-            TextField firstname,
-            TextField lastname,
-            ChoiceBox<Course> course
+    static void resetInputs(
+            TextField id,
+            TextField firstInput,
+            TextField secondInput,
+            ChoiceBox<?> course
     ) {
-        studentId.clear();
-        firstname.clear();
-        lastname.clear();
+        id.clear();
+        firstInput.clear();
+        secondInput.clear();
         course.getSelectionModel().selectFirst();
     }
 
@@ -277,6 +284,15 @@ public interface Util {
     static List<Book> getAllBooks() {
         return Fields.booksDataSource;
     }
+
+    static void setPage(Page page) {
+        Fields.page = page;
+    }
+
+    static Page getPage() {
+        return Fields.page;
+    }
+
 }
 
 /**
@@ -298,4 +314,6 @@ class Fields {
 
     static List<Student> studentsList = Collections.emptyList();
     static List<Book> booksList = Collections.emptyList();
+    static Page page;
+
 }
