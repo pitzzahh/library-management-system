@@ -4,7 +4,7 @@
 }
 
 .root {
-    -fx-background-image: url("../img/mainPage/background_image.jpg");
+    -fx-background-image: url("../img/mainPage/background_image.png");
     -fx-background-size: cover;
 }
 
@@ -50,4 +50,23 @@
 
 .progress-bar {
     -fx-background-color: #138370;
+}
+
+@media screen and (max-width: 600px) {
+    .main-label {
+        -fx-font-size: 50px;
+    }
+
+    .subtitle {
+        -fx-font-size: 15px;
+    }
+
+    .message {
+        -fx-font-size: 15px;
+    }
+
+    .credentials {
+        -fx-font-size: 20px;
+    }
+
 }
