@@ -243,6 +243,10 @@ public interface Util {
         gaussianBlur.setRadius(radius);
         return gaussianBlur;
     }
+
+    static void addStudent() {
+
+    }
 }
 
 /**
@@ -255,7 +259,11 @@ class Fields {
     static DynamicArray<Parent> parents = new DynamicArray<>();
     static Queue<Button> activeButtons = new LinkedList<>();
     static ObservableList<Student> dataSource = FXCollections.observableArrayList();
+
+    // TODO: explicitly move to Util interface as a method
     static EventHandler<KeyEvent> eventHandler = event -> {
         if (KeyCode.F11.equals(event.getCode())) getStage().setFullScreen(!getStage().isFullScreen());
     };
+
+    static List<Student> studentsList = Collections.emptyList();
 }
