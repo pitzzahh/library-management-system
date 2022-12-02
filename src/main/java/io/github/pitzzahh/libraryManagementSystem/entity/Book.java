@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book {
-    private int bookId;
+    private String bookId;
     private String title;
     private String author;
     private Category category;
