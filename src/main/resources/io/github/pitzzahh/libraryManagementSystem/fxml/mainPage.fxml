@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="765.0" maxWidth="1075.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" snapToPixel="false" stylesheets="@../css/mainPage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.LoginController">
+<BorderPane minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" snapToPixel="false" stylesheets="@../css/mainPage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.LoginController">
    <bottom>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
@@ -71,7 +71,7 @@
    </top>
    <center>
       <HBox alignment="CENTER" prefHeight="34.0" prefWidth="601.0" BorderPane.alignment="CENTER">
-         <TextField fx:id="credentialField" alignment="BASELINE_CENTER" maxWidth="700.0" onKeyPressed="#onEnter" onKeyTyped="#onKeyTyped" onMouseEntered="#onMouseEntered" prefHeight="58.0" prefWidth="433.0" styleClass="credentials" stylesheets="@../css/mainPage.css">
+         <TextField fx:id="credentialField" alignment="BASELINE_CENTER" maxWidth="700.0" onKeyPressed="#onEnter" onKeyTyped="#onKeyTyped" onMouseEntered="#onMouseEntered" prefHeight="70.0" prefWidth="468.0" styleClass="credentials" stylesheets="@../css/mainPage.css">
             <font>
                <Font size="6.0" />
             </font>
