@@ -118,14 +118,18 @@ public class LoginController {
                     credentialField.clear();
                     credentialField.setVisible(true);
                 }
-                else debugMessage.set("Account does not exist");
+                else {
+                    debugMessage.set("Account does not exist");
+                    message.setText(debugMessage.get());
+                }
             } catch (RuntimeException runtimeException) {
                 message.setText(runtimeException.getMessage());
                 getLogger().error(runtimeException.getMessage());
                 credentialField.setVisible(true);
-                progressBar.setVisible(false);
             }
         }
+        credentialField.setVisible(true);
+        progressBar.setVisible(false);
         getLogger().debug(debugMessage.get());
     }
 
