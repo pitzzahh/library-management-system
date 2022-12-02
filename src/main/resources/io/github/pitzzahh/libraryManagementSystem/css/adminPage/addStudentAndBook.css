@@ -1,6 +1,10 @@
 @font-face {
     font-family: 'JetBrains Mono';
-    src: url('../../../fonts/JetBrainsMono.ttf');
+    src: url('../../fonts/JetBrainsMono.ttf');
+}
+
+.root, .field-vbox {
+    -fx-background-color:  linear-gradient(to bottom, #006d77, #93f9b944);
 }
 
 .button {
@@ -21,7 +25,7 @@
 }
 
 .nav-bar {
-    -fx-background-color: #043033;
+    -fx-background-color: #016E77;
     -fx-background-radius: 0px;
     -fx-border-color: #1a1a1a;
     -fx-border-radius: 0px;
@@ -53,7 +57,7 @@
 }
 
 .field-vbox {
-    -fx-background-color: #006d77;
+    -fx-border-width: none;
 }
 
 .text-field, .choice-box {
