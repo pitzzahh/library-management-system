@@ -3,6 +3,7 @@ package io.github.pitzzahh.libraryManagementSystem.controllers;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
+import io.github.pitzzahh.libraryManagementSystem.entity.Page;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
@@ -128,11 +129,13 @@ public class AdminController {
 
     @FXML
     public void onAddStudents(ActionEvent actionEvent) {
+        setPage(Page.ADD_STUDENTS);
         setCenterScreenOfBorderPane(actionEvent, "add_students_window");
     }
 
     @FXML
     public void onAddBooks(ActionEvent actionEvent) {
+        setPage(Page.ADD_BOOKS);
         setCenterScreenOfBorderPane(actionEvent, "add_books_window");
     }
 
