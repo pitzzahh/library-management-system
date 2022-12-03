@@ -1,12 +1,10 @@
 package io.github.pitzzahh.libraryManagementSystem.controllers;
 
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
-import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
-import java.util.concurrent.atomic.AtomicReference;
-import io.github.pitzzahh.libraryManagementSystem.util.PBar;
-import io.github.pitzzahh.libraryManagementSystem.util.Util;
+import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.*;
 import io.github.pitzzahh.libraryManagementSystem.validator.Validator;
+import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
+import io.github.pitzzahh.libraryManagementSystem.util.PBar;
+import java.util.concurrent.atomic.AtomicReference;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -113,7 +111,7 @@ public class LoginController {
                     if (clientWindow.getScene() != null)
                         getStage().setScene(clientWindow.getScene()); // if scene is present, get it
                     else getStage().setScene(new Scene(clientWindow)); // create new scene if new login
-                    getStage().setTitle("Client");
+                    getStage().setTitle("Student");
                     getStage().centerOnScreen();
                     getStage().show();
                     credentialField.clear();
