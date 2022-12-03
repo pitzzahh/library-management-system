@@ -5,6 +5,7 @@ import io.github.pitzzahh.libraryManagementSystem.entity.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.*;
 import javafx.util.Duration;
+import java.util.Optional;
 import javafx.fxml.FXML;
 
 public class AddStudBookController {
@@ -144,26 +145,19 @@ public class AddStudBookController {
     @SuppressWarnings({"unchecked", "SuspiciousMethodCalls"})
     public void onRemove(MouseEvent mouseEvent) {
         mouseEvent.consume();
-        passed = checkInputs(
-                add,
-                mouseEvent,
-                id.getText().trim(),
-                firstInput.getText().trim(),
-                secondInput.getText().trim()
-        );
-        if (passed) {
+        Optional<Object> optional = Optional.ofNullable(table.getSelectionModel().getSelectedItem());
+        optional.ifPresent(item -> {
             switch (getPage()) {
                 case ADD_STUDENTS -> {
-                    getStudentsDataSource().remove(table.getSelectionModel().getSelectedItem());
+                    getStudentsDataSource().remove(item);
                     table.setItems(getStudentsDataSource());
                 }
                 case ADD_BOOKS -> {
-                    getBooksDataSource().remove(table.getSelectionModel().getSelectedItem());
+                    getBooksDataSource().remove(item);
                     table.setItems(getBooksDataSource());
                 }
             }
-        }
-
+        });
     }
 
     @FXML
