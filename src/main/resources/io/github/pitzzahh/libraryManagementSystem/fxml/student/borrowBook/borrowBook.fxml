@@ -38,32 +38,32 @@
                                         </HBox.margin>
                                     </ChoiceBox>
                                 </HBox>
-                        <HBox alignment="CENTER" prefHeight="318.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
-                           <children>
-                              <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                                 <children>
-                                    <Label alignment="CENTER" prefHeight="50.0" prefWidth="542.0" styleClass="input-label" stylesheets="@../../../css/common.css" text="Available Books" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
-                                    <TableView fx:id="table1" editable="true" prefHeight="473.0" prefWidth="502.0" stylesheets="@../../../css/table.css" VBox.vgrow="ALWAYS">
-                                       <columns>
-                                          <TableColumn prefWidth="75.0" text="ID" />
-                                          <TableColumn prefWidth="75.0" text="TITLE" />
-                                          <TableColumn prefWidth="75.0" text="AUTHOR" />
-                                          <TableColumn prefWidth="75.0" text="CATEGORY" />
-                                       </columns>
-                                       <columnResizePolicy>
-                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                       </columnResizePolicy>
-                                    </TableView>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
+                                <HBox alignment="CENTER" prefHeight="318.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
+                                    <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="542.0"
+                                               styleClass="input-label" stylesheets="@../../../css/common.css"
+                                               text="Available Books" textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
+                                        <TableView fx:id="availableBooks" editable="true" prefHeight="473.0"
+                                                   prefWidth="502.0" stylesheets="@../../../css/table.css"
+                                                   VBox.vgrow="ALWAYS">
+                                            <columns>
+                                                <TableColumn prefWidth="75.0" text="ID"/>
+                                                <TableColumn prefWidth="75.0" text="TITLE"/>
+                                                <TableColumn prefWidth="75.0" text="AUTHOR"/>
+                                                <TableColumn prefWidth="75.0" text="CATEGORY"/>
+                                            </columns>
+                                            <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                            </columnResizePolicy>
+                                        </TableView>
+                                    </VBox>
+                                </HBox>
                                 <VBox alignment="BOTTOM_CENTER" prefHeight="90.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
                                     <HBox alignment="CENTER" prefHeight="75.0" prefWidth="509.0">
                                         <effect>
                                             <Glow />
                                         </effect>
-                                        <Button fx:id="add" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onAdd" onMouseEntered="#onHoverAdd" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/common.css" text="ADD">
+                                        <Button fx:id="add" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onAdd" onMouseEntered="#onHoverAdd" prefHeight="50.0" prefWidth="99.0" stylesheets="@../../../css/common.css" text="ADD">
                                             <HBox.margin>
                                                 <Insets right="10.0" />
                                             </HBox.margin>
@@ -71,7 +71,7 @@
                                                 <Font size="15.0" />
                                             </font>
                                         </Button>
-                                        <Button fx:id="remove" mnemonicParsing="false" onMouseClicked="#onRemove" onMouseEntered="#onHoverRemove" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/common.css" text="REMOVE">
+                                        <Button fx:id="remove" mnemonicParsing="false" onMouseClicked="#onRemove" onMouseEntered="#onHoverRemove" prefHeight="50.0" prefWidth="96.0" stylesheets="@../../../css/common.css" text="REMOVE">
                                             <HBox.margin>
                                                 <Insets right="10.0" />
                                             </HBox.margin>
@@ -79,7 +79,7 @@
                                                 <Font size="15.0" />
                                             </font>
                                         </Button>
-                                        <Button fx:id="removeAll" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onRemoveAll" onMouseEntered="#onHoverRemoveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/common.css" text="REMOVE ALL">
+                                        <Button fx:id="removeAll" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onRemoveAll" onMouseEntered="#onHoverRemoveAll" prefHeight="50.0" stylesheets="@../../../css/common.css" text="REMOVE ALL">
                                             <HBox.margin>
                                                 <Insets right="10.0" />
                                             </HBox.margin>
@@ -87,7 +87,7 @@
                                                 <Font size="15.0" />
                                             </font>
                                         </Button>
-                                        <Button fx:id="saveAll" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onSaveAll" onMouseEntered="#onHoverSaveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/common.css" text="SAVE ALL">
+                                        <Button fx:id="saveAll" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onSaveAll" onMouseEntered="#onHoverSaveAll" prefHeight="50.0" stylesheets="@../../../css/common.css" text="BORROW ALL">
                                             <font>
                                                 <Font size="15.0" />
                                             </font>
