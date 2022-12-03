@@ -104,8 +104,7 @@ public class AddStudBookController {
                     case ADD_BOOKS -> "Cannot add book, Book with book id already added";
                     default -> "No Message";
                 };
-                Tooltip tooltip  = new Tooltip(message);
-                tooltip.setStyle(errorToolTipStyle());
+                Tooltip tooltip  = initToolTip(message, event, errorToolTipStyle());
                 tooltip.setAutoHide(true);
                 tooltip.setShowDuration(Duration.seconds(3));
                 id.setTooltip(tooltip);
