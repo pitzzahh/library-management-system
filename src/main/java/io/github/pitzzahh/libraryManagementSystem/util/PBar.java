@@ -1,6 +1,5 @@
 package io.github.pitzzahh.libraryManagementSystem.util;
 
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import javafx.scene.control.ProgressBar;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
@@ -16,7 +15,6 @@ public class PBar {
     public static Service<Void> initProgressBar(ProgressBar progressBar) {
         var service = new TaskService();
         progressBar.setVisible(true);
-        getLogger().debug(progressBar.isVisible() ? "Progress bar is visible" : "Progress bar is not visible");
         progressBar.progressProperty().bind(service.progressProperty());
         return service;
     }

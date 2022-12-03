@@ -41,7 +41,6 @@ public class LoginController {
     @FXML
     public void onEnter(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {
-            getLogger().debug("Enter key pressed");
             credentialField.setVisible(false);
             checkCredential();
         }
@@ -54,10 +53,10 @@ public class LoginController {
     private void checkCredential() {
         final var fieldText = credentialField.getText();
         var debugMessage = new AtomicReference<>("");
-        getLogger().debug("Credential: {}", $admin);
+        System.out.printf("Credential: %s%n", $admin);
 
         final var progressBarService = PBar.initProgressBar(progressBar);
-        // TODO: move the label on top of the progress bar.
+
         progressBarService.setOnScheduled(e -> {
             message.setText("Please Wait");
             message.setStyle("" +
@@ -122,13 +121,12 @@ public class LoginController {
                 }
             } catch (RuntimeException runtimeException) {
                 message.setText(runtimeException.getMessage());
-                getLogger().error(runtimeException.getMessage());
+                System.out.println(runtimeException.getMessage());
                 credentialField.setVisible(true);
             }
         }
         credentialField.setVisible(true);
         progressBar.setVisible(false);
-        getLogger().debug(debugMessage.get());
     }
 
     /**
@@ -139,7 +137,6 @@ public class LoginController {
     public void onKeyTyped(KeyEvent keyEvent) {
         addTextLimiter(credentialField, MAX_LENGTH);
         if (credentialField.getText().isEmpty() && keyEvent.getCode() != KeyCode.ENTER) {
-            getLogger().debug("EMPTY CREDENTIAL FIELD");
             message.setText("");
         }
     }
@@ -151,17 +148,14 @@ public class LoginController {
     @FXML
     public void onMouseEntered(MouseEvent mouseEvent) {
         if (stage != null) stage = (Stage) credentialField.getScene().getWindow();
-        getLogger().debug("Mouse entered the credential field");
         final String $an = credentialField.getText().trim();
         final Optional<Tooltip> optionalTooltip = Optional.ofNullable(credentialField.getTooltip());
         if ($an.isEmpty()) {
             if (optionalTooltip.isEmpty()) {
-                getLogger().debug("Setting tooltip");
                 Tooltip toolTip = getFieldToolTip(mouseEvent);
                 credentialField.setTooltip(toolTip);
             }
         } else if (optionalTooltip.isPresent()) {
-            getLogger().debug("Hiding tooltip");
             credentialField.setTooltip(null);
         }
     }
