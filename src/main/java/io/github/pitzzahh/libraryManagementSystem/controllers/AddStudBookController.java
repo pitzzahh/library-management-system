@@ -143,17 +143,11 @@ public class AddStudBookController {
                 secondInput.getText().trim()
         );
         if (passed) {
-            Tooltip tooltip = initToolTip(
-                    switch (getPage()) {
-                        case ADD_STUDENTS -> "Add Student";
-                        case ADD_BOOKS -> "Add Book";
-                        case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
-                    },
-                    event,
-                    adminButtonFunctionsToolTipStyle()
-            );
-            tooltip.setShowDuration(Duration.seconds(3));
-            add.setTooltip(tooltip);
+            onHoverButtons(switch (getPage()) {
+                case ADD_STUDENTS -> "Add Student";
+                case ADD_BOOKS -> "Add Book";
+                case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+            }, event, add);
         }
     }
 
@@ -187,17 +181,11 @@ public class AddStudBookController {
                 secondInput.getText().trim()
         );
         if (passed) {
-            Tooltip tooltip = initToolTip(
-                    switch (getPage()) {
-                        case ADD_STUDENTS -> "Remove Student";
-                        case ADD_BOOKS -> "Remove Book";
-                        case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
-                    },
-                    event,
-                    adminButtonFunctionsToolTipStyle()
-            );
-            tooltip.setShowDuration(Duration.seconds(3));
-            remove.setTooltip(tooltip);
+            onHoverButtons(switch (getPage()) {
+                case ADD_STUDENTS -> "Remove Student";
+                case ADD_BOOKS -> "Remove Book";
+                case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+            }, event, remove);
         }
     }
 
@@ -235,17 +223,11 @@ public class AddStudBookController {
                 secondInput.getText().trim()
         );
         if (passed) {
-            Tooltip tooltip = initToolTip(
-                    switch (getPage()) {
-                        case ADD_STUDENTS -> "Remove All Students records from the table";
-                        case ADD_BOOKS -> "Remove All Books records from the table";
-                        case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
-                    },
-                    event,
-                    adminButtonFunctionsToolTipStyle()
-            );
-            tooltip.setShowDuration(Duration.seconds(3));
-            removeAll.setTooltip(tooltip);
+            onHoverButtons(switch (getPage()) {
+                case ADD_STUDENTS -> "Remove All Students records from the table";
+                case ADD_BOOKS -> "Remove All Books records from the table";
+                case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+            }, event, removeAll);
         }
     }
 
@@ -283,17 +265,11 @@ public class AddStudBookController {
                 secondInput.getText().trim()
         );
         if (passed) {
-            Tooltip tooltip = initToolTip(
-                    switch (getPage()) {
-                        case ADD_STUDENTS -> "Save All Students records to the database";
-                        case ADD_BOOKS -> "Save All Books records to the database";
-                        case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
-                    },
-                    event,
-                    adminButtonFunctionsToolTipStyle()
-            );
-            tooltip.setShowDuration(Duration.seconds(3));
-            saveAll.setTooltip(tooltip);
+            onHoverButtons(switch (getPage()) {
+                case ADD_STUDENTS -> "Save All Students records to the database";
+                case ADD_BOOKS -> "Save All Books records to the database";
+                case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+            }, event, saveAll);
         }
     }
 }
