@@ -56,7 +56,7 @@ public class LoginController {
         var debugMessage = new AtomicReference<>("");
         getLogger().debug("Credential: {}", $admin);
 
-        final var progressBarService = PBar.showProgressBar(progressBar);
+        final var progressBarService = PBar.initProgressBar(progressBar);
         // TODO: move the label on top of the progress bar.
         progressBarService.setOnScheduled(e -> {
             message.setText("Please Wait");

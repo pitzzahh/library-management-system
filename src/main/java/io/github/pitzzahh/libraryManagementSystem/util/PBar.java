@@ -13,7 +13,7 @@ public class PBar {
      * @param progressBar the progress bar.
      * @return the task.
      */
-    public static Service<Void> showProgressBar(ProgressBar progressBar) {
+    public static Service<Void> initProgressBar(ProgressBar progressBar) {
         var service = new TaskService();
         progressBar.setVisible(true);
         getLogger().debug(progressBar.isVisible() ? "Progress bar is visible" : "Progress bar is not visible");
