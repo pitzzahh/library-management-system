@@ -66,6 +66,11 @@
     -fx-font-weight: bold;
 }
 
+.choice-box {
+    -fx-background-color: #e9c46a;
+    -fx-text-fill: white;
+}
+
 .choice-box:hover {
     -fx-cursor: hand;
 }
