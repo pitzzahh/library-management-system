@@ -3,7 +3,7 @@ package io.github.pitzzahh.libraryManagementSystem.controllers;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Book;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.collections.ObservableList;
 import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -24,7 +24,7 @@ public class BorrowBookController {
     public Button removeAll;
 
     @FXML
-    public Button saveAll;
+    public Button borrowAll;
 
     @FXML
     public TableView<Book> availableBooks;
@@ -34,12 +34,25 @@ public class BorrowBookController {
 
     @FXML
     public void onAdd(MouseEvent mouseEvent) {
+        mouseEvent.consume();
+        ObservableList<Book> selectedItems = availableBooks.getSelectionModel().getSelectedItems();
 
+        getBorrowedBooksDataSource().addAll(selectedItems);
+
+        initTableColumns(
+                table,
+                "bookId",
+                "title",
+                "author",
+                "category"
+        );
+
+        table.setItems(getBorrowedBooksDataSource());
     }
 
     @FXML
     public void onHoverAdd(MouseEvent mouseEvent) {
-        showToolTipOnHover("Add a book", mouseEvent, add);
+        showToolTipOnHover("Add a book to borrow", mouseEvent, add);
     }
 
     @FXML
@@ -49,7 +62,7 @@ public class BorrowBookController {
 
     @FXML
     public void onHoverRemove(MouseEvent mouseEvent) {
-        showToolTipOnHover("Remove a book", mouseEvent, remove);
+        showToolTipOnHover("Remove a book to borrow from the right", mouseEvent, remove);
     }
 
     @FXML
@@ -59,7 +72,7 @@ public class BorrowBookController {
 
     @FXML
     public void onHoverRemoveAll(MouseEvent mouseEvent) {
-        showToolTipOnHover("Remove all books", mouseEvent, remove);
+        showToolTipOnHover("Remove all books to borrow listed on the right", mouseEvent, removeAll);
     }
 
     @FXML
@@ -69,7 +82,7 @@ public class BorrowBookController {
 
     @FXML
     public void onHoverSaveAll(MouseEvent mouseEvent) {
-        showToolTipOnHover("Save all books", mouseEvent, remove);
+        showToolTipOnHover("Borrow all the books listed on the right", mouseEvent, borrowAll);
     }
 
     @FXML
@@ -82,19 +95,13 @@ public class BorrowBookController {
 
         getAvailableBooksDataSource().addAll(getBooksByCategory(selectedItem));
 
-        TableColumn<Book, ?> bookNumberColumn = availableBooks.getColumns().get(0);
-        bookNumberColumn.setStyle("-fx-alignment: CENTER;");
-        bookNumberColumn.setCellValueFactory(new PropertyValueFactory<>("bookId"));
-
-        TableColumn<Book, ?> bookTitleColumn = availableBooks.getColumns().get(1);
-        bookTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-
-        TableColumn<Book, ?> bookAuthorColumn = availableBooks.getColumns().get(2);
-        bookAuthorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
-
-        TableColumn<Book, ?> bookCategoryColumn = availableBooks.getColumns().get(3);
-        bookCategoryColumn.setStyle("-fx-alignment: CENTER;");
-        bookCategoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+        initTableColumns(
+                availableBooks,
+                "bookId",
+                "title",
+                "author",
+                "category"
+        );
 
         availableBooks.setItems(getAvailableBooksDataSource());
     }
