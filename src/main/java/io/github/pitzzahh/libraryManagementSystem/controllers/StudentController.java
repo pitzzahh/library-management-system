@@ -30,7 +30,7 @@ public class StudentController {
 
     @FXML
     public void onHoverBorrowBook(MouseEvent mouseEvent) {
-        showToolTipOnHover("Logout Session", mouseEvent, borrowBook);
+        showToolTipOnHover("Borrow a Book", mouseEvent, borrowBook);
     }
 
     @FXML
@@ -52,7 +52,7 @@ public class StudentController {
 
     @FXML
     public void onHoverViewBooks(MouseEvent mouseEvent) {
-        showToolTipOnHover("View borrowed books", mouseEvent, viewBorrowedBooks);
+        showToolTipOnHover("View borrowed Books", mouseEvent, viewBorrowedBooks);
     }
 
     /**

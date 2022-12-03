@@ -9,9 +9,9 @@ import javafx.collections.FXCollections;
 import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
 import java.util.stream.Collectors;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
-import org.slf4j.LoggerFactory;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 import javafx.scene.Parent;
@@ -19,12 +19,10 @@ import java.util.Optional;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.util.Arrays;
-import org.slf4j.Logger;
 import java.util.List;
 
 public class LibraryManagementSystem extends Application {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(LibraryManagementSystem.class);
     private static Stage stage;
 
     /**
@@ -52,6 +50,7 @@ public class LibraryManagementSystem extends Application {
         mainProgressBar.ifPresent(Util::hideProgressBar);
         getStage().initStyle(StageStyle.DECORATED);
         getStage().getIcons().add(new Image(requireNonNull(LibraryManagementSystem.class.getResourceAsStream("img/logo.png"), "logo not found")));
+        getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
         getStage().setScene(scene);
         getStage().centerOnScreen();
         getStage().toFront();
@@ -62,7 +61,7 @@ public class LibraryManagementSystem extends Application {
         courseChoiceBox.ifPresentOrElse(e -> {
             e.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Course.values()).collect(Collectors.toList())));
             e.getSelectionModel().selectFirst();
-        }, () -> LOGGER.error("Course choice box not found")
+        }, () -> System.out.println("Course choice box not found")
         );
 
         Optional<ChoiceBox<Object>> booksChoiceBox = getChoiceBox(getParent("add_books_window"), "choiceBox");
@@ -74,7 +73,7 @@ public class LibraryManagementSystem extends Application {
         borrowBookChoiceBox.ifPresent(LibraryManagementSystem::initCategory);
 
         getStage().show();
-        LOGGER.info("Application started");
+        System.out.println("Application started");
     }
 
     private static void initCategory(ChoiceBox<Object> borrowBookChoiceBox) {
@@ -119,14 +118,6 @@ public class LibraryManagementSystem extends Application {
                 borrowBookPage
                 )
         );
-    }
-
-    /**
-     * Gets the logger for atm.
-     * @return the logger.
-     */
-    public static Logger getLogger() {
-        return LOGGER;
     }
 
     /**

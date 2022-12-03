@@ -1,6 +1,5 @@
 package io.github.pitzzahh.libraryManagementSystem.util;
 
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
 import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
@@ -282,7 +281,6 @@ public interface Util {
     }
 
     static void logoutSession() {
-        getLogger().info("Logging out...");
         getStage().removeEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
         getStage().close();
         var mainWindow = getParent("main_window");
@@ -291,7 +289,6 @@ public interface Util {
         getStage().setTitle("Library Management System");
         getStage().centerOnScreen();
         getStage().setScene(mainWindow.getScene());
-        getLogger().debug("Loading main window");
         getStage().show();
     }
     static void showToolTipOnHover(String Logout_Session, MouseEvent mouseEvent, Button logout) {

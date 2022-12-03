@@ -1,6 +1,5 @@
 package io.github.pitzzahh.libraryManagementSystem.controllers;
 
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.*;
 import javafx.scene.input.MouseEvent;
@@ -45,7 +44,7 @@ public class AddStudBookController {
     @SuppressWarnings({"unchecked"})
     public void onAdd(MouseEvent event) {
         event.consume();
-        getLogger().debug("Passed: {}", passed);
+        System.out.printf("Passed: %s%n", passed);
         if (passed) {
             if (!isStudentAlreadyAdded(id.getText().trim())) {
                 if (getPage().equals(Page.ADD_STUDENTS)) {
@@ -105,8 +104,7 @@ public class AddStudBookController {
                     case ADD_BOOKS -> "Cannot add book, Book with book id already added";
                     default -> "No Message";
                 };
-                Tooltip tooltip  = new Tooltip(message);
-                tooltip.setStyle(errorToolTipStyle());
+                Tooltip tooltip  = initToolTip(message, event, errorToolTipStyle());
                 tooltip.setAutoHide(true);
                 tooltip.setShowDuration(Duration.seconds(3));
                 id.setTooltip(tooltip);
