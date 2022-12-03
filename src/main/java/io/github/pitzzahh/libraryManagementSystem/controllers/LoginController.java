@@ -111,7 +111,7 @@ public class LoginController {
                     if (clientWindow.getScene() != null)
                         getStage().setScene(clientWindow.getScene()); // if scene is present, get it
                     else getStage().setScene(new Scene(clientWindow)); // create new scene if new login
-                    getStage().setTitle("Client");
+                    getStage().setTitle("Student");
                     getStage().centerOnScreen();
                     getStage().show();
                     credentialField.clear();
