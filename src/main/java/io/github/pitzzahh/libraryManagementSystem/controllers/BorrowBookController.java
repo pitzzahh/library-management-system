@@ -1,13 +1,12 @@
 package io.github.pitzzahh.libraryManagementSystem.controllers;
 
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
-
-import io.github.pitzzahh.libraryManagementSystem.entity.Book;
 import io.github.pitzzahh.libraryManagementSystem.entity.Category;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableView;
+import io.github.pitzzahh.libraryManagementSystem.entity.Book;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.event.ActionEvent;
+import javafx.scene.control.*;
 import javafx.fxml.FXML;
 
 public class BorrowBookController {
@@ -73,4 +72,30 @@ public class BorrowBookController {
         showToolTipOnHover("Save all books", mouseEvent, remove);
     }
 
+    @FXML
+    public void onChooseCategory(ActionEvent actionEvent) {
+        actionEvent.consume();
+        getAvailableBooksDataSource().clear();
+        Category selectedItem = choiceBox.getSelectionModel().getSelectedItem();
+
+        availableBooks.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        getAvailableBooksDataSource().addAll(getBooksByCategory(selectedItem));
+
+        TableColumn<Book, ?> bookNumberColumn = availableBooks.getColumns().get(0);
+        bookNumberColumn.setStyle("-fx-alignment: CENTER;");
+        bookNumberColumn.setCellValueFactory(new PropertyValueFactory<>("bookId"));
+
+        TableColumn<Book, ?> bookTitleColumn = availableBooks.getColumns().get(1);
+        bookTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+
+        TableColumn<Book, ?> bookAuthorColumn = availableBooks.getColumns().get(2);
+        bookAuthorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
+
+        TableColumn<Book, ?> bookCategoryColumn = availableBooks.getColumns().get(3);
+        bookCategoryColumn.setStyle("-fx-alignment: CENTER;");
+        bookCategoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+
+        availableBooks.setItems(getAvailableBooksDataSource());
+    }
 }
