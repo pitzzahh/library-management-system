@@ -30,7 +30,7 @@
         </top>
         <left>
             <VBox styleClass="leftBox" stylesheets="@../../css/adminPage/adminPage.css" BorderPane.alignment="CENTER">
-                <Button fx:id="borrowBook" graphicTextGap="20.0" mnemonicParsing="false" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="Borrow a Book" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="borrowBook" graphicTextGap="20.0" mnemonicParsing="false" onAction="#onBorrowBook" onMouseEntered="#onHoverBorrowBook" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="Borrow a Book" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -43,7 +43,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="returnBook" graphicTextGap="40.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="Return Book" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="returnBook" graphicTextGap="40.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onReturnBook" onMouseEntered="#onHoverReturnBook" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="Return Book" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -56,7 +56,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="viewBorrowedBooks" graphicTextGap="0.0" layoutX="15.0" layoutY="59.0" mnemonicParsing="false" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="View List of Borrowed Books" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="viewBorrowedBooks" graphicTextGap="0.0" layoutX="15.0" layoutY="59.0" mnemonicParsing="false" onAction="#onViewBooks" onMouseEntered="#onHoverViewBooks" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="View List of Borrowed Books" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
@@ -69,7 +69,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="logout" graphicTextGap="60.0" layoutX="15.0" layoutY="335.0" mnemonicParsing="false" onAction="#onLogout" onMouseEntered="#onMouseEnteredLogout" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="Logout" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="logout" graphicTextGap="60.0" layoutX="15.0" layoutY="335.0" mnemonicParsing="false" onAction="#onLogout" onMouseEntered="#onHoverLogout" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="Logout" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="1.0" />
                     </font>
