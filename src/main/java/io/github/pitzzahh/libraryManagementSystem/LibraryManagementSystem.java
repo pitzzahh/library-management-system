@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
 import java.util.stream.Collectors;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.StageStyle;
 import org.slf4j.LoggerFactory;
 import javafx.fxml.FXMLLoader;
@@ -52,6 +53,7 @@ public class LibraryManagementSystem extends Application {
         mainProgressBar.ifPresent(Util::hideProgressBar);
         getStage().initStyle(StageStyle.DECORATED);
         getStage().getIcons().add(new Image(requireNonNull(LibraryManagementSystem.class.getResourceAsStream("img/logo.png"), "logo not found")));
+        getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
         getStage().setScene(scene);
         getStage().centerOnScreen();
         getStage().toFront();
