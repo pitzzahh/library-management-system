@@ -116,7 +116,7 @@ public class AddStudBookController {
                 String message = switch (getPage()) {
                     case ADD_STUDENTS -> "Cannot add student, Student with student id already added";
                     case ADD_BOOKS -> "Cannot add book, Book with book id already added";
-                    case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                    default -> "No Message";
                 };
                 Tooltip tooltip  = new Tooltip(message);
                 tooltip.setStyle(errorToolTipStyle());
@@ -126,7 +126,7 @@ public class AddStudBookController {
                 String window = switch (getPage()) {
                     case ADD_STUDENTS -> "add_students_window";
                     case ADD_BOOKS -> "add_books_window";
-                    case MANAGE_STUDENTS, MANAGE_BOOKS -> "";
+                    default -> "No Message";
                 };
                 id.getTooltip().show(getParent(window).getScene().getWindow());
             }
@@ -146,7 +146,7 @@ public class AddStudBookController {
             onHoverButtons(switch (getPage()) {
                 case ADD_STUDENTS -> "Add Student";
                 case ADD_BOOKS -> "Add Book";
-                case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                default -> "No Message";
             }, event, add);
         }
     }
@@ -184,7 +184,7 @@ public class AddStudBookController {
             onHoverButtons(switch (getPage()) {
                 case ADD_STUDENTS -> "Remove Student";
                 case ADD_BOOKS -> "Remove Book";
-                case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                default -> "No Message";
             }, event, remove);
         }
     }
@@ -226,7 +226,7 @@ public class AddStudBookController {
             onHoverButtons(switch (getPage()) {
                 case ADD_STUDENTS -> "Remove All Students records from the table";
                 case ADD_BOOKS -> "Remove All Books records from the table";
-                case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                default -> "No Message";
             }, event, removeAll);
         }
     }
@@ -268,7 +268,7 @@ public class AddStudBookController {
             onHoverButtons(switch (getPage()) {
                 case ADD_STUDENTS -> "Save All Students records to the database";
                 case ADD_BOOKS -> "Save All Books records to the database";
-                case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                default -> "No Message";
             }, event, saveAll);
         }
     }
