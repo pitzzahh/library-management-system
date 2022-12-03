@@ -103,7 +103,8 @@ public class LibraryManagementSystem extends Application {
         addStudentsPage.setId("add_students_window");
         addBooksPage.setId("add_books_window");
         studentPage.setId("student_window");
-        addParents.accept(List.of(
+        addParents.accept(List.of
+                (
                 mainPage,
                 adminPage,
                 addStudentsPage,
