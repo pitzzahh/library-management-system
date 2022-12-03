@@ -144,34 +144,36 @@ public class AddStudBookController {
     @SuppressWarnings({"unchecked", "SuspiciousMethodCalls"})
     public void onRemove(MouseEvent mouseEvent) {
         mouseEvent.consume();
-        switch (getPage()) {
-            case ADD_STUDENTS -> {
-                getStudentsDataSource().remove(table.getSelectionModel().getSelectedItem());
-                table.setItems(getStudentsDataSource());
-            }
-            case ADD_BOOKS -> {
-                getBooksDataSource().remove(table.getSelectionModel().getSelectedItem());
-                table.setItems(getBooksDataSource());
-            }
-        }
-    }
-
-    @FXML
-    public void onHoverRemove(MouseEvent event) {
         passed = checkInputs(
                 add,
-                event,
+                mouseEvent,
                 id.getText().trim(),
                 firstInput.getText().trim(),
                 secondInput.getText().trim()
         );
         if (passed) {
-            onHoverButtons(switch (getPage()) {
-                case ADD_STUDENTS -> "Remove Student";
-                case ADD_BOOKS -> "Remove Book";
-                default -> "No Message";
-            }, event, remove);
+            switch (getPage()) {
+                case ADD_STUDENTS -> {
+                    getStudentsDataSource().remove(table.getSelectionModel().getSelectedItem());
+                    table.setItems(getStudentsDataSource());
+                }
+                case ADD_BOOKS -> {
+                    getBooksDataSource().remove(table.getSelectionModel().getSelectedItem());
+                    table.setItems(getBooksDataSource());
+                }
+            }
         }
+
+    }
+
+    @FXML
+    public void onHoverRemove(MouseEvent event) {
+        onHoverButtons(switch (getPage()) {
+            case ADD_STUDENTS -> "Remove Student";
+            case ADD_BOOKS -> "Remove Book";
+            default -> "No Message";
+        }, event, remove);
+
     }
 
     @FXML
@@ -200,20 +202,11 @@ public class AddStudBookController {
 
     @FXML
     public void onHoverRemoveAll(MouseEvent event) {
-        passed = checkInputs(
-                add,
-                event,
-                id.getText().trim(),
-                firstInput.getText().trim(),
-                secondInput.getText().trim()
-        );
-        if (passed) {
-            onHoverButtons(switch (getPage()) {
-                case ADD_STUDENTS -> "Remove All Students records from the table";
-                case ADD_BOOKS -> "Remove All Books records from the table";
-                default -> "No Message";
-            }, event, removeAll);
-        }
+        onHoverButtons(switch (getPage()) {
+            case ADD_STUDENTS -> "Remove All Students records from the table";
+            case ADD_BOOKS -> "Remove All Books records from the table";
+            default -> "No Message";
+        }, event, removeAll);
     }
 
     @FXML
@@ -242,19 +235,10 @@ public class AddStudBookController {
 
     @FXML
     public void onHoverSaveAll(MouseEvent event) {
-        passed = checkInputs(
-                add,
-                event,
-                id.getText().trim(),
-                firstInput.getText().trim(),
-                secondInput.getText().trim()
-        );
-        if (passed) {
-            onHoverButtons(switch (getPage()) {
-                case ADD_STUDENTS -> "Save All Students records to the database";
-                case ADD_BOOKS -> "Save All Books records to the database";
-                default -> "No Message";
-            }, event, saveAll);
-        }
+        onHoverButtons(switch (getPage()) {
+            case ADD_STUDENTS -> "Save All Students records to the database";
+            case ADD_BOOKS -> "Save All Books records to the database";
+            default -> "No Message";
+        }, event, saveAll);
     }
 }
