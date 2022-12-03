@@ -3,16 +3,23 @@ package io.github.pitzzahh.libraryManagementSystem.controllers;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Book;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.input.MouseEvent;
+import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import java.time.LocalDate;
+import java.util.Optional;
 import javafx.fxml.FXML;
 
 public class BorrowBookController {
 
     @FXML
     public ChoiceBox<Category> choiceBox;
+
+    @FXML
+    public DatePicker returnDate;
 
     @FXML
     public Button add;
@@ -35,7 +42,15 @@ public class BorrowBookController {
     @FXML
     public void onAdd(MouseEvent mouseEvent) {
         mouseEvent.consume();
-        ObservableList<Book> selectedItems = availableBooks.getSelectionModel().getSelectedItems();
+        ObservableList<Book> selectedItems = availableBooks
+                .getSelectionModel()
+                .getSelectedItems()
+                .stream()
+                .peek(book -> {
+                        book.setDateBorrowed(LocalDate.now());
+                        book.setDateReturned(returnDate.getValue());
+                })
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         getBorrowedBooksDataSource().addAll(selectedItems);
 
@@ -57,7 +72,12 @@ public class BorrowBookController {
 
     @FXML
     public void onRemove(MouseEvent mouseEvent) {
-
+        mouseEvent.consume();
+        Optional<Object> optional = Optional.ofNullable(table.getSelectionModel().getSelectedItem());
+        optional.ifPresent(item -> {
+            getBorrowedBooksDataSource().remove(item);
+            table.setItems(getBooksDataSource());
+        });
     }
 
     @FXML
@@ -67,7 +87,10 @@ public class BorrowBookController {
 
     @FXML
     public void onRemoveAll(MouseEvent mouseEvent) {
-
+        mouseEvent.consume();
+        getAllBorrowedBooks().clear();
+        getBorrowedBooksDataSource().clear();
+        table.setItems(getBorrowedBooksDataSource());
     }
 
     @FXML
