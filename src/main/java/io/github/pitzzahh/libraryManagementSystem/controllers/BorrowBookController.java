@@ -76,12 +76,12 @@ public class BorrowBookController {
     }
 
     @FXML
-    public void onSaveAll(MouseEvent mouseEvent) {
+    public void onBorrowAll(MouseEvent mouseEvent) {
 
     }
 
     @FXML
-    public void onHoverSaveAll(MouseEvent mouseEvent) {
+    public void onHoverBorrowAll(MouseEvent mouseEvent) {
         showToolTipOnHover("Borrow all the books listed on the right", mouseEvent, borrowAll);
     }
 
@@ -105,4 +105,5 @@ public class BorrowBookController {
 
         availableBooks.setItems(getAvailableBooksDataSource());
     }
+
 }
