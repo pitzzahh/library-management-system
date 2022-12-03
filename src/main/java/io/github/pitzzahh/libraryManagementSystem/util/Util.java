@@ -60,7 +60,7 @@ public interface Util {
      * @see Tooltip
      */
     static Tooltip initToolTip(String tip, MouseEvent event, String styles) {
-        var toolTip = new Tooltip(tip);
+        Tooltip toolTip = new Tooltip(tip);
         toolTip.setX(event.getScreenX());
         toolTip.setY(event.getScreenY());
         toolTip.setStyle(styles);
@@ -95,7 +95,7 @@ public interface Util {
     static void addTextLimiter(final TextField textField, final int maxLength) {
         textField.textProperty().addListener((observableValue, oldValue, newValue) -> {
             if ((textField.getText().length() > maxLength)) {
-                var limitedInput = textField.getText().substring(0, maxLength);
+                String limitedInput = textField.getText().substring(0, maxLength);
                 if (!limitedInput.equals($admin.substring(0, maxLength))) textField.setText(limitedInput);
             }
         });
@@ -107,8 +107,8 @@ public interface Util {
      * @param id the id of the window.
      */
     static void loadPage(ActionEvent actionEvent, String id) {
-        final var BORDER_PANE = ((BorderPane)(((Button) actionEvent.getSource()).getParent().getParent()));
-        BORDER_PANE.setCenter(Util.getParent(id));
+        ((BorderPane)(((Button) actionEvent.getSource()).getParent().getParent()))
+                .setCenter(getParent(id));
     }
 
     /**
@@ -283,7 +283,7 @@ public interface Util {
     static void logoutSession() {
         getStage().removeEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
         getStage().close();
-        var mainWindow = getParent("main_window");
+        Parent mainWindow = getParent("main_window");
         getMessageLabel(mainWindow).ifPresent(label -> label.setText(""));
         getMainProgressBar(mainWindow).ifPresent(pb -> pb.setVisible(false));
         getStage().setTitle("Library Management System");
@@ -292,7 +292,7 @@ public interface Util {
         getStage().show();
     }
     static void showToolTipOnHover(String Logout_Session, MouseEvent mouseEvent, Button logout) {
-        var tooltip = initToolTip(
+        Tooltip tooltip = initToolTip(
                 Logout_Session,
                 mouseEvent,
                 leftButtonSelectionFunctionStyle()
@@ -307,7 +307,7 @@ public interface Util {
 
     private static String decrypt(String data) throws IllegalArgumentException {
         if (data.trim().isEmpty()) throw new IllegalArgumentException("Text to be decrypted cannot be empty");
-        var b = Base64.getDecoder().decode(data);
+        byte[] b = Base64.getDecoder().decode(data);
         return IntStream.range(0, b.length).map(i -> b[i]).mapToObj(Character::toString).reduce("", String::concat);
     }
 

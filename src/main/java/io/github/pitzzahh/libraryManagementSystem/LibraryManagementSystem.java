@@ -5,6 +5,7 @@ import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Course;
 import io.github.pitzzahh.libraryManagementSystem.util.Util;
 import static java.util.Objects.requireNonNull;
+import javafx.scene.control.ProgressBar;
 import javafx.collections.FXCollections;
 import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
@@ -43,10 +44,10 @@ public class LibraryManagementSystem extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         initParents();
-        var parent = getParent("main_window");
-        var scene = new Scene(parent);
+        Parent parent = getParent("main_window");
+        Scene scene = new Scene(parent);
         LibraryManagementSystem.stage = primaryStage;
-        var mainProgressBar = getMainProgressBar(parent);
+        Optional<ProgressBar> mainProgressBar = getMainProgressBar(parent);
         mainProgressBar.ifPresent(Util::hideProgressBar);
         getStage().initStyle(StageStyle.DECORATED);
         getStage().getIcons().add(new Image(requireNonNull(LibraryManagementSystem.class.getResourceAsStream("img/logo.png"), "logo not found")));
