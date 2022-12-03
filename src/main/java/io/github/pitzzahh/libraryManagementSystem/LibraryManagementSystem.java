@@ -93,11 +93,11 @@ public class LibraryManagementSystem extends Application {
      * @throws IOException if the parent cannot be loaded.
      */
     private void initParents() throws IOException {
-        var mainPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/mainPage.fxml"), "Cannot find mainPage.fxml"));
-        var adminPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/adminPage.fxml"), "Cannot find adminPage.fxml"));
-        var addStudentsPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addStudents/addStudents.fxml"), "Cannot find addStudents.fxml"));
-        var addBooksPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addBooks/addBooks.fxml"), "Cannot find addBooks.fxml"));
-        var studentPage = (Parent) FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/studentPage.fxml"), "Cannot find studentPage.fxml"));
+        Parent mainPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/mainPage.fxml"), "Cannot find mainPage.fxml"));
+        Parent adminPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/adminPage.fxml"), "Cannot find adminPage.fxml"));
+        Parent addStudentsPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addStudents/addStudents.fxml"), "Cannot find addStudents.fxml"));
+        Parent addBooksPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addBooks/addBooks.fxml"), "Cannot find addBooks.fxml"));
+        Parent studentPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/studentPage.fxml"), "Cannot find studentPage.fxml"));
         adminPage.setId("admin_window");
         mainPage.setId("main_window");
         addStudentsPage.setId("add_students_window");
