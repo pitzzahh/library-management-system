@@ -3,7 +3,6 @@ package io.github.pitzzahh.libraryManagementSystem.controllers;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.*;
 import javafx.util.Duration;
@@ -43,7 +42,7 @@ public class AddStudBookController {
     private boolean passed;
 
     @FXML
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({"unchecked"})
     public void onAdd(MouseEvent event) {
         event.consume();
         getLogger().debug("Passed: {}", passed);
@@ -56,19 +55,13 @@ public class AddStudBookController {
                             secondInput.getText().trim(),
                             (Course) choiceBox.getSelectionModel().getSelectedItem()
                     ));
-                    TableColumn studentNumberColumn = (TableColumn) table.getColumns().get(0);
-                    studentNumberColumn.setStyle("-fx-alignment: CENTER;");
-                    studentNumberColumn.setCellValueFactory(new PropertyValueFactory<>("studentNumber"));
-
-                    TableColumn firstNameColumn = (TableColumn) table.getColumns().get(1);
-                    firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-
-                    TableColumn lastNameColumn = (TableColumn) table.getColumns().get(2);
-                    lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-
-                    TableColumn studentCourseColumn = (TableColumn) table.getColumns().get(3);
-                    studentCourseColumn.setStyle("-fx-alignment: CENTER;");
-                    studentCourseColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
+                    initTableColumns(
+                            table,
+                            "studentNumber",
+                            "firstName",
+                            "lastName",
+                            "course"
+                    );
 
                     table.setItems(getStudentsDataSource());
                     resetInputs(
@@ -88,19 +81,13 @@ public class AddStudBookController {
                             null,
                             null
                     ));
-                    TableColumn bookNumberColumn = (TableColumn) table.getColumns().get(0);
-                    bookNumberColumn.setStyle("-fx-alignment: CENTER;");
-                    bookNumberColumn.setCellValueFactory(new PropertyValueFactory<>("bookId"));
-
-                    TableColumn firstNameColumn = (TableColumn) table.getColumns().get(1);
-                    firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-
-                    TableColumn lastNameColumn = (TableColumn) table.getColumns().get(2);
-                    lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
-
-                    TableColumn studentCourseColumn = (TableColumn) table.getColumns().get(3);
-                    studentCourseColumn.setStyle("-fx-alignment: CENTER;");
-                    studentCourseColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+                    initTableColumns(
+                            table,
+                            "bookId",
+                            "title",
+                            "author",
+                            "category"
+                    );
 
                     table.setItems(getBooksDataSource());
                     resetInputs(
