@@ -61,11 +61,11 @@
 }
 
 .table-view .virtual-flow .scroll-bar:vertical .thumb{
-    -fx-background-color:  linear-gradient(to bottom, #006d77, #93f9b944);
+    -fx-background-color:  linear-gradient(to bottom, #EFD589, #9a8b5f);
 }
 
 .table-view .virtual-flow .scroll-bar:horizontal .thumb {
-    -fx-background-color:  linear-gradient(to right, #006d77, #93f9b944);
+    -fx-background-color:  linear-gradient(to right, #EFD589, #9a8b5f);
 }
 
 .table-row-cell:selected {
