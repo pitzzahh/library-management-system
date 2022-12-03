@@ -32,7 +32,7 @@
                             <VBox maxWidth="800.0" prefHeight="473.0" prefWidth="509.0" styleClass="field-vbox" stylesheets="@../../../css/common.css" BorderPane.alignment="CENTER">
                                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="160.0">
                                     <Label prefHeight="50.0" prefWidth="166.0" styleClass="input-label" stylesheets="@../../../css/common.css" text="Book Category" />
-                                    <ChoiceBox fx:id="choiceBox" prefHeight="25.0" prefWidth="345.0" HBox.hgrow="ALWAYS">
+                                    <ChoiceBox fx:id="choiceBox" onAction="#onChooseCategory" prefHeight="25.0" prefWidth="345.0" HBox.hgrow="ALWAYS">
                                         <HBox.margin>
                                             <Insets right="10.0" />
                                         </HBox.margin>
@@ -40,20 +40,16 @@
                                 </HBox>
                                 <HBox alignment="CENTER" prefHeight="318.0" prefWidth="509.0" VBox.vgrow="ALWAYS">
                                     <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-                                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="542.0"
-                                               styleClass="input-label" stylesheets="@../../../css/common.css"
-                                               text="Available Books" textAlignment="CENTER" VBox.vgrow="ALWAYS"/>
-                                        <TableView fx:id="availableBooks" editable="true" prefHeight="473.0"
-                                                   prefWidth="502.0" stylesheets="@../../../css/table.css"
-                                                   VBox.vgrow="ALWAYS">
+                                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="542.0" styleClass="input-label" stylesheets="@../../../css/common.css" text="Available Books" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
+                                        <TableView fx:id="availableBooks" prefHeight="473.0" prefWidth="502.0" stylesheets="@../../../css/table.css" VBox.vgrow="ALWAYS">
                                             <columns>
-                                                <TableColumn prefWidth="75.0" text="ID"/>
-                                                <TableColumn prefWidth="75.0" text="TITLE"/>
-                                                <TableColumn prefWidth="75.0" text="AUTHOR"/>
-                                                <TableColumn prefWidth="75.0" text="CATEGORY"/>
+                                                <TableColumn editable="false" prefWidth="75.0" text="ID" />
+                                                <TableColumn editable="false" prefWidth="75.0" text="TITLE" />
+                                                <TableColumn editable="false" prefWidth="75.0" text="AUTHOR" />
+                                                <TableColumn editable="false" prefWidth="75.0" text="CATEGORY" />
                                             </columns>
                                             <columnResizePolicy>
-                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                             </columnResizePolicy>
                                         </TableView>
                                     </VBox>
@@ -100,17 +96,20 @@
                             <BorderPane prefHeight="473.0" prefWidth="456.0" BorderPane.alignment="CENTER">
                                 <center>
                                     <HBox alignment="CENTER" prefHeight="397.0" prefWidth="611.0" BorderPane.alignment="CENTER">
-                                        <TableView fx:id="table" editable="true" prefHeight="473.0" prefWidth="502.0" stylesheets="@../../../css/table.css" HBox.hgrow="ALWAYS">
-                                            <columnResizePolicy>
-                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                            </columnResizePolicy>
-                                 <columns>
-                                    <TableColumn prefWidth="75.0" text="ID" />
-                                    <TableColumn prefWidth="75.0" text="TITLE" />
-                                    <TableColumn prefWidth="75.0" text="AUTHOR" />
-                                    <TableColumn prefWidth="75.0" text="CATEGORY" />
-                                 </columns>
-                                        </TableView>
+                                        <VBox alignment="CENTER" styleClass="borrowed-box" stylesheets="@../../../css/common.css" HBox.hgrow="ALWAYS">
+                                            <Label alignment="CENTER" prefHeight="50.0" prefWidth="542.0" styleClass="input-label" stylesheets="@../../../css/common.css" text="Books to borrow" textAlignment="CENTER" VBox.vgrow="ALWAYS" />
+                                            <TableView fx:id="table" prefHeight="473.0" prefWidth="502.0" stylesheets="@../../../css/table.css" VBox.vgrow="ALWAYS">
+                                                <columnResizePolicy>
+                                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                </columnResizePolicy>
+                                                <columns>
+                                                    <TableColumn editable="false" prefWidth="75.0" text="ID" />
+                                                    <TableColumn editable="false" prefWidth="75.0" text="TITLE" />
+                                                    <TableColumn editable="false" prefWidth="75.0" text="AUTHOR" />
+                                                    <TableColumn editable="false" prefWidth="75.0" text="CATEGORY" />
+                                                </columns>
+                                            </TableView>
+                                        </VBox>
                                     </HBox>
                                 </center>
                             </BorderPane>
