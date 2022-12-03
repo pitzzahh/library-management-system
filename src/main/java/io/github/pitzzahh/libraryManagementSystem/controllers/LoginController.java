@@ -110,15 +110,14 @@ public class LoginController {
                     // TODO: new window for student
                     var clientWindow = getParent("student_window");
                     getStage().close();
-                    if (clientWindow.getScene() != null) getStage().setScene(clientWindow.getScene()); // if scene is present, get it
+                    if (clientWindow.getScene() != null)
+                        getStage().setScene(clientWindow.getScene()); // if scene is present, get it
                     else getStage().setScene(new Scene(clientWindow)); // create new scene if new login
                     getStage().setTitle("Client");
                     getStage().centerOnScreen();
                     getStage().show();
                     credentialField.clear();
-                    credentialField.setVisible(true);
-                }
-                else {
+                } else {
                     debugMessage.set("Account does not exist");
                     message.setText(debugMessage.get());
                 }
