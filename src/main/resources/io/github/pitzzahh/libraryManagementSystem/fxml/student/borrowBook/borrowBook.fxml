@@ -83,7 +83,7 @@
                                                 <Font size="15.0" />
                                             </font>
                                         </Button>
-                                        <Button fx:id="saveAll" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onSaveAll" onMouseEntered="#onHoverSaveAll" prefHeight="50.0" stylesheets="@../../../css/common.css" text="BORROW ALL">
+                                        <Button fx:id="borrowAll" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onSaveAll" onMouseEntered="#onHoverSaveAll" prefHeight="50.0" stylesheets="@../../../css/common.css" text="BORROW ALL">
                                             <font>
                                                 <Font size="15.0" />
                                             </font>
