@@ -5,8 +5,6 @@ import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
 import io.github.pitzzahh.libraryManagementSystem.entity.Page;
 import io.github.pitzzahh.libraryManagementSystem.entity.Book;
-import io.github.pitzzahh.util.utilities.classes.DynamicArray;
-import io.github.pitzzahh.util.utilities.SecurityUtil;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.effect.GaussianBlur;
@@ -22,6 +20,7 @@ import javafx.scene.layout.*;
 import javafx.util.Duration;
 import javafx.scene.Parent;
 import java.util.*;
+import java.util.stream.IntStream;
 
 /**
  * Utility interface for the ATM application.
@@ -31,13 +30,13 @@ public interface Util {
     /**
      * admin credentials.
      */
-    String $admin = SecurityUtil.decrypt("QGRtMW4xJHRyNHQwcg==");
+    String $admin = decrypt("QGRtMW4xJHRyNHQwcg==");
     int MAX_LENGTH = 10;
     /**
      * Add a list parent to the parents array.
      * takes an array of parents
      */
-    Consumer<Parent[]> addParents = Fields.parents::insert;
+    Consumer<List<Parent>> addParents = Fields.parents::addAll;
 
     /**
      * Gets the parent with the specified id.
@@ -141,7 +140,6 @@ public interface Util {
                 .findAny();
     }
 
-
     static boolean checkInputs(
             Button button,
             MouseEvent event,
@@ -152,62 +150,48 @@ public interface Util {
         Optional<Tooltip> tooltip1 = Optional.ofNullable(button.getTooltip());
         tooltip1.ifPresent(t -> button.setTooltip(null));
         if (id.isEmpty() && firstInput.isEmpty() && secondInput.isEmpty()) {
-            Tooltip tooltip = initToolTip(
-                    switch (getPage()) {
-                        case ADD_STUDENTS -> "Cannot Add Student, All Required Input are empty";
-                        case ADD_BOOKS -> "Cannot Add Books, All Required Input are empty";
-                        default -> "Please fill in all the fields";
-                    },
-                    event,
-                    errorToolTipStyle()
-            );
-            tooltip.setShowDuration(Duration.seconds(3));
-            button.setTooltip(tooltip);
+            checkInputsToolTip(switch (getPage()) {
+                case ADD_STUDENTS -> "Cannot Add Student, All Required Input are empty";
+                case ADD_BOOKS -> "Cannot Add Books, All Required Input are empty";
+                default -> "Please fill in all the fields";
+            }, event, errorToolTipStyle(), button);
             return false;
         }
         else if (id.isEmpty() && (firstInput.isEmpty() || secondInput.isEmpty())) {
-            Tooltip tooltip = initToolTip(
-                    switch (getPage()) {
-                        case ADD_STUDENTS -> "Cannot Add Student, All Required Input are empty";
-                        case ADD_BOOKS -> "Cannot Add Book, Book Id is empty";
-                        default -> "Please fill in book Id";
-                    },
-                    event,
-                    errorToolTipStyle()
-            );
-            tooltip.setShowDuration(Duration.seconds(3));
-            button.setTooltip(tooltip);
+            checkInputsToolTip(switch (getPage()) {
+                case ADD_STUDENTS -> "Cannot Add Student, All Required Input are empty";
+                case ADD_BOOKS -> "Cannot Add Book, Book Id is empty";
+                default -> "Please fill in book Id";
+            }, event, errorToolTipStyle(), button);
             return false;
         }
         else if (firstInput.isEmpty() && secondInput.isEmpty()) {
-            Tooltip tooltip = initToolTip(
-                    switch (getPage()) {
-                        case ADD_STUDENTS -> "Cannot Add Student, First Name is empty";
-                        case ADD_BOOKS -> "Cannot Add Book, Book Title is empty";
-                        default -> "Please fill in the blank";
-                    },
-                    event,
-                    errorToolTipStyle()
-            );
-            tooltip.setShowDuration(Duration.seconds(3));
-            button.setTooltip(tooltip);
+            checkInputsToolTip(switch (getPage()) {
+                case ADD_STUDENTS -> "Cannot Add Student, First Name is empty";
+                case ADD_BOOKS -> "Cannot Add Book, Book Title is empty";
+                default -> "Please fill in the blank";
+            }, event, errorToolTipStyle(), button);
             return false;
         }
         else if (secondInput.isEmpty()) {
-            Tooltip tooltip = initToolTip(
-                    switch (getPage()) {
-                        case ADD_STUDENTS -> "Cannot Add Student, Last Name is empty";
-                        case ADD_BOOKS -> "Cannot Add Book, Book Author is empty";
-                        default -> "Please fill in the blank";
-                    },
-                    event,
-                    errorToolTipStyle()
-            );
-            tooltip.setShowDuration(Duration.seconds(3));
-            button.setTooltip(tooltip);
+            checkInputsToolTip(switch (getPage()) {
+                case ADD_STUDENTS -> "Cannot Add Student, Last Name is empty";
+                case ADD_BOOKS -> "Cannot Add Book, Book Author is empty";
+                default -> "Please fill in the blank";
+            }, event, errorToolTipStyle(), button);
             return false;
         }
         return true;
+    }
+
+    private static void checkInputsToolTip(String ADD_STUDENTS, MouseEvent event, String styles, Button button) {
+        Tooltip tooltip = initToolTip(
+                ADD_STUDENTS,
+                event,
+                styles
+        );
+        tooltip.setShowDuration(Duration.seconds(3));
+        button.setTooltip(tooltip);
     }
 
     static String generateRandomAccountNumber() {
@@ -318,13 +302,13 @@ public interface Util {
     }
 
     static void onHoverButtons(String ADD_STUDENTS, MouseEvent event, Button removeAll) {
-        Tooltip tooltip = initToolTip(
-                ADD_STUDENTS,
-                event,
-                leftButtonSelectionFunctionStyle()
-        );
-        tooltip.setShowDuration(Duration.seconds(3));
-        removeAll.setTooltip(tooltip);
+        checkInputsToolTip(ADD_STUDENTS, event, leftButtonSelectionFunctionStyle(), removeAll);
+    }
+
+    private static String decrypt(String data) throws IllegalArgumentException {
+        if (data.trim().isEmpty()) throw new IllegalArgumentException("Text to be decrypted cannot be empty");
+        var b = Base64.getDecoder().decode(data);
+        return IntStream.range(0, b.length).map(i -> b[i]).mapToObj(Character::toString).reduce("", String::concat);
     }
 }
 
@@ -335,7 +319,7 @@ class Fields {
     /**
      * The parents array.
      */
-    static DynamicArray<Parent> parents = new DynamicArray<>();
+    static List<Parent> parents = new ArrayList<>();
     static Queue<Button> activeButtons = new LinkedList<>();
     static ObservableList<Student> studentsDataSource = FXCollections.observableArrayList();
     static ObservableList<Book> booksDataSource = FXCollections.observableArrayList();

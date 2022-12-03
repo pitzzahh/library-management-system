@@ -9,6 +9,8 @@ import static java.util.Objects.requireNonNull;
 import javafx.collections.FXCollections;
 import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
+
+import java.util.List;
 import java.util.stream.Collectors;
 import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
@@ -99,12 +101,12 @@ public class LibraryManagementSystem extends Application {
         mainPage.setId("main_window");
         addStudentsPage.setId("add_students_window");
         addBooksPage.setId("add_books_window");
-        addParents.accept(new Parent[] {
+        addParents.accept(List.of(
                 mainPage,
                 adminPage,
                 addStudentsPage,
-                addBooksPage
-        });
+                addBooksPage)
+        );
     }
 
     /**
