@@ -4,6 +4,7 @@
     -fx-background-radius: 0px;
     -fx-border-radius: 0px;
     -fx-font-size: 15px;
+    -fx-text-fill: black;
 }
 
 .table-view .column-header,
@@ -21,7 +22,6 @@
 
 .table-view .table-cell {
     -fx-border-color: linear-gradient(to bottom, #006d77, #93f9b944);
-    -fx-text-fill: white;
     -fx-font-size: 17px;
     -fx-padding: 2px 0px 2px 10px;
 }
@@ -42,7 +42,7 @@
     -fx-cursor: hand;
     -fx-font-size: 15px;
     -fx-font-weight: bold;
-    -fx-text-fill: #EE3E54;
+    -fx-text-background-color: white;
 }
 
 .table-view .virtual-flow .scroll-bar:vertical,

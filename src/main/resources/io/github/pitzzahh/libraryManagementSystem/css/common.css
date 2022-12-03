@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'JetBrains Mono';
-    src: url('../../fonts/JetBrainsMono.ttf');
+    src: url('../fonts/JetBrainsMono.ttf');
 }
 
-.root, .field-vbox {
+.root, .field-vbox, .borrowed-box{
     -fx-background-color:  linear-gradient(to bottom, #006d77, #93f9b944);
 }
 
@@ -22,6 +22,7 @@
 
 .button:pressed {
     -fx-background-color: #e76f51;
+    -fx-text-fill: white;
 }
 
 .nav-bar {
@@ -66,9 +67,15 @@
     -fx-font-weight: bold;
 }
 
-.choice-box:hover {
+.choice-box, .choice-box .context-menu {
+    -fx-background-color: #83C5BE;
+    -fx-text-fill: black;
+}
+
+.choice-box .context-menu:hover {
     -fx-cursor: hand;
 }
 
-
-
+.choice-box:hover {
+    -fx-cursor: hand;
+}

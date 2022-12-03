@@ -3,7 +3,6 @@ package io.github.pitzzahh.libraryManagementSystem.controllers;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.*;
 import javafx.util.Duration;
@@ -43,7 +42,7 @@ public class AddStudBookController {
     private boolean passed;
 
     @FXML
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({"unchecked"})
     public void onAdd(MouseEvent event) {
         event.consume();
         getLogger().debug("Passed: {}", passed);
@@ -56,19 +55,13 @@ public class AddStudBookController {
                             secondInput.getText().trim(),
                             (Course) choiceBox.getSelectionModel().getSelectedItem()
                     ));
-                    TableColumn studentNumberColumn = (TableColumn) table.getColumns().get(0);
-                    studentNumberColumn.setStyle("-fx-alignment: CENTER;");
-                    studentNumberColumn.setCellValueFactory(new PropertyValueFactory<>("studentNumber"));
-
-                    TableColumn firstNameColumn = (TableColumn) table.getColumns().get(1);
-                    firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-
-                    TableColumn lastNameColumn = (TableColumn) table.getColumns().get(2);
-                    lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-
-                    TableColumn studentCourseColumn = (TableColumn) table.getColumns().get(3);
-                    studentCourseColumn.setStyle("-fx-alignment: CENTER;");
-                    studentCourseColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
+                    initTableColumns(
+                            table,
+                            "studentNumber",
+                            "firstName",
+                            "lastName",
+                            "course"
+                    );
 
                     table.setItems(getStudentsDataSource());
                     resetInputs(
@@ -88,19 +81,13 @@ public class AddStudBookController {
                             null,
                             null
                     ));
-                    TableColumn bookNumberColumn = (TableColumn) table.getColumns().get(0);
-                    bookNumberColumn.setStyle("-fx-alignment: CENTER;");
-                    bookNumberColumn.setCellValueFactory(new PropertyValueFactory<>("bookId"));
-
-                    TableColumn firstNameColumn = (TableColumn) table.getColumns().get(1);
-                    firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-
-                    TableColumn lastNameColumn = (TableColumn) table.getColumns().get(2);
-                    lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
-
-                    TableColumn studentCourseColumn = (TableColumn) table.getColumns().get(3);
-                    studentCourseColumn.setStyle("-fx-alignment: CENTER;");
-                    studentCourseColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+                    initTableColumns(
+                            table,
+                            "bookId",
+                            "title",
+                            "author",
+                            "category"
+                    );
 
                     table.setItems(getBooksDataSource());
                     resetInputs(
@@ -116,7 +103,7 @@ public class AddStudBookController {
                 String message = switch (getPage()) {
                     case ADD_STUDENTS -> "Cannot add student, Student with student id already added";
                     case ADD_BOOKS -> "Cannot add book, Book with book id already added";
-                    case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                    default -> "No Message";
                 };
                 Tooltip tooltip  = new Tooltip(message);
                 tooltip.setStyle(errorToolTipStyle());
@@ -126,7 +113,7 @@ public class AddStudBookController {
                 String window = switch (getPage()) {
                     case ADD_STUDENTS -> "add_students_window";
                     case ADD_BOOKS -> "add_books_window";
-                    case MANAGE_STUDENTS, MANAGE_BOOKS -> "";
+                    default -> "No Message";
                 };
                 id.getTooltip().show(getParent(window).getScene().getWindow());
             }
@@ -146,7 +133,7 @@ public class AddStudBookController {
             onHoverButtons(switch (getPage()) {
                 case ADD_STUDENTS -> "Add Student";
                 case ADD_BOOKS -> "Add Book";
-                case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                default -> "No Message";
             }, event, add);
         }
     }
@@ -184,7 +171,7 @@ public class AddStudBookController {
             onHoverButtons(switch (getPage()) {
                 case ADD_STUDENTS -> "Remove Student";
                 case ADD_BOOKS -> "Remove Book";
-                case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                default -> "No Message";
             }, event, remove);
         }
     }
@@ -226,7 +213,7 @@ public class AddStudBookController {
             onHoverButtons(switch (getPage()) {
                 case ADD_STUDENTS -> "Remove All Students records from the table";
                 case ADD_BOOKS -> "Remove All Books records from the table";
-                case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                default -> "No Message";
             }, event, removeAll);
         }
     }
@@ -268,7 +255,7 @@ public class AddStudBookController {
             onHoverButtons(switch (getPage()) {
                 case ADD_STUDENTS -> "Save All Students records to the database";
                 case ADD_BOOKS -> "Save All Books records to the database";
-                case MANAGE_STUDENTS, MANAGE_BOOKS -> "No Message";
+                default -> "No Message";
             }, event, saveAll);
         }
     }

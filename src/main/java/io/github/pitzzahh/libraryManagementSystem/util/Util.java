@@ -2,9 +2,11 @@ package io.github.pitzzahh.libraryManagementSystem.util;
 
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
+import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
 import io.github.pitzzahh.libraryManagementSystem.entity.Page;
 import io.github.pitzzahh.libraryManagementSystem.entity.Book;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.effect.GaussianBlur;
@@ -12,6 +14,8 @@ import static java.lang.String.format;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import javafx.scene.input.KeyCode;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
@@ -20,7 +24,6 @@ import javafx.scene.layout.*;
 import javafx.util.Duration;
 import javafx.scene.Parent;
 import java.util.*;
-import java.util.stream.IntStream;
 
 /**
  * Utility interface for the ATM application.
@@ -104,7 +107,7 @@ public interface Util {
      * @param actionEvent the action event.
      * @param id the id of the window.
      */
-    static void setCenterScreenOfBorderPane(ActionEvent actionEvent, String id) {
+    static void loadPage(ActionEvent actionEvent, String id) {
         final var BORDER_PANE = ((BorderPane)(((Button) actionEvent.getSource()).getParent().getParent()));
         BORDER_PANE.setCenter(Util.getParent(id));
     }
@@ -218,7 +221,7 @@ public interface Util {
     }
 
     static boolean isStudentAlreadyAdded(String studentNumber) {
-        return getStudentsDataSource()
+        return getAllStudents()
                 .stream()
                 .anyMatch(e -> e.getStudentNumber().equals(studentNumber));
     }
@@ -267,7 +270,7 @@ public interface Util {
     }
 
     static List<Book> getAllBooks() {
-        return Fields.booksDataSource;
+        return Fields.booksList;
     }
 
     static void setPage(Page page) {
@@ -310,6 +313,48 @@ public interface Util {
         var b = Base64.getDecoder().decode(data);
         return IntStream.range(0, b.length).map(i -> b[i]).mapToObj(Character::toString).reduce("", String::concat);
     }
+
+    static List<Book> getBooksByCategory(Category category) {
+        return getAllBooks()
+                .stream()
+                .filter(book -> book.getCategory().equals(category))
+                .collect(Collectors.toList());
+    }
+
+    static ObservableList<Book> getAvailableBooksDataSource() {
+        return Fields.availableBooksDataSource;
+    }
+
+    static ObservableList<Book> getBorrowedBooksDataSource() {
+        return Fields.borrowBooksDataSource;
+    }
+
+    static void saveAllBorrowedBooks() {
+        Fields.borowedBooksList = new ArrayList<>(getBorrowedBooksDataSource());
+    }
+
+    static void initTableColumns(
+            TableView<Book> table,
+            String firstColumn,
+            String secondColumn,
+            String thirdColumn,
+            String fourthColumn
+
+    ) {
+        TableColumn<?, ?> bookNumberColumn = table.getColumns().get(0);
+        bookNumberColumn.setStyle("-fx-alignment: CENTER;");
+        bookNumberColumn.setCellValueFactory(new PropertyValueFactory<>(firstColumn));
+
+        TableColumn<?, ?> bookTitleColumn = table.getColumns().get(1);
+        bookTitleColumn.setCellValueFactory(new PropertyValueFactory<>(secondColumn));
+
+        TableColumn<?, ?> bookAuthorColumn = table.getColumns().get(2);
+        bookAuthorColumn.setCellValueFactory(new PropertyValueFactory<>(thirdColumn));
+
+        TableColumn<?, ?> bookCategoryColumn = table.getColumns().get(3);
+        bookCategoryColumn.setStyle("-fx-alignment: CENTER;");
+        bookCategoryColumn.setCellValueFactory(new PropertyValueFactory<>(fourthColumn));
+    }
 }
 
 /**
@@ -324,6 +369,9 @@ class Fields {
     static ObservableList<Student> studentsDataSource = FXCollections.observableArrayList();
     static ObservableList<Book> booksDataSource = FXCollections.observableArrayList();
 
+    static ObservableList<Book> availableBooksDataSource = FXCollections.observableArrayList();
+    static ObservableList<Book> borrowBooksDataSource = FXCollections.observableArrayList();
+
     // TODO: explicitly move to Util interface as a method
     static EventHandler<KeyEvent> eventHandler = event -> {
         if (KeyCode.F11.equals(event.getCode())) getStage().setFullScreen(!getStage().isFullScreen());
@@ -331,6 +379,7 @@ class Fields {
 
     static List<Student> studentsList = new ArrayList<>();
     static List<Book> booksList = new ArrayList<>();
+    static List<Book> borowedBooksList = new ArrayList<>();
     static Page page;
 
 }

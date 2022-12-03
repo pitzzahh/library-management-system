@@ -85,13 +85,13 @@ public class AdminController {
     @FXML
     public void onAddStudents(ActionEvent actionEvent) {
         setPage(Page.ADD_STUDENTS);
-        setCenterScreenOfBorderPane(actionEvent, "add_students_window");
+        loadPage(actionEvent, "add_students_window");
     }
 
     @FXML
     public void onAddBooks(ActionEvent actionEvent) {
         setPage(Page.ADD_BOOKS);
-        setCenterScreenOfBorderPane(actionEvent, "add_books_window");
+        loadPage(actionEvent, "add_books_window");
     }
 
 }
