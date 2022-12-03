@@ -1,5 +1,6 @@
 package io.github.pitzzahh.libraryManagementSystem.util;
 
+import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
 import io.github.pitzzahh.libraryManagementSystem.entity.Page;
@@ -69,7 +70,7 @@ public interface Util {
      * Gets the button styles for admin window
      * @return styles for admin window buttons.
      */
-    static String adminButtonFunctionsToolTipStyle() {
+    static String leftButtonSelectionFunctionStyle() {
         return "-fx-background-color: #003049; " +
                "-fx-text-fill: white; " +
                "-fx-font-weight: bold; " +
@@ -293,6 +294,38 @@ public interface Util {
         return Fields.page;
     }
 
+    static void logoutSession() {
+        getLogger().info("Logging out...");
+        getStage().removeEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
+        getStage().close();
+        var mainWindow = getParent("main_window");
+        getMessageLabel(mainWindow).ifPresent(label -> label.setText(""));
+        getMainProgressBar(mainWindow).ifPresent(pb -> pb.setVisible(false));
+        getStage().setTitle("Library Management System");
+        getStage().centerOnScreen();
+        getStage().setScene(mainWindow.getScene());
+        getLogger().debug("Loading main window");
+        getStage().show();
+    }
+    static void showToolTipOnHover(String Logout_Session, MouseEvent mouseEvent, Button logout) {
+        var tooltip = initToolTip(
+                Logout_Session,
+                mouseEvent,
+                leftButtonSelectionFunctionStyle()
+        );
+        tooltip.setShowDuration(Duration.seconds(3));
+        logout.setTooltip(tooltip);
+    }
+
+    static void onHoverButtons(String ADD_STUDENTS, MouseEvent event, Button removeAll) {
+        Tooltip tooltip = initToolTip(
+                ADD_STUDENTS,
+                event,
+                leftButtonSelectionFunctionStyle()
+        );
+        tooltip.setShowDuration(Duration.seconds(3));
+        removeAll.setTooltip(tooltip);
+    }
 }
 
 /**
