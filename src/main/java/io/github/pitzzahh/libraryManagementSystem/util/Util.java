@@ -2,6 +2,7 @@ package io.github.pitzzahh.libraryManagementSystem.util;
 
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getLogger;
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
+import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
 import io.github.pitzzahh.libraryManagementSystem.entity.Page;
 import io.github.pitzzahh.libraryManagementSystem.entity.Book;
@@ -12,6 +13,8 @@ import static java.lang.String.format;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import javafx.scene.input.KeyCode;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
@@ -20,7 +23,6 @@ import javafx.scene.layout.*;
 import javafx.util.Duration;
 import javafx.scene.Parent;
 import java.util.*;
-import java.util.stream.IntStream;
 
 /**
  * Utility interface for the ATM application.
@@ -218,7 +220,7 @@ public interface Util {
     }
 
     static boolean isStudentAlreadyAdded(String studentNumber) {
-        return getStudentsDataSource()
+        return getAllStudents()
                 .stream()
                 .anyMatch(e -> e.getStudentNumber().equals(studentNumber));
     }
@@ -267,7 +269,7 @@ public interface Util {
     }
 
     static List<Book> getAllBooks() {
-        return Fields.booksDataSource;
+        return Fields.booksList;
     }
 
     static void setPage(Page page) {
@@ -310,6 +312,18 @@ public interface Util {
         var b = Base64.getDecoder().decode(data);
         return IntStream.range(0, b.length).map(i -> b[i]).mapToObj(Character::toString).reduce("", String::concat);
     }
+
+    static List<Book> getBooksByCategory(Category category) {
+        return getAllBooks()
+                .stream()
+                .filter(book -> book.getCategory().equals(category))
+                .collect(Collectors.toList());
+    }
+
+    static ObservableList<Book> getAvailableBooksDataSource() {
+        return Fields.availableBooksDataSource;
+    }
+
 }
 
 /**
@@ -323,6 +337,8 @@ class Fields {
     static Queue<Button> activeButtons = new LinkedList<>();
     static ObservableList<Student> studentsDataSource = FXCollections.observableArrayList();
     static ObservableList<Book> booksDataSource = FXCollections.observableArrayList();
+
+    static ObservableList<Book> availableBooksDataSource = FXCollections.observableArrayList();
 
     // TODO: explicitly move to Util interface as a method
     static EventHandler<KeyEvent> eventHandler = event -> {
