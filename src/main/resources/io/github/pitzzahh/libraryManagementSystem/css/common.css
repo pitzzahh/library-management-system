@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../fonts/JetBrainsMono.ttf');
+}
+
+.root, .field-vbox {
+    -fx-background-color:  linear-gradient(to bottom, #006d77, #93f9b944);
+}
+
+.button {
+    -fx-background-color: #e9c46a;
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-font-size: 1.2em;
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #f4a261;
+}
+
+.button:pressed {
+    -fx-background-color: #e76f51;
+}
+
+.nav-bar {
+    -fx-background-color: #016E77;
+    -fx-background-radius: 0px;
+    -fx-border-color: #1a1a1a;
+    -fx-border-radius: 0px;
+    -fx-border-width: 0px;
+    -fx-padding: 0px;
+    -fx-spacing: 0px;
+}
+
+.nav-bar-title {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10px;
+}
+
+.left-pane {
+    -fx-background-color: #c4af98;
+}
+
+.right-pane {
+    -fx-background-color: #83C5BE;
+}
+
+.input-label {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10px;
+}
+
+.field-vbox {
+    -fx-border-width: none;
+}
+
+.text-field, .choice-box {
+    -fx-font-size: 15px;
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-font-weight: bold;
+}
+
+.choice-box:hover {
+    -fx-cursor: hand;
+}
