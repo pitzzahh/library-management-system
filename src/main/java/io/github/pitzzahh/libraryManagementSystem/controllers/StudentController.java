@@ -8,6 +8,14 @@ import javafx.fxml.FXML;
 
 public class StudentController {
 
+    @FXML
+    public Button borrowBook;
+
+    @FXML
+    public Button returnBook;
+
+    @FXML
+    public Button viewBorrowedBooks;
 
     @FXML
     private Button logout;
