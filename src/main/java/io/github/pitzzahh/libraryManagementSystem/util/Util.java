@@ -6,6 +6,7 @@ import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
 import io.github.pitzzahh.libraryManagementSystem.entity.Page;
 import io.github.pitzzahh.libraryManagementSystem.entity.Book;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.effect.GaussianBlur;
@@ -324,6 +325,36 @@ public interface Util {
         return Fields.availableBooksDataSource;
     }
 
+    static ObservableList<Book> getBorrowedBooksDataSource() {
+        return Fields.borrowBooksDataSource;
+    }
+
+    static void saveAllBorrowedBooks() {
+        Fields.borowedBooksList = new ArrayList<>(getBorrowedBooksDataSource());
+    }
+
+    static void initTableColumns(
+            TableView<Book> table,
+            String firstColumn,
+            String secondColumn,
+            String thirdColumn,
+            String fourthColumn
+
+    ) {
+        TableColumn<?, ?> bookNumberColumn = table.getColumns().get(0);
+        bookNumberColumn.setStyle("-fx-alignment: CENTER;");
+        bookNumberColumn.setCellValueFactory(new PropertyValueFactory<>(firstColumn));
+
+        TableColumn<?, ?> bookTitleColumn = table.getColumns().get(1);
+        bookTitleColumn.setCellValueFactory(new PropertyValueFactory<>(secondColumn));
+
+        TableColumn<?, ?> bookAuthorColumn = table.getColumns().get(2);
+        bookAuthorColumn.setCellValueFactory(new PropertyValueFactory<>(thirdColumn));
+
+        TableColumn<?, ?> bookCategoryColumn = table.getColumns().get(3);
+        bookCategoryColumn.setStyle("-fx-alignment: CENTER;");
+        bookCategoryColumn.setCellValueFactory(new PropertyValueFactory<>(fourthColumn));
+    }
 }
 
 /**
@@ -339,6 +370,7 @@ class Fields {
     static ObservableList<Book> booksDataSource = FXCollections.observableArrayList();
 
     static ObservableList<Book> availableBooksDataSource = FXCollections.observableArrayList();
+    static ObservableList<Book> borrowBooksDataSource = FXCollections.observableArrayList();
 
     // TODO: explicitly move to Util interface as a method
     static EventHandler<KeyEvent> eventHandler = event -> {
@@ -347,6 +379,7 @@ class Fields {
 
     static List<Student> studentsList = new ArrayList<>();
     static List<Book> booksList = new ArrayList<>();
+    static List<Book> borowedBooksList = new ArrayList<>();
     static Page page;
 
 }
