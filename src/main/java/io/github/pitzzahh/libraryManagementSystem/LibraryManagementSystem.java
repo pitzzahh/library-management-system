@@ -1,6 +1,5 @@
 package io.github.pitzzahh.libraryManagementSystem;
 
-
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Course;
@@ -9,8 +8,6 @@ import static java.util.Objects.requireNonNull;
 import javafx.collections.FXCollections;
 import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
-
-import java.util.List;
 import java.util.stream.Collectors;
 import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
@@ -23,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.util.Arrays;
 import org.slf4j.Logger;
+import java.util.List;
 
 public class LibraryManagementSystem extends Application {
 
@@ -69,14 +67,19 @@ public class LibraryManagementSystem extends Application {
 
         Optional<ChoiceBox<Object>> booksChoiceBox = getChoiceBox(getParent("add_books_window"), "choiceBox");
 
-        booksChoiceBox.ifPresentOrElse(e -> {
-            e.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Category.values()).collect(Collectors.toList())));
-            e.getSelectionModel().selectFirst();
-        }, () -> LOGGER.error("Category choice box not found")
-        );
+        booksChoiceBox.ifPresent(LibraryManagementSystem::initCategory);
+
+        Optional<ChoiceBox<Object>> borrowBookChoiceBox = getChoiceBox(getParent("borrow_books_window"), "choiceBox");
+
+        borrowBookChoiceBox.ifPresent(LibraryManagementSystem::initCategory);
 
         getStage().show();
         LOGGER.info("Application started");
+    }
+
+    private static void initCategory(ChoiceBox<Object> borrowBookChoiceBox) {
+        borrowBookChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Category.values()).collect(Collectors.toList())));
+        borrowBookChoiceBox.getSelectionModel().selectFirst();
     }
 
     /**
@@ -98,18 +101,22 @@ public class LibraryManagementSystem extends Application {
         Parent addStudentsPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addStudents/addStudents.fxml"), "Cannot find addStudents.fxml"));
         Parent addBooksPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addBooks/addBooks.fxml"), "Cannot find addBooks.fxml"));
         Parent studentPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/studentPage.fxml"), "Cannot find studentPage.fxml"));
+        Parent borrowBookPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/borrowBook/borrowBook.fxml"), "Cannot find borrowBook.fxml"));
+
         adminPage.setId("admin_window");
         mainPage.setId("main_window");
         addStudentsPage.setId("add_students_window");
         addBooksPage.setId("add_books_window");
         studentPage.setId("student_window");
+        borrowBookPage.setId("borrow_books_window");
         addParents.accept(List.of
                 (
                 mainPage,
                 adminPage,
                 addStudentsPage,
                 addBooksPage,
-                studentPage
+                studentPage,
+                borrowBookPage
                 )
         );
     }
