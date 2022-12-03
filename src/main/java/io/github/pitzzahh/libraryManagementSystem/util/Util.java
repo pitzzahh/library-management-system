@@ -330,6 +330,10 @@ public interface Util {
         Fields.borowedBooksList = new ArrayList<>(getBorrowedBooksDataSource());
     }
 
+    static List<Book> getAllBorrowedBooks() {
+        return Fields.borowedBooksList;
+    }
+
     static void initTableColumns(
             TableView<Book> table,
             String firstColumn,
