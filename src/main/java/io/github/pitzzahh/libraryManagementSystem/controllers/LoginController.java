@@ -113,6 +113,7 @@ public class LoginController {
                     else getStage().setScene(new Scene(clientWindow)); // create new scene if new login
                     getStage().setTitle("Student");
                     getStage().centerOnScreen();
+                    getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
                     getStage().show();
                     credentialField.clear();
                 } else {
