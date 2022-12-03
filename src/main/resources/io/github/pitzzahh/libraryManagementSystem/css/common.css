@@ -3,7 +3,7 @@
     src: url('../fonts/JetBrainsMono.ttf');
 }
 
-.root, .field-vbox {
+.root, .field-vbox, .borrowed-box{
     -fx-background-color:  linear-gradient(to bottom, #006d77, #93f9b944);
 }
 
@@ -22,6 +22,7 @@
 
 .button:pressed {
     -fx-background-color: #e76f51;
+    -fx-text-fill: white;
 }
 
 .nav-bar {
