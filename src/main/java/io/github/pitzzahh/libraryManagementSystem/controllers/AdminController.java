@@ -60,7 +60,7 @@ public class AdminController {
      */
     @FXML
     public void onMouseEnteredManageBooksButton(MouseEvent mouseEvent) {
-        showToolTipOnHover("Manage Locked Accounts", mouseEvent, manageBooks);
+        showToolTipOnHover("Manage Borrowed Books", mouseEvent, manageBooks);
     }
 
     /**
