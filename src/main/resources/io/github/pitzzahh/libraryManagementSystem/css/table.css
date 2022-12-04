@@ -5,6 +5,7 @@
     -fx-border-width: none;
     -fx-font-size: 15px;
     -fx-text-fill: black;
+    -fx-font-weight: bold;
 }
 
 .table-view .column-header,
@@ -21,7 +22,7 @@
 }
 
 .table-view .table-cell {
-    -fx-border-color: linear-gradient(to bottom, #006d77, #93f9b944);
+    -fx-border-color: #EFD589;
     -fx-font-size: 17px;
     -fx-padding: 2px 0px 2px 10px;
 }
