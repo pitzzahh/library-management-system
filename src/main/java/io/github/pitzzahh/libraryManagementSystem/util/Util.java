@@ -1,6 +1,8 @@
 package io.github.pitzzahh.libraryManagementSystem.util;
 
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
+import static io.github.pitzzahh.libraryManagementSystem.entity.Page.ADD_STUDENTS;
+import static io.github.pitzzahh.libraryManagementSystem.entity.Page.ADD_BOOKS;
 import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
 import io.github.pitzzahh.libraryManagementSystem.entity.Page;
@@ -171,43 +173,35 @@ public interface Util {
         Optional<Tooltip> tooltip1 = Optional.ofNullable(button.getTooltip());
         tooltip1.ifPresent(t -> button.setTooltip(null));
         if (id.isEmpty() && firstInput.isEmpty() && secondInput.isEmpty()) {
-            checkInputsToolTip(switch (getPage()) {
-                case ADD_STUDENTS -> "Cannot Add Student, All Required Input are empty";
-                case ADD_BOOKS -> "Cannot Add Books, All Required Input are empty";
-                default -> "Please fill in all the fields";
-            }, event, errorToolTipStyle(), button);
+            String message = getPage().equals(ADD_STUDENTS) ? "Cannot Add Student, All Required Input are empty" :
+                    getPage().equals(ADD_BOOKS) ? "Cannot Add Books, All Required Input are empty" : "Please fill in all the fields";
+            checkInputsToolTip(message, event, errorToolTipStyle(), button);
             return false;
         }
         else if (id.isEmpty() && (firstInput.isEmpty() || secondInput.isEmpty())) {
-            checkInputsToolTip(switch (getPage()) {
-                case ADD_STUDENTS -> "Cannot Add Student, All Required Input are empty";
-                case ADD_BOOKS -> "Cannot Add Book, Book Id is empty";
-                default -> "Please fill in book Id";
-            }, event, errorToolTipStyle(), button);
+            String message = getPage().equals(ADD_STUDENTS) ? "Cannot Add Student, All Required Input are empty" :
+                    getPage().equals(ADD_BOOKS) ? "Cannot Add Book, Book Id is empty" : "Please fill in all the fields";
+            checkInputsToolTip(message, event, errorToolTipStyle(), button);
             return false;
         }
         else if (firstInput.isEmpty() && secondInput.isEmpty()) {
-            checkInputsToolTip(switch (getPage()) {
-                case ADD_STUDENTS -> "Cannot Add Student, First Name is empty";
-                case ADD_BOOKS -> "Cannot Add Book, Book Title is empty";
-                default -> "Please fill in the blank";
-            }, event, errorToolTipStyle(), button);
+            String message = getPage().equals(ADD_STUDENTS) ? "Cannot Add Student, First Name is empty" :
+                    getPage().equals(ADD_BOOKS) ? "Cannot Add Book, Book Title is empty" : "Please fill in all the fields";
+            checkInputsToolTip(message, event, errorToolTipStyle(), button);
             return false;
         }
         else if (secondInput.isEmpty()) {
-            checkInputsToolTip(switch (getPage()) {
-                case ADD_STUDENTS -> "Cannot Add Student, Last Name is empty";
-                case ADD_BOOKS -> "Cannot Add Book, Book Author is empty";
-                default -> "Please fill in the blank";
-            }, event, errorToolTipStyle(), button);
+            String message = getPage().equals(ADD_STUDENTS) ? "Cannot Add Student, Last Name is empty" :
+                    getPage().equals(ADD_BOOKS) ? "Cannot Add Book, Book Author is empty" : "Please fill in all the fields";
+            checkInputsToolTip(message, event, errorToolTipStyle(), button);
             return false;
         }
         return true;
     }
 
-    private static void checkInputsToolTip(String ADD_STUDENTS, MouseEvent event, String styles, Button button) {
+    private static void checkInputsToolTip(String tip, MouseEvent event, String styles, Button button) {
         Tooltip tooltip = initToolTip(
-                ADD_STUDENTS,
+                tip,
                 event,
                 styles,
                 null
@@ -301,8 +295,9 @@ public interface Util {
         return Fields.page;
     }
 
-    static void logoutSession() {
+    static void logoutSession(ActionEvent actionEvent) {
         getStage().close();
+        loadPage(actionEvent, "promptPage_page");
         Parent mainWindow = getParent("main_window");
         getMessageLabel(mainWindow).ifPresent(label -> label.setText(""));
         getMainProgressBar(mainWindow).ifPresent(pb -> pb.setVisible(false));
@@ -322,8 +317,8 @@ public interface Util {
         logout.setTooltip(tooltip);
     }
 
-    static void onHoverButtons(String ADD_STUDENTS, MouseEvent event, Button removeAll) {
-        checkInputsToolTip(ADD_STUDENTS, event, leftButtonSelectionFunctionStyle(), removeAll);
+    static void onHoverButtons(String tip, MouseEvent event, Button removeAll) {
+        checkInputsToolTip(tip, event, leftButtonSelectionFunctionStyle(), removeAll);
     }
 
     private static String decrypt(String data) throws IllegalArgumentException {
