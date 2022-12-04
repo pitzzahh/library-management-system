@@ -5,16 +5,13 @@ import io.github.pitzzahh.libraryManagementSystem.validator.Validator;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.util.PBar;
 import java.util.concurrent.atomic.AtomicReference;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.concurrent.Service;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.util.Optional;
-import javafx.scene.Scene;
 import javafx.fxml.FXML;
 
 /**
@@ -26,8 +23,9 @@ public class LoginController {
     @FXML
     public ProgressBar progressBar;
 
+
     @FXML
-    private TextField credentialField;
+    private PasswordField credentialField;
 
     @FXML
     private Label message;
@@ -51,11 +49,11 @@ public class LoginController {
      */
     @FXML
     private void checkCredential() {
-        final var fieldText = credentialField.getText();
-        var debugMessage = new AtomicReference<>("");
+        final String fieldText = credentialField.getText();
+        AtomicReference<String> debugMessage = new AtomicReference<>("");
         System.out.printf("Credential: %s%n", $admin);
 
-        final var progressBarService = PBar.initProgressBar(progressBar);
+        final Service<Void> progressBarService = PBar.initProgressBar(progressBar);
 
         progressBarService.setOnScheduled(e -> {
             message.setText("Please Wait");
@@ -85,14 +83,8 @@ public class LoginController {
      */
     private void checker(String fieldText, AtomicReference<String> debugMessage) {
         if (fieldText.equals($admin)) {
-            var adminWindow = getParent("admin_window");
             getStage().close();
-            if (adminWindow.getScene() != null) getStage().setScene(adminWindow.getScene()); // if scene is present, get it
-            else getStage().setScene(new Scene(adminWindow)); // create new scene if new login
-            getStage().setTitle("Administrator");
-            getStage().centerOnScreen();
-            getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
-            getStage().show();
+            loadParent(getParent("admin_window"), "Administrator");
             progressBar.setVisible(false);
             credentialField.clear();
             credentialField.setVisible(true);
@@ -104,16 +96,8 @@ public class LoginController {
                 final boolean doesAccountExist = Validator.doesAccountExist(fieldText);
                 if (doesAccountExist) {
                     debugMessage.set("Account exists");
-                    // TODO: new window for student
-                    var clientWindow = getParent("student_window");
                     getStage().close();
-                    if (clientWindow.getScene() != null)
-                        getStage().setScene(clientWindow.getScene()); // if scene is present, get it
-                    else getStage().setScene(new Scene(clientWindow)); // create new scene if new login
-                    getStage().setTitle("Student");
-                    getStage().centerOnScreen();
-                    getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
-                    getStage().show();
+                    loadParent(getParent("student_window"), "Student");
                     credentialField.clear();
                 } else {
                     debugMessage.set("Account does not exist");

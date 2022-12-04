@@ -61,11 +61,11 @@
 }
 
 .table-view .virtual-flow .scroll-bar:vertical .thumb{
-    -fx-background-color:  linear-gradient(to bottom, #006d77, #93f9b944);
+    -fx-background-color:  linear-gradient(to bottom, #EFD589, #9a8b5f);
 }
 
 .table-view .virtual-flow .scroll-bar:horizontal .thumb {
-    -fx-background-color:  linear-gradient(to right, #006d77, #93f9b944);
+    -fx-background-color:  linear-gradient(to right, #EFD589, #9a8b5f);
 }
 
 .table-row-cell:selected {
@@ -77,3 +77,26 @@
     -fx-border-radius: 10px;
     -fx-font-weight: bold;
 }
+
+.refresh-table {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+    -fx-text-fill: #83C5BE;
+    -fx-font-weight: bold;
+    -fx-border-width: 1px;
+    -fx-cursor: hand;
+}
+
+.refresh-table:hover {
+    -fx-background-color: #7C80E5;
+    -fx-text-fill: white;
+
+    -webkit-transition: background-color 1s linear;
+    -ms-transition: background-color 1000ms linear;
+    transition: background-color 1s linear;
+}
+
+.refresh-table:pressed {
+    -fx-background-color: #4E53B7;
+}
+

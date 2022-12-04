@@ -6,6 +6,7 @@
 .root {
     -fx-background-image: url("../img/mainPage/background_image.png");
     -fx-background-size: cover;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
 }
 
 .main-label {
@@ -37,17 +38,22 @@
 .credentials {
     -fx-font-family: "JetBrains Mono Medium";
     -fx-font-size: 30px;
-    -fx-text-fill: transparent;
+    -fx-text-fill: #E55065;
     -fx-background-color: transparent;
     -fx-font-weight: bold;
     -fx-border-color: transparent transparent #be4655 transparent;
-    -fx-border-width: 0 0 5 0;
-}
-
-.credentials:hover {
-    -fx-text-fill: #E55065;
+    -fx-border-width: 0 0 3 0;
 }
 
 .progress-bar {
     -fx-background-color: #138370;
+}
+
+.progress-bar .bar {
+    -fx-background-color: #E55065;
+}
+
+.toggle-view-password {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
 }

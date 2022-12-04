@@ -22,6 +22,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import java.util.*;
 
 /**
@@ -60,10 +61,12 @@ public interface Util {
      * @see Tooltip
      */
     static Tooltip initToolTip(String tip, MouseEvent event, String styles) {
-        var toolTip = new Tooltip(tip);
+        Tooltip toolTip = new Tooltip(tip);
         toolTip.setX(event.getScreenX());
         toolTip.setY(event.getScreenY());
         toolTip.setStyle(styles);
+        toolTip.setAutoHide(true);
+        toolTip.setShowDuration(Duration.seconds(3));
         return toolTip;
     }
 
@@ -95,7 +98,7 @@ public interface Util {
     static void addTextLimiter(final TextField textField, final int maxLength) {
         textField.textProperty().addListener((observableValue, oldValue, newValue) -> {
             if ((textField.getText().length() > maxLength)) {
-                var limitedInput = textField.getText().substring(0, maxLength);
+                String limitedInput = textField.getText().substring(0, maxLength);
                 if (!limitedInput.equals($admin.substring(0, maxLength))) textField.setText(limitedInput);
             }
         });
@@ -107,8 +110,18 @@ public interface Util {
      * @param id the id of the window.
      */
     static void loadPage(ActionEvent actionEvent, String id) {
-        final var BORDER_PANE = ((BorderPane)(((Button) actionEvent.getSource()).getParent().getParent()));
-        BORDER_PANE.setCenter(Util.getParent(id));
+        ((BorderPane)(((Button) actionEvent.getSource()).getParent().getParent()))
+                .setCenter(getParent(id));
+    }
+
+    static void loadParent(Parent parent, String stageTitle) {
+        if (parent.getScene() != null)
+            getStage().setScene(parent.getScene()); // if scene is present, get it
+        else getStage().setScene(new Scene(parent)); // create new scene if new login
+        getStage().setTitle(stageTitle);
+        getStage().centerOnScreen();
+        getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
+        getStage().show();
     }
 
     /**
@@ -208,12 +221,6 @@ public interface Util {
         return Fields.eventHandler;
     }
 
-    static void hideProgressBar(ProgressBar progressBar) {
-        progressBar.setVisible(false);
-        progressBar.setStyle("-fx-accent: cyan;");
-    }
-
-    // TODO: refactor, use parent lookup
     @SuppressWarnings("unchecked")
     static Optional<ChoiceBox<Object>> getChoiceBox(Parent parent, String name) {
         return Optional.ofNullable((ChoiceBox<Object>) parent.lookup(format("#%s", name)));
@@ -283,7 +290,7 @@ public interface Util {
     static void logoutSession() {
         getStage().removeEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
         getStage().close();
-        var mainWindow = getParent("main_window");
+        Parent mainWindow = getParent("main_window");
         getMessageLabel(mainWindow).ifPresent(label -> label.setText(""));
         getMainProgressBar(mainWindow).ifPresent(pb -> pb.setVisible(false));
         getStage().setTitle("Library Management System");
@@ -292,7 +299,7 @@ public interface Util {
         getStage().show();
     }
     static void showToolTipOnHover(String Logout_Session, MouseEvent mouseEvent, Button logout) {
-        var tooltip = initToolTip(
+        Tooltip tooltip = initToolTip(
                 Logout_Session,
                 mouseEvent,
                 leftButtonSelectionFunctionStyle()
@@ -307,7 +314,7 @@ public interface Util {
 
     private static String decrypt(String data) throws IllegalArgumentException {
         if (data.trim().isEmpty()) throw new IllegalArgumentException("Text to be decrypted cannot be empty");
-        var b = Base64.getDecoder().decode(data);
+        byte[] b = Base64.getDecoder().decode(data);
         return IntStream.range(0, b.length).map(i -> b[i]).mapToObj(Character::toString).reduce("", String::concat);
     }
 
@@ -330,27 +337,27 @@ public interface Util {
         Fields.borowedBooksList = new ArrayList<>(getBorrowedBooksDataSource());
     }
 
-    static void initTableColumns(
-            TableView<Book> table,
-            String firstColumn,
-            String secondColumn,
-            String thirdColumn,
-            String fourthColumn
+    static List<Book> getAllBorrowedBooks() {
+        return Fields.borowedBooksList;
+    }
 
-    ) {
-        TableColumn<?, ?> bookNumberColumn = table.getColumns().get(0);
-        bookNumberColumn.setStyle("-fx-alignment: CENTER;");
-        bookNumberColumn.setCellValueFactory(new PropertyValueFactory<>(firstColumn));
+    static void initTableColumns(TableView<?> table, String[] columns) {
+        for (int i = 0; i < columns.length; i++) {
+            TableColumn<?, ?> column = table.getColumns().get(i);
+            if (i == 0 || i == 3) column.setStyle("-fx-alignment: CENTER;");
+            column.setCellValueFactory(new PropertyValueFactory<>(columns[i]));
+        }
+    }
 
-        TableColumn<?, ?> bookTitleColumn = table.getColumns().get(1);
-        bookTitleColumn.setCellValueFactory(new PropertyValueFactory<>(secondColumn));
-
-        TableColumn<?, ?> bookAuthorColumn = table.getColumns().get(2);
-        bookAuthorColumn.setCellValueFactory(new PropertyValueFactory<>(thirdColumn));
-
-        TableColumn<?, ?> bookCategoryColumn = table.getColumns().get(3);
-        bookCategoryColumn.setStyle("-fx-alignment: CENTER;");
-        bookCategoryColumn.setCellValueFactory(new PropertyValueFactory<>(fourthColumn));
+    /**
+     * Used to get a table from a parent node.
+     * @param parent the parent node.
+     * @param tableId the id of the table.
+     * @return an {@code Optional<TableView<?>>}.
+     */
+    @SuppressWarnings("rawtypes")
+    static Optional<TableView> getTable(Parent parent, String tableId) {
+        return Optional.ofNullable((TableView) parent.lookup(format("#%s", tableId)));
     }
 }
 

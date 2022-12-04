@@ -5,6 +5,7 @@ import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Course;
 import io.github.pitzzahh.libraryManagementSystem.util.Util;
 import static java.util.Objects.requireNonNull;
+import javafx.scene.control.ProgressBar;
 import javafx.collections.FXCollections;
 import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
@@ -43,11 +44,11 @@ public class LibraryManagementSystem extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         initParents();
-        var parent = getParent("main_window");
-        var scene = new Scene(parent);
+        Parent parent = getParent("main_window");
+        Scene scene = new Scene(parent);
         LibraryManagementSystem.stage = primaryStage;
-        var mainProgressBar = getMainProgressBar(parent);
-        mainProgressBar.ifPresent(Util::hideProgressBar);
+        Optional<ProgressBar> mainProgressBar = getMainProgressBar(parent);
+        mainProgressBar.ifPresent(p -> p.setVisible(false));
         getStage().initStyle(StageStyle.DECORATED);
         getStage().getIcons().add(new Image(requireNonNull(LibraryManagementSystem.class.getResourceAsStream("img/logo.png"), "logo not found")));
         getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
@@ -101,6 +102,7 @@ public class LibraryManagementSystem extends Application {
         Parent addBooksPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addBooks/addBooks.fxml"), "Cannot find addBooks.fxml"));
         Parent studentPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/studentPage.fxml"), "Cannot find studentPage.fxml"));
         Parent borrowBookPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/borrowBook/borrowBook.fxml"), "Cannot find borrowBook.fxml"));
+        Parent listOfBorrowedBooksPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/viewList/listOfBorrowedBooks.fxml"), "Cannot find listOfBorrowedBooks.fxml"));
 
         adminPage.setId("admin_window");
         mainPage.setId("main_window");
@@ -108,15 +110,16 @@ public class LibraryManagementSystem extends Application {
         addBooksPage.setId("add_books_window");
         studentPage.setId("student_window");
         borrowBookPage.setId("borrow_books_window");
+        listOfBorrowedBooksPage.setId("list_of_borrowed_books_window");
         addParents.accept(List.of
                 (
-                mainPage,
-                adminPage,
-                addStudentsPage,
-                addBooksPage,
-                studentPage,
-                borrowBookPage
-                )
+                        mainPage,
+                        adminPage,
+                        addStudentsPage,
+                        addBooksPage,
+                        studentPage,
+                        borrowBookPage,
+                        listOfBorrowedBooksPage                )
         );
     }
 

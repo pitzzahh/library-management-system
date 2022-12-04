@@ -82,7 +82,7 @@
                               <effect>
                                  <Glow />
                               </effect>
-                              <Button fx:id="add" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onAdd" onMouseEntered="#onHoverAdd" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/common.css" text="ADD">
+                              <Button fx:id="add" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onAdd" onMouseEntered="#onHoverAdd" prefHeight="50.0" prefWidth="110.0" styleClass="function-button" stylesheets="@../../../css/common.css" text="ADD">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
@@ -90,7 +90,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="remove" mnemonicParsing="false" onMouseClicked="#onRemove" onMouseEntered="#onHoverRemove" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/common.css" text="REMOVE">
+                              <Button fx:id="remove" mnemonicParsing="false" onMouseClicked="#onRemove" onMouseEntered="#onHoverRemove" prefHeight="50.0" prefWidth="110.0" styleClass="function-button" stylesheets="@../../../css/common.css" text="REMOVE">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
@@ -98,7 +98,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="removeAll" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onRemoveAll" onMouseEntered="#onHoverRemoveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/common.css" text="REMOVE ALL">
+                              <Button fx:id="removeAll" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onRemoveAll" onMouseEntered="#onHoverRemoveAll" prefHeight="50.0" prefWidth="110.0" styleClass="function-button" stylesheets="@../../../css/common.css" text="REMOVE ALL">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
@@ -106,7 +106,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="saveAll" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onSaveAll" onMouseEntered="#onHoverSaveAll" prefHeight="50.0" prefWidth="110.0" stylesheets="@../../../css/common.css" text="SAVE ALL">
+                              <Button fx:id="saveAll" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onSaveAll" onMouseEntered="#onHoverSaveAll" prefHeight="50.0" prefWidth="110.0" styleClass="function-button" stylesheets="@../../../css/common.css" text="SAVE ALL">
                                  <font>
                                     <Font size="15.0" />
                                  </font>

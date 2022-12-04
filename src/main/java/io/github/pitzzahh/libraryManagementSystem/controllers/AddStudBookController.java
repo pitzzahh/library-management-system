@@ -4,7 +4,7 @@ import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.*;
-import javafx.util.Duration;
+import java.util.Optional;
 import javafx.fxml.FXML;
 
 public class AddStudBookController {
@@ -54,13 +54,7 @@ public class AddStudBookController {
                             secondInput.getText().trim(),
                             (Course) choiceBox.getSelectionModel().getSelectedItem()
                     ));
-                    initTableColumns(
-                            table,
-                            "studentNumber",
-                            "firstName",
-                            "lastName",
-                            "course"
-                    );
+                    initTableColumns(table, new String[]{"studentNumber", "firstName", "lastName", "course"});
 
                     table.setItems(getStudentsDataSource());
                     resetInputs(
@@ -80,13 +74,7 @@ public class AddStudBookController {
                             null,
                             null
                     ));
-                    initTableColumns(
-                            table,
-                            "bookId",
-                            "title",
-                            "author",
-                            "category"
-                    );
+                    initTableColumns(table, new String[] {"bookId", "title", "author", "category"});
 
                     table.setItems(getBooksDataSource());
                     resetInputs(
@@ -105,8 +93,6 @@ public class AddStudBookController {
                     default -> "No Message";
                 };
                 Tooltip tooltip  = initToolTip(message, event, errorToolTipStyle());
-                tooltip.setAutoHide(true);
-                tooltip.setShowDuration(Duration.seconds(3));
                 id.setTooltip(tooltip);
                 String window = switch (getPage()) {
                     case ADD_STUDENTS -> "add_students_window";
@@ -144,34 +130,29 @@ public class AddStudBookController {
     @SuppressWarnings({"unchecked", "SuspiciousMethodCalls"})
     public void onRemove(MouseEvent mouseEvent) {
         mouseEvent.consume();
-        switch (getPage()) {
-            case ADD_STUDENTS -> {
-                getStudentsDataSource().remove(table.getSelectionModel().getSelectedItem());
-                table.setItems(getStudentsDataSource());
+        Optional<Object> optional = Optional.ofNullable(table.getSelectionModel().getSelectedItem());
+        optional.ifPresent(item -> {
+            switch (getPage()) {
+                case ADD_STUDENTS -> {
+                    getStudentsDataSource().remove(item);
+                    table.setItems(getStudentsDataSource());
+                }
+                case ADD_BOOKS -> {
+                    getBooksDataSource().remove(item);
+                    table.setItems(getBooksDataSource());
+                }
             }
-            case ADD_BOOKS -> {
-                getBooksDataSource().remove(table.getSelectionModel().getSelectedItem());
-                table.setItems(getBooksDataSource());
-            }
-        }
+        });
     }
 
     @FXML
     public void onHoverRemove(MouseEvent event) {
-        passed = checkInputs(
-                add,
-                event,
-                id.getText().trim(),
-                firstInput.getText().trim(),
-                secondInput.getText().trim()
-        );
-        if (passed) {
-            onHoverButtons(switch (getPage()) {
-                case ADD_STUDENTS -> "Remove Student";
-                case ADD_BOOKS -> "Remove Book";
-                default -> "No Message";
-            }, event, remove);
-        }
+        onHoverButtons(switch (getPage()) {
+            case ADD_STUDENTS -> "Remove Student";
+            case ADD_BOOKS -> "Remove Book";
+            default -> "No Message";
+        }, event, remove);
+
     }
 
     @FXML
@@ -200,20 +181,11 @@ public class AddStudBookController {
 
     @FXML
     public void onHoverRemoveAll(MouseEvent event) {
-        passed = checkInputs(
-                add,
-                event,
-                id.getText().trim(),
-                firstInput.getText().trim(),
-                secondInput.getText().trim()
-        );
-        if (passed) {
-            onHoverButtons(switch (getPage()) {
-                case ADD_STUDENTS -> "Remove All Students records from the table";
-                case ADD_BOOKS -> "Remove All Books records from the table";
-                default -> "No Message";
-            }, event, removeAll);
-        }
+        onHoverButtons(switch (getPage()) {
+            case ADD_STUDENTS -> "Remove All Students records from the table";
+            case ADD_BOOKS -> "Remove All Books records from the table";
+            default -> "No Message";
+        }, event, removeAll);
     }
 
     @FXML
@@ -242,19 +214,10 @@ public class AddStudBookController {
 
     @FXML
     public void onHoverSaveAll(MouseEvent event) {
-        passed = checkInputs(
-                add,
-                event,
-                id.getText().trim(),
-                firstInput.getText().trim(),
-                secondInput.getText().trim()
-        );
-        if (passed) {
-            onHoverButtons(switch (getPage()) {
-                case ADD_STUDENTS -> "Save All Students records to the database";
-                case ADD_BOOKS -> "Save All Books records to the database";
-                default -> "No Message";
-            }, event, saveAll);
-        }
+        onHoverButtons(switch (getPage()) {
+            case ADD_STUDENTS -> "Save All Students records to the database";
+            case ADD_BOOKS -> "Save All Books records to the database";
+            default -> "No Message";
+        }, event, saveAll);
     }
 }
