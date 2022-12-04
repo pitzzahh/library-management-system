@@ -22,6 +22,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import java.util.*;
 
 /**
@@ -111,6 +112,16 @@ public interface Util {
     static void loadPage(ActionEvent actionEvent, String id) {
         ((BorderPane)(((Button) actionEvent.getSource()).getParent().getParent()))
                 .setCenter(getParent(id));
+    }
+
+    static void loadParent(Parent parent, String stageTitle) {
+        if (parent.getScene() != null)
+            getStage().setScene(parent.getScene()); // if scene is present, get it
+        else getStage().setScene(new Scene(parent)); // create new scene if new login
+        getStage().setTitle(stageTitle);
+        getStage().centerOnScreen();
+        getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
+        getStage().show();
     }
 
     /**
