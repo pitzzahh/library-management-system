@@ -50,7 +50,7 @@ public class LibraryManagementSystem extends Application {
         Optional<ProgressBar> mainProgressBar = getMainProgressBar(parent);
         mainProgressBar.ifPresent(p -> p.setVisible(false));
         getStage().initStyle(StageStyle.DECORATED);
-        getStage().getIcons().add(new Image(requireNonNull(LibraryManagementSystem.class.getResourceAsStream("img/logo.png"), "logo not found")));
+        getStage().getIcons().add(new Image(requireNonNull(getClass().getResourceAsStream("img/logo.png"), "logo not found")));
         getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
         getStage().setScene(scene);
         getStage().centerOnScreen();
