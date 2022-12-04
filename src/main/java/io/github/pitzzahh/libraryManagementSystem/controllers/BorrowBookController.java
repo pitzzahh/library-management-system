@@ -116,7 +116,9 @@ public class BorrowBookController {
 
     @FXML
     public void onBorrowAll(MouseEvent ignoredMouseEvent) {
-
+        saveAllBorrowedBooks();
+        getBorrowedBooksDataSource().clear();
+        table.setItems(getBooksDataSource());
     }
 
     @FXML
@@ -126,16 +128,7 @@ public class BorrowBookController {
 
     @FXML
     public void onChooseCategory(ActionEvent ignoredActionEvent) {
-        getAvailableBooksDataSource().clear();
-        Category selectedItem = choiceBox.getSelectionModel().getSelectedItem();
-
-        availableBooks.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-        getAvailableBooksDataSource().addAll(getBooksByCategory(selectedItem));
-
-        initTableColumns(availableBooks, new String[]{"bookId", "title", "author", "category"});
-
-        availableBooks.setItems(getAvailableBooksDataSource());
+        setAvailableBooksData(availableBooks, choiceBox);
     }
 
 }
