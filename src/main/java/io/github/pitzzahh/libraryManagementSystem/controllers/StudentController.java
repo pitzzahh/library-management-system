@@ -48,6 +48,7 @@ public class StudentController {
     public void onViewBooks(ActionEvent actionEvent) {
         actionEvent.consume();
         setPage(Page.VIEW_BORROWED_BOOKS);
+        loadPage(actionEvent, "list_of_borrowed_books_window");
     }
 
     @FXML
