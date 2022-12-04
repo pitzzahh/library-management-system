@@ -154,7 +154,8 @@ public class LoginController {
         return initToolTip(
                 "Enter your credentials",
                 mouseEvent,
-                errorToolTipStyle()
+                errorToolTipStyle(),
+                null
         );
     }
 }
