@@ -221,9 +221,8 @@ public interface Util {
         return Fields.eventHandler;
     }
 
-    @SuppressWarnings("unchecked")
-    static Optional<ChoiceBox<Object>> getChoiceBox(Parent parent, String name) {
-        return Optional.ofNullable((ChoiceBox<Object>) parent.lookup(format("#%s", name)));
+    static Optional<ChoiceBox<?>> getChoiceBox(Parent parent, String name) {
+        return Optional.ofNullable((ChoiceBox<?>) parent.lookup(format("#%s", name)));
     }
 
     static boolean isStudentAlreadyAdded(String studentNumber) {
@@ -288,7 +287,6 @@ public interface Util {
     }
 
     static void logoutSession() {
-        getStage().removeEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
         getStage().close();
         Parent mainWindow = getParent("main_window");
         getMessageLabel(mainWindow).ifPresent(label -> label.setText(""));
@@ -358,6 +356,16 @@ public interface Util {
     @SuppressWarnings("rawtypes")
     static Optional<TableView> getTable(Parent parent, String tableId) {
         return Optional.ofNullable((TableView) parent.lookup(format("#%s", tableId)));
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    static void setAvailableBooksData(TableView tableView, ChoiceBox<Category> objectChoiceBox) {
+        getAvailableBooksDataSource().clear();
+        Category selectedItem = objectChoiceBox.getSelectionModel().getSelectedItem();
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        getAvailableBooksDataSource().addAll(getBooksByCategory(selectedItem));
+        initTableColumns(tableView, new String[]{"bookId", "title", "author", "category"});
+        tableView.setItems(getAvailableBooksDataSource());
     }
 }
 
