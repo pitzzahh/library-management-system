@@ -59,18 +59,21 @@ public class StudentController {
     }
 
     @FXML
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({"rawtypes"})
     public void onViewBooks(ActionEvent actionEvent) {
         actionEvent.consume();
         setPage(Page.VIEW_BORROWED_BOOKS);
         loadPage(actionEvent, "list_of_borrowed_books_window");
         Optional<TableView> table = getTable(getParent("list_of_borrowed_books_window"), "table");
-        table.ifPresent(t -> {
-            getBorrowedBooksDataSource().clear();
-            getBorrowedBooksDataSource().addAll(getAllBorrowedBooks());
-            initTableColumns(t, new String[]{"bookId", "title", "author", "category", "dateBorrowed", "dateReturned"});
-            t.setItems(getBorrowedBooksDataSource());
-        });
+        table.ifPresent(this::setItemsToViewBooksTable);
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    private void setItemsToViewBooksTable(TableView t) {
+        getBorrowedBooksDataSource().clear();
+        getBorrowedBooksDataSource().addAll(getAllBorrowedBooks());
+        initTableColumns(t, new String[]{"bookId", "title", "author", "category", "dateBorrowed", "dateReturned"});
+        t.setItems(getBorrowedBooksDataSource());
     }
 
     @FXML
@@ -81,11 +84,11 @@ public class StudentController {
     /**
      * Logs out the current session.
      * Returns to the main page.
-     * @param ignoredActionEvent the action event.
+     * @param actionEvent the action event.
      */
     @FXML
-    public void onLogout(ActionEvent ignoredActionEvent) {
-        logoutSession();
+    public void onLogout(ActionEvent actionEvent) {
+        logoutSession(actionEvent);
     }
 
     /**
