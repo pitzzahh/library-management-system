@@ -55,13 +55,7 @@ public class AddStudBookController {
                             secondInput.getText().trim(),
                             (Course) choiceBox.getSelectionModel().getSelectedItem()
                     ));
-                    initTableColumns(
-                            table,
-                            "studentNumber",
-                            "firstName",
-                            "lastName",
-                            "course"
-                    );
+                    initTableColumns(table, new String[]{"studentNumber", "firstName", "lastName", "course"});
 
                     table.setItems(getStudentsDataSource());
                     resetInputs(
@@ -81,13 +75,7 @@ public class AddStudBookController {
                             null,
                             null
                     ));
-                    initTableColumns(
-                            table,
-                            "bookId",
-                            "title",
-                            "author",
-                            "category"
-                    );
+                    initTableColumns(table, new String[] {"bookId", "title", "author", "category"});
 
                     table.setItems(getBooksDataSource());
                     resetInputs(
