@@ -40,12 +40,10 @@
                                     </ChoiceBox>
                                 </HBox>
                                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
-                                    <Label prefHeight="50.0" prefWidth="166.0" styleClass="input-label"
-                                           stylesheets="@../../../css/common.css" text="Return Date"/>
-                                    <DatePicker fx:id="returnDate" prefHeight="31.0" prefWidth="346.0"
-                                                HBox.hgrow="ALWAYS">
+                                    <Label prefHeight="50.0" prefWidth="166.0" styleClass="input-label" stylesheets="@../../../css/common.css" text="Return Date" />
+                                    <DatePicker fx:id="returnDate" prefHeight="31.0" prefWidth="346.0" HBox.hgrow="ALWAYS">
                                         <HBox.margin>
-                                            <Insets right="10.0"/>
+                                            <Insets right="10.0" />
                                         </HBox.margin>
                                     </DatePicker>
                                 </HBox>
@@ -116,6 +114,8 @@
                                                     <TableColumn editable="false" prefWidth="75.0" text="TITLE" />
                                                     <TableColumn editable="false" prefWidth="75.0" text="AUTHOR" />
                                                     <TableColumn editable="false" prefWidth="75.0" text="CATEGORY" />
+                                       <TableColumn editable="false" prefWidth="75.0" text="BORROW DATE" />
+                                       <TableColumn editable="false" prefWidth="75.0" text="RETURN DATE" />
                                                 </columns>
                                             </TableView>
                                         </VBox>
