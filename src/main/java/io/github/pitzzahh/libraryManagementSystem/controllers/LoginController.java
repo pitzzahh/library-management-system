@@ -4,22 +4,14 @@ import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem
 import io.github.pitzzahh.libraryManagementSystem.validator.Validator;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.util.PBar;
-
-import java.io.IOException;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
-import javafx.concurrent.Service;
-import javafx.event.ActionEvent;
-import javafx.scene.Parent;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
+import javafx.concurrent.Service;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.util.Optional;
-import javafx.scene.Scene;
 import javafx.fxml.FXML;
 
 /**
@@ -34,12 +26,6 @@ public class LoginController {
 
     @FXML
     private PasswordField credentialField;
-
-    @FXML
-    public ToggleButton toggleViewPassword;
-
-    @FXML
-    public ImageView showPassword;
 
     @FXML
     private Label message;
@@ -97,14 +83,8 @@ public class LoginController {
      */
     private void checker(String fieldText, AtomicReference<String> debugMessage) {
         if (fieldText.equals($admin)) {
-            Parent adminWindow = getParent("admin_window");
             getStage().close();
-            if (adminWindow.getScene() != null) getStage().setScene(adminWindow.getScene()); // if scene is present, get it
-            else getStage().setScene(new Scene(adminWindow)); // create new scene if new login
-            getStage().setTitle("Administrator");
-            getStage().centerOnScreen();
-            getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
-            getStage().show();
+            loadParent(getParent("admin_window"), "Administrator");
             progressBar.setVisible(false);
             credentialField.clear();
             credentialField.setVisible(true);
@@ -116,16 +96,8 @@ public class LoginController {
                 final boolean doesAccountExist = Validator.doesAccountExist(fieldText);
                 if (doesAccountExist) {
                     debugMessage.set("Account exists");
-                    // TODO: new window for student
-                    Parent clientWindow = getParent("student_window");
                     getStage().close();
-                    if (clientWindow.getScene() != null)
-                        getStage().setScene(clientWindow.getScene()); // if scene is present, get it
-                    else getStage().setScene(new Scene(clientWindow)); // create new scene if new login
-                    getStage().setTitle("Student");
-                    getStage().centerOnScreen();
-                    getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
-                    getStage().show();
+                    loadParent(getParent("student_window"), "Student");
                     credentialField.clear();
                 } else {
                     debugMessage.set("Account does not exist");
