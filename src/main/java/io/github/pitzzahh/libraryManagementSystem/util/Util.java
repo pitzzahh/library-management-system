@@ -60,10 +60,16 @@ public interface Util {
      * @return the tooltip.
      * @see Tooltip
      */
-    static Tooltip initToolTip(String tip, MouseEvent event, String styles) {
+    static Tooltip initToolTip(String tip, MouseEvent event, String styles, Control control) {
         Tooltip toolTip = new Tooltip(tip);
-        toolTip.setX(event.getScreenX());
-        toolTip.setY(event.getScreenY());
+        if (event != null) {
+            toolTip.setX(event.getScreenX());
+            toolTip.setY(event.getScreenY());
+        }
+        if (control != null) {
+            toolTip.setX(control.getBoundsInParent().getMinX());
+            toolTip.setY(control.getBoundsInParent().getMinX());
+        }
         toolTip.setStyle(styles);
         toolTip.setAutoHide(true);
         toolTip.setShowDuration(Duration.seconds(3));
@@ -203,7 +209,8 @@ public interface Util {
         Tooltip tooltip = initToolTip(
                 ADD_STUDENTS,
                 event,
-                styles
+                styles,
+                null
         );
         tooltip.setShowDuration(Duration.seconds(3));
         button.setTooltip(tooltip);
@@ -228,7 +235,15 @@ public interface Util {
     static boolean isStudentAlreadyAdded(String studentNumber) {
         return getAllStudents()
                 .stream()
-                .anyMatch(e -> e.getStudentNumber().equals(studentNumber));
+                .noneMatch(e -> e.getStudentNumber().equals(studentNumber)) && getStudentsDataSource().stream()
+                .noneMatch(e -> e.getStudentNumber().equals(studentNumber));
+    }
+
+    static boolean isBookAlreadyAdded(String bookId) {
+        return getAllBooks()
+                .stream()
+                .noneMatch(e -> e.getBookId().equals(bookId)) && getBooksDataSource().stream()
+                .noneMatch(e -> e.getBookId().equals(bookId));
     }
 
     static ObservableList<Student> getStudentsDataSource() {
@@ -300,7 +315,8 @@ public interface Util {
         Tooltip tooltip = initToolTip(
                 Logout_Session,
                 mouseEvent,
-                leftButtonSelectionFunctionStyle()
+                leftButtonSelectionFunctionStyle(),
+                null
         );
         tooltip.setShowDuration(Duration.seconds(3));
         logout.setTooltip(tooltip);
