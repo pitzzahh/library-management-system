@@ -40,27 +40,31 @@ public class BorrowBookController {
     public TableView<Book> table;
 
     @FXML
-    public void onAdd(MouseEvent mouseEvent) {
-        mouseEvent.consume();
+    public void onAdd(MouseEvent ignoredMouseEvent) {
+        Optional<LocalDate> optionalDatePicker = Optional.ofNullable(returnDate.getValue());
+        optionalDatePicker.ifPresentOrElse(this::addBook, () -> {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Return date is required");
+            alert.setContentText("Please select a return date");
+            alert.showAndWait();
+        });
+    }
+
+    private void addBook(LocalDate date) {
         ObservableList<Book> selectedItems = availableBooks
                 .getSelectionModel()
                 .getSelectedItems()
                 .stream()
                 .peek(book -> {
                         book.setDateBorrowed(LocalDate.now());
-                        book.setDateReturned(returnDate.getValue());
+                        book.setDateReturned(date);
                 })
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         getBorrowedBooksDataSource().addAll(selectedItems);
 
-        initTableColumns(
-                table,
-                "bookId",
-                "title",
-                "author",
-                "category"
-        );
+        initTableColumns(table, new String[]{"bookId", "title", "author", "category", "dateBorrowed", "dateReturned"});
 
         table.setItems(getBorrowedBooksDataSource());
     }
@@ -71,12 +75,11 @@ public class BorrowBookController {
     }
 
     @FXML
-    public void onRemove(MouseEvent mouseEvent) {
-        mouseEvent.consume();
+    public void onRemove(MouseEvent ignoredMouseEvent) {
         Optional<Object> optional = Optional.ofNullable(table.getSelectionModel().getSelectedItem());
         optional.ifPresent(item -> {
             getBorrowedBooksDataSource().remove(item);
-            table.setItems(getBooksDataSource());
+            table.setItems(getBorrowedBooksDataSource());
         });
     }
 
@@ -86,8 +89,7 @@ public class BorrowBookController {
     }
 
     @FXML
-    public void onRemoveAll(MouseEvent mouseEvent) {
-        mouseEvent.consume();
+    public void onRemoveAll(MouseEvent ignoredMouseEvent) {
         getAllBorrowedBooks().clear();
         getBorrowedBooksDataSource().clear();
         table.setItems(getBorrowedBooksDataSource());
@@ -99,7 +101,7 @@ public class BorrowBookController {
     }
 
     @FXML
-    public void onBorrowAll(MouseEvent mouseEvent) {
+    public void onBorrowAll(MouseEvent ignoredMouseEvent) {
 
     }
 
@@ -109,8 +111,7 @@ public class BorrowBookController {
     }
 
     @FXML
-    public void onChooseCategory(ActionEvent actionEvent) {
-        actionEvent.consume();
+    public void onChooseCategory(ActionEvent ignoredActionEvent) {
         getAvailableBooksDataSource().clear();
         Category selectedItem = choiceBox.getSelectionModel().getSelectedItem();
 
@@ -118,13 +119,7 @@ public class BorrowBookController {
 
         getAvailableBooksDataSource().addAll(getBooksByCategory(selectedItem));
 
-        initTableColumns(
-                availableBooks,
-                "bookId",
-                "title",
-                "author",
-                "category"
-        );
+        initTableColumns(availableBooks, new String[]{"bookId", "title", "author", "category"});
 
         availableBooks.setItems(getAvailableBooksDataSource());
     }
