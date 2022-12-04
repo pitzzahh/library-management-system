@@ -2,9 +2,11 @@ package io.github.pitzzahh.libraryManagementSystem.controllers;
 
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.Page;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
+import java.util.Optional;
 import javafx.fxml.FXML;
 
 public class StudentController {
@@ -45,10 +47,18 @@ public class StudentController {
     }
 
     @FXML
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public void onViewBooks(ActionEvent actionEvent) {
         actionEvent.consume();
         setPage(Page.VIEW_BORROWED_BOOKS);
         loadPage(actionEvent, "list_of_borrowed_books_window");
+        Optional<TableView> table = getTable(getParent("list_of_borrowed_books_window"), "table");
+        table.ifPresent(t -> {
+            getBorrowedBooksDataSource().clear();
+            getBorrowedBooksDataSource().addAll(getAllBorrowedBooks());
+            initTableColumns(t, new String[]{"bookId", "title", "author", "category", "dateBorrowed", "dateReturned"});
+            t.setItems(getBorrowedBooksDataSource());
+        });
     }
 
     @FXML
