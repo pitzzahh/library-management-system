@@ -341,12 +341,23 @@ public interface Util {
         return Fields.borowedBooksList;
     }
 
-    static void initTableColumns(TableView<Book> table, String[] columns) {
+    static void initTableColumns(TableView<?> table, String[] columns) {
         for (int i = 0; i < columns.length; i++) {
             TableColumn<?, ?> column = table.getColumns().get(i);
             if (i == 0 || i == 3) column.setStyle("-fx-alignment: CENTER;");
             column.setCellValueFactory(new PropertyValueFactory<>(columns[i]));
         }
+    }
+
+    /**
+     * Used to get a table from a parent node.
+     * @param parent the parent node.
+     * @param tableId the id of the table.
+     * @return an {@code Optional<TableView<?>>}.
+     */
+    @SuppressWarnings("rawtypes")
+    static Optional<TableView> getTable(Parent parent, String tableId) {
+        return Optional.ofNullable((TableView) parent.lookup(format("#%s", tableId)));
     }
 }
 
