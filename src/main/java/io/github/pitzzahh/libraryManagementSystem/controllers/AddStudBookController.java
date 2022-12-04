@@ -1,5 +1,7 @@
 package io.github.pitzzahh.libraryManagementSystem.controllers;
 
+import static io.github.pitzzahh.libraryManagementSystem.entity.Page.ADD_STUDENTS;
+import static io.github.pitzzahh.libraryManagementSystem.entity.Page.ADD_BOOKS;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.*;
 import javafx.scene.input.MouseEvent;
@@ -87,18 +89,12 @@ public class AddStudBookController {
 
             }
             else {
-                String message = switch (getPage()) {
-                    case ADD_STUDENTS -> "Cannot add student, Student with student id already added";
-                    case ADD_BOOKS -> "Cannot add book, Book with book id already added";
-                    default -> "No Message";
-                };
+                String message = getPage().equals(ADD_STUDENTS) ? "Cannot add student, Student with student id already added" :
+                        getPage().equals(ADD_BOOKS) ? "Cannot add book, Book with book id already added" : "No Message";
                 Tooltip tooltip  = initToolTip(message, null, errorToolTipStyle(), id);
                 id.setTooltip(tooltip);
-                String window = switch (getPage()) {
-                    case ADD_STUDENTS -> "add_students_window";
-                    case ADD_BOOKS -> "add_books_window";
-                    default -> "No Message";
-                };
+                String window = getPage().equals(ADD_STUDENTS) ? "add_students_window" :
+                        getPage().equals(ADD_BOOKS) ? "add_books_window" : "no window";
                 id.getTooltip().show(getParent(window).getScene().getWindow());
             }
         }
@@ -114,11 +110,9 @@ public class AddStudBookController {
                 secondInput.getText().trim()
         );
         if (passed) {
-            onHoverButtons(switch (getPage()) {
-                case ADD_STUDENTS -> "Add Student";
-                case ADD_BOOKS -> "Add Book";
-                default -> "No Message";
-            }, event, add);
+            String message = getPage().equals(ADD_STUDENTS) ? "Add Student" :
+                    getPage().equals(ADD_BOOKS) ? "Add Book" : "No Message";
+            onHoverButtons(message, event, add);
         }
     }
 
@@ -132,26 +126,21 @@ public class AddStudBookController {
         mouseEvent.consume();
         Optional<Object> optional = Optional.ofNullable(table.getSelectionModel().getSelectedItem());
         optional.ifPresent(item -> {
-            switch (getPage()) {
-                case ADD_STUDENTS -> {
-                    getStudentsDataSource().remove(item);
-                    table.setItems(getStudentsDataSource());
-                }
-                case ADD_BOOKS -> {
-                    getBooksDataSource().remove(item);
-                    table.setItems(getBooksDataSource());
-                }
+            if (getPage().equals(ADD_STUDENTS)) {
+                getStudentsDataSource().remove(item);
+                table.setItems(getStudentsDataSource());
+            } else if (getPage().equals(ADD_BOOKS)) {
+                getBooksDataSource().remove(item);
+                table.setItems(getBooksDataSource());
             }
         });
     }
 
     @FXML
     public void onHoverRemove(MouseEvent event) {
-        onHoverButtons(switch (getPage()) {
-            case ADD_STUDENTS -> "Remove Student";
-            case ADD_BOOKS -> "Remove Book";
-            default -> "No Message";
-        }, event, remove);
+        String message = getPage().equals(ADD_STUDENTS) ? "Remove Student" :
+                getPage().equals(ADD_BOOKS) ? "Remove Book" : "No Message";
+        onHoverButtons(message, event, remove);
 
     }
 
@@ -159,17 +148,14 @@ public class AddStudBookController {
     @SuppressWarnings({"unchecked"})
     public void onRemoveAll(MouseEvent mouseEvent) {
         mouseEvent.consume();
-        switch (getPage()) {
-            case ADD_STUDENTS -> {
-                getAllStudents().clear();
-                getStudentsDataSource().clear();
-                table.setItems(getStudentsDataSource());
-            }
-            case ADD_BOOKS -> {
-                getAllBooks().clear();
-                getBooksDataSource().clear();
-                table.setItems(getBooksDataSource());
-            }
+        if (getPage().equals(ADD_STUDENTS)) {
+            getAllStudents().clear();
+            getStudentsDataSource().clear();
+            table.setItems(getStudentsDataSource());
+        } else if (getPage().equals(ADD_BOOKS)) {
+            getAllBooks().clear();
+            getBooksDataSource().clear();
+            table.setItems(getBooksDataSource());
         }
         resetInputs(
                 id,
@@ -181,28 +167,23 @@ public class AddStudBookController {
 
     @FXML
     public void onHoverRemoveAll(MouseEvent event) {
-        onHoverButtons(switch (getPage()) {
-            case ADD_STUDENTS -> "Remove All Students records from the table";
-            case ADD_BOOKS -> "Remove All Books records from the table";
-            default -> "No Message";
-        }, event, removeAll);
+        String message = getPage().equals(ADD_STUDENTS) ? "Remove All Students records from the table" :
+                getPage().equals(ADD_BOOKS) ? "Remove All Books records from the table" : "No Message";
+        onHoverButtons(message, event, removeAll);
     }
 
     @FXML
     @SuppressWarnings({"unchecked"})
     public void onSaveAll(MouseEvent mouseEvent) {
         mouseEvent.consume();
-        switch (getPage()) {
-            case ADD_STUDENTS -> {
-                saveAllStudents();
-                getStudentsDataSource().clear();
-                table.setItems(getStudentsDataSource());
-            }
-            case ADD_BOOKS -> {
-                saveAllBooks();
-                getBooksDataSource().clear();
-                table.setItems(getBooksDataSource());
-            }
+        if (getPage().equals(ADD_STUDENTS)) {
+            saveAllStudents();
+            getStudentsDataSource().clear();
+            table.setItems(getStudentsDataSource());
+        } else if (getPage().equals(ADD_BOOKS)) {
+            saveAllBooks();
+            getBooksDataSource().clear();
+            table.setItems(getBooksDataSource());
         }
         resetInputs(
                 id,
@@ -214,10 +195,8 @@ public class AddStudBookController {
 
     @FXML
     public void onHoverSaveAll(MouseEvent event) {
-        onHoverButtons(switch (getPage()) {
-            case ADD_STUDENTS -> "Save All Students records to the database";
-            case ADD_BOOKS -> "Save All Books records to the database";
-            default -> "No Message";
-        }, event, saveAll);
+        String message = getPage().equals(ADD_STUDENTS) ? "Save All Students records to the database" :
+                getPage().equals(ADD_BOOKS) ? "Save All Books records to the database" : "No Message";
+        onHoverButtons(message, event, saveAll);
     }
 }
