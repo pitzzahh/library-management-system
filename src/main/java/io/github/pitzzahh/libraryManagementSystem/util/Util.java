@@ -147,8 +147,8 @@ public interface Util {
      * @return an {@code Optional<Label>}.
      */
     //TODO: fix bug
-    static Optional<Label> getMessageLabel(Parent parent) {
-        return Optional.ofNullable((Label) parent.lookup("#message"));
+    static Optional<Label> getLabel(Parent parent, String id) {
+        return Optional.ofNullable((Label) parent.lookup(format("#%s", id)));
     }
 
     static void addActiveButtons(Button button) {
@@ -299,7 +299,7 @@ public interface Util {
         getStage().close();
         loadPage(actionEvent, "promptPage_page");
         Parent mainWindow = getParent("main_window");
-        getMessageLabel(mainWindow).ifPresent(label -> label.setText(""));
+        getLabel(mainWindow, "message").ifPresent(label -> label.setText(""));
         getMainProgressBar(mainWindow).ifPresent(pb -> pb.setVisible(false));
         getStage().setTitle("Library Management System");
         getStage().centerOnScreen();
