@@ -46,7 +46,7 @@ public class AddStudBookController {
         event.consume();
         System.out.printf("Passed: %s%n", passed);
         if (passed) {
-            if (!isStudentAlreadyAdded(id.getText().trim())) {
+            if (isStudentAlreadyAdded(id.getText().trim()) && isBookAlreadyAdded(id.getText().trim())) {
                 if (getPage().equals(Page.ADD_STUDENTS)) {
                     getStudentsDataSource().add(new Student(
                             id.getText().trim(),
@@ -92,7 +92,7 @@ public class AddStudBookController {
                     case ADD_BOOKS -> "Cannot add book, Book with book id already added";
                     default -> "No Message";
                 };
-                Tooltip tooltip  = initToolTip(message, event, errorToolTipStyle());
+                Tooltip tooltip  = initToolTip(message, null, errorToolTipStyle(), id);
                 id.setTooltip(tooltip);
                 String window = switch (getPage()) {
                     case ADD_STUDENTS -> "add_students_window";
