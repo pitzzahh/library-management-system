@@ -66,11 +66,11 @@ public class AdminController {
     /**
      * Logs out the current session.
      * Returns to the main page.
-     * @param ignoredActionEvent the action event.
+     * @param actionEvent the action event.
      */
     @FXML
-    public void onLogout(ActionEvent ignoredActionEvent) {
-        logoutSession();
+    public void onLogout(ActionEvent actionEvent) {
+        logoutSession(actionEvent);
     }
 
     /**
