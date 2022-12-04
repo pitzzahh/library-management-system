@@ -3,8 +3,8 @@
     src: url('../fonts/JetBrainsMono.ttf');
 }
 
-.root, .field-vbox, .borrowed-box{
-    -fx-background-color:  linear-gradient(to bottom, #006d77, #93f9b944);
+.root, .field-vbox, .borrowed-box {
+    -fx-background-color:  linear-gradient(to bottom, #006d77 90%, #93f9b944 100%);
 }
 
 .function-button {
@@ -89,4 +89,10 @@
 .separate-window-button {
     -fx-background-color: transparent;
     -fx-cursor: hand;
+}
+
+.function-buttons-hBox {
+    -fx-background-color: #93f9b944;
+    -fx-border-width: none;
+    -fx-border-color: transparent;
 }

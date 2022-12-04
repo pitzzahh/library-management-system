@@ -82,7 +82,7 @@
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                             </columnResizePolicy>
                                         </TableView>
-                                       <HBox alignment="CENTER" prefHeight="75.0" prefWidth="509.0">
+                                       <HBox alignment="CENTER" prefHeight="75.0" prefWidth="509.0" styleClass="function-buttons-hBox" stylesheets="@../../../css/common.css">
                                            <effect>
                                                <Glow />
                                            </effect>

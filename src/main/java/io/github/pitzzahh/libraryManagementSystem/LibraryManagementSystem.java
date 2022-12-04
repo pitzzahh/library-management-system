@@ -57,21 +57,21 @@ public class LibraryManagementSystem extends Application {
         getStage().toFront();
         getStage().setTitle("Library Management System");
 
-        Optional<ChoiceBox<Object>> courseChoiceBox = getChoiceBox(getParent("add_students_window"), "choiceBox");
+        getChoiceBox(getParent("add_students_window"), "choiceBox")
+                .map(e -> (ChoiceBox<Course>) e)
+                .ifPresentOrElse(e -> {
+                    e.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Course.values()).collect(Collectors.toList())));
+                    e.getSelectionModel().selectFirst();
+                    }, () -> System.out.println("Course choice box not found")
+                );
 
-        courseChoiceBox.ifPresentOrElse(e -> {
-            e.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Course.values()).collect(Collectors.toList())));
-            e.getSelectionModel().selectFirst();
-        }, () -> System.out.println("Course choice box not found")
-        );
+        getChoiceBox(getParent("add_books_window"), "choiceBox")
+                .map(e -> (ChoiceBox<Object>) e)
+                .ifPresent(LibraryManagementSystem::initCategory);
 
-        Optional<ChoiceBox<Object>> booksChoiceBox = getChoiceBox(getParent("add_books_window"), "choiceBox");
-
-        booksChoiceBox.ifPresent(LibraryManagementSystem::initCategory);
-
-        Optional<ChoiceBox<Object>> borrowBookChoiceBox = getChoiceBox(getParent("borrow_books_window"), "choiceBox");
-
-        borrowBookChoiceBox.ifPresent(LibraryManagementSystem::initCategory);
+        getChoiceBox(getParent("borrow_books_window"), "choiceBox")
+                .map(e -> (ChoiceBox<Object>) e)
+                .ifPresent(LibraryManagementSystem::initCategory);
 
         getStage().show();
         System.out.println("Application started");
@@ -96,13 +96,13 @@ public class LibraryManagementSystem extends Application {
      * @throws IOException if the parent cannot be loaded.
      */
     private void initParents() throws IOException {
-        Parent mainPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/mainPage.fxml"), "Cannot find mainPage.fxml"));
-        Parent adminPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/adminPage.fxml"), "Cannot find adminPage.fxml"));
-        Parent addStudentsPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addStudents/addStudents.fxml"), "Cannot find addStudents.fxml"));
-        Parent addBooksPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addBooks/addBooks.fxml"), "Cannot find addBooks.fxml"));
-        Parent studentPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/studentPage.fxml"), "Cannot find studentPage.fxml"));
-        Parent borrowBookPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/borrowBook/borrowBook.fxml"), "Cannot find borrowBook.fxml"));
-        Parent listOfBorrowedBooksPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/viewList/listOfBorrowedBooks.fxml"), "Cannot find listOfBorrowedBooks.fxml"));
+        Parent mainPage = FXMLLoader.load(requireNonNull(getClass().getResource("fxml/mainPage.fxml"), "Cannot find mainPage.fxml"));
+        Parent adminPage = FXMLLoader.load(requireNonNull(getClass().getResource("fxml/admin/adminPage.fxml"), "Cannot find adminPage.fxml"));
+        Parent addStudentsPage = FXMLLoader.load(requireNonNull(getClass().getResource("fxml/admin/addStudents/addStudents.fxml"), "Cannot find addStudents.fxml"));
+        Parent addBooksPage = FXMLLoader.load(requireNonNull(getClass().getResource("fxml/admin/addBooks/addBooks.fxml"), "Cannot find addBooks.fxml"));
+        Parent studentPage = FXMLLoader.load(requireNonNull(getClass().getResource("fxml/student/studentPage.fxml"), "Cannot find studentPage.fxml"));
+        Parent borrowBookPage = FXMLLoader.load(requireNonNull(getClass().getResource("fxml/student/borrowBook/borrowBook.fxml"), "Cannot find borrowBook.fxml"));
+        Parent listOfBorrowedBooksPage = FXMLLoader.load(requireNonNull(getClass().getResource("fxml/student/viewList/listOfBorrowedBooks.fxml"), "Cannot find listOfBorrowedBooks.fxml"));
 
         adminPage.setId("admin_window");
         mainPage.setId("main_window");
@@ -111,6 +111,7 @@ public class LibraryManagementSystem extends Application {
         studentPage.setId("student_window");
         borrowBookPage.setId("borrow_books_window");
         listOfBorrowedBooksPage.setId("list_of_borrowed_books_window");
+
         addParents.accept(List.of
                 (
                         mainPage,
@@ -119,7 +120,8 @@ public class LibraryManagementSystem extends Application {
                         addBooksPage,
                         studentPage,
                         borrowBookPage,
-                        listOfBorrowedBooksPage                )
+                        listOfBorrowedBooksPage
+                )
         );
     }
 
