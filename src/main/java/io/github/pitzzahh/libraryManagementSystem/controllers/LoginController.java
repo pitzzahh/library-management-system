@@ -4,16 +4,18 @@ import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem
 import io.github.pitzzahh.libraryManagementSystem.validator.Validator;
 import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.util.PBar;
-import java.util.concurrent.atomic.AtomicReference;
 
+import java.io.IOException;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 import javafx.concurrent.Service;
+import javafx.event.ActionEvent;
 import javafx.scene.Parent;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import java.util.Optional;
@@ -29,8 +31,15 @@ public class LoginController {
     @FXML
     public ProgressBar progressBar;
 
+
     @FXML
-    private TextField credentialField;
+    private PasswordField credentialField;
+
+    @FXML
+    public ToggleButton toggleViewPassword;
+
+    @FXML
+    public ImageView showPassword;
 
     @FXML
     private Label message;

@@ -64,6 +64,8 @@ public interface Util {
         toolTip.setX(event.getScreenX());
         toolTip.setY(event.getScreenY());
         toolTip.setStyle(styles);
+        toolTip.setAutoHide(true);
+        toolTip.setShowDuration(Duration.seconds(3));
         return toolTip;
     }
 
@@ -208,12 +210,6 @@ public interface Util {
         return Fields.eventHandler;
     }
 
-    static void hideProgressBar(ProgressBar progressBar) {
-        progressBar.setVisible(false);
-        progressBar.setStyle("-fx-accent: cyan;");
-    }
-
-    // TODO: refactor, use parent lookup
     @SuppressWarnings("unchecked")
     static Optional<ChoiceBox<Object>> getChoiceBox(Parent parent, String name) {
         return Optional.ofNullable((ChoiceBox<Object>) parent.lookup(format("#%s", name)));
@@ -334,27 +330,12 @@ public interface Util {
         return Fields.borowedBooksList;
     }
 
-    static void initTableColumns(
-            TableView<Book> table,
-            String firstColumn,
-            String secondColumn,
-            String thirdColumn,
-            String fourthColumn
-
-    ) {
-        TableColumn<?, ?> bookNumberColumn = table.getColumns().get(0);
-        bookNumberColumn.setStyle("-fx-alignment: CENTER;");
-        bookNumberColumn.setCellValueFactory(new PropertyValueFactory<>(firstColumn));
-
-        TableColumn<?, ?> bookTitleColumn = table.getColumns().get(1);
-        bookTitleColumn.setCellValueFactory(new PropertyValueFactory<>(secondColumn));
-
-        TableColumn<?, ?> bookAuthorColumn = table.getColumns().get(2);
-        bookAuthorColumn.setCellValueFactory(new PropertyValueFactory<>(thirdColumn));
-
-        TableColumn<?, ?> bookCategoryColumn = table.getColumns().get(3);
-        bookCategoryColumn.setStyle("-fx-alignment: CENTER;");
-        bookCategoryColumn.setCellValueFactory(new PropertyValueFactory<>(fourthColumn));
+    static void initTableColumns(TableView<Book> table, String[] columns) {
+        for (int i = 0; i < columns.length; i++) {
+            TableColumn<?, ?> column = table.getColumns().get(i);
+            if (i == 0 || i == 3) column.setStyle("-fx-alignment: CENTER;");
+            column.setCellValueFactory(new PropertyValueFactory<>(columns[i]));
+        }
     }
 }
 

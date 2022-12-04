@@ -9,6 +9,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -19,7 +21,23 @@
     <BorderPane layoutX="111.0" layoutY="100.0" prefHeight="400.0" prefWidth="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <top>
             <HBox alignment="CENTER" prefHeight="58.0" prefWidth="600.0" styleClass="nav-bar" stylesheets="@../../../css/common.css" BorderPane.alignment="CENTER_RIGHT">
-                <Label styleClass="nav-bar-title" stylesheets="@../../../css/common.css" text="Borrow a Book" />
+            <AnchorPane prefHeight="65.0" prefWidth="1025.0" HBox.hgrow="ALWAYS">
+               <children>
+                      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="1000.0" styleClass="nav-bar-title" stylesheets="@../../../css/common.css" text="Borrow a Book" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="10.0" prefWidth="10.0" styleClass="separate-window-button" stylesheets="@../../../css/common.css" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/expand1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </AnchorPane>
             </HBox>
         </top>
         <center>
@@ -41,7 +59,7 @@
                                 </HBox>
                                 <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
                                     <Label prefHeight="50.0" prefWidth="166.0" styleClass="input-label" stylesheets="@../../../css/common.css" text="Return Date" />
-                                    <DatePicker fx:id="returnDate" prefHeight="31.0" prefWidth="346.0" HBox.hgrow="ALWAYS">
+                                    <DatePicker fx:id="returnDate" prefHeight="31.0" prefWidth="346.0" stylesheets="@../../../css/common.css" HBox.hgrow="ALWAYS">
                                         <HBox.margin>
                                             <Insets right="10.0" />
                                         </HBox.margin>
@@ -65,7 +83,7 @@
                                            <effect>
                                                <Glow />
                                            </effect>
-                                           <Button fx:id="add" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onAdd" onMouseEntered="#onHoverAdd" prefHeight="50.0" prefWidth="99.0" stylesheets="@../../../css/common.css" text="ADD">
+                                           <Button fx:id="add" layoutX="165.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onAdd" onMouseEntered="#onHoverAdd" prefHeight="50.0" prefWidth="99.0" styleClass="function-button" stylesheets="@../../../css/common.css" text="ADD">
                                                <HBox.margin>
                                                    <Insets right="10.0" />
                                                </HBox.margin>
@@ -73,7 +91,7 @@
                                                    <Font size="15.0" />
                                                </font>
                                            </Button>
-                                           <Button fx:id="remove" mnemonicParsing="false" onMouseClicked="#onRemove" onMouseEntered="#onHoverRemove" prefHeight="50.0" prefWidth="96.0" stylesheets="@../../../css/common.css" text="REMOVE">
+                                           <Button fx:id="remove" mnemonicParsing="false" onMouseClicked="#onRemove" onMouseEntered="#onHoverRemove" prefHeight="50.0" prefWidth="96.0" styleClass="function-button" stylesheets="@../../../css/common.css" text="REMOVE">
                                                <HBox.margin>
                                                    <Insets right="10.0" />
                                                </HBox.margin>
@@ -81,7 +99,7 @@
                                                    <Font size="15.0" />
                                                </font>
                                            </Button>
-                                           <Button fx:id="removeAll" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onRemoveAll" onMouseEntered="#onHoverRemoveAll" prefHeight="50.0" stylesheets="@../../../css/common.css" text="REMOVE ALL">
+                                           <Button fx:id="removeAll" layoutX="239.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onRemoveAll" onMouseEntered="#onHoverRemoveAll" prefHeight="50.0" styleClass="function-button" stylesheets="@../../../css/common.css" text="REMOVE ALL">
                                                <HBox.margin>
                                                    <Insets right="10.0" />
                                                </HBox.margin>
@@ -89,7 +107,7 @@
                                                    <Font size="15.0" />
                                                </font>
                                            </Button>
-                                           <Button fx:id="borrowAll" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onBorrowAll" onMouseEntered="#onHoverBorrowAll" prefHeight="50.0" stylesheets="@../../../css/common.css" text="BORROW ALL">
+                                           <Button fx:id="borrowAll" layoutX="265.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#onBorrowAll" onMouseEntered="#onHoverBorrowAll" prefHeight="50.0" styleClass="function-button" stylesheets="@../../../css/common.css" text="BORROW ALL">
                                                <font>
                                                    <Font size="15.0" />
                                                </font>

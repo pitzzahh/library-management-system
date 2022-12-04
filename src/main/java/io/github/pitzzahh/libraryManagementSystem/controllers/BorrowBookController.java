@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import java.time.LocalDate;
 import java.util.Optional;
 import javafx.fxml.FXML;
+import org.controlsfx.control.decoration.GraphicDecoration;
 
 public class BorrowBookController {
 
@@ -40,9 +41,9 @@ public class BorrowBookController {
     public TableView<Book> table;
 
     @FXML
-    public void onAdd(MouseEvent ignoredMouseEvent) {
+    public void onAdd(MouseEvent event) {
         Optional<LocalDate> optionalDatePicker = Optional.ofNullable(returnDate.getValue());
-        optionalDatePicker.ifPresentOrElse(this::addBook, () -> {
+        optionalDatePicker.ifPresentOrElse(e -> addBook(e, event), () -> {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Return date is required");
@@ -51,7 +52,7 @@ public class BorrowBookController {
         });
     }
 
-    private void addBook(LocalDate date) {
+    private void addBook(LocalDate date, MouseEvent event) {
         ObservableList<Book> selectedItems = availableBooks
                 .getSelectionModel()
                 .getSelectedItems()
@@ -62,11 +63,21 @@ public class BorrowBookController {
                 })
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
-        getBorrowedBooksDataSource().addAll(selectedItems);
+        boolean b = selectedItems.stream()
+                .anyMatch(books -> table.getItems().stream().anyMatch(book -> book.equals(books)));
 
-        initTableColumns(table, new String[]{"bookId", "title", "author", "category", "dateBorrowed", "dateReturned"});
+        if (b) {
+            Tooltip tooltip  = initToolTip("Cannot add book, Book is already added", event, errorToolTipStyle());
+            availableBooks.setTooltip(tooltip);
+            tooltip.show(availableBooks, event.getScreenX(), event.getScreenY());
+        } else {
+            getBorrowedBooksDataSource().addAll(selectedItems);
 
-        table.setItems(getBorrowedBooksDataSource());
+            initTableColumns(table, new String[]{"bookId", "title", "author", "category", "dateBorrowed", "dateReturned"});
+
+            table.setItems(getBorrowedBooksDataSource());
+            availableBooks.getSelectionModel().clearSelection();
+        }
     }
 
     @FXML
@@ -80,6 +91,7 @@ public class BorrowBookController {
         optional.ifPresent(item -> {
             getBorrowedBooksDataSource().remove(item);
             table.setItems(getBorrowedBooksDataSource());
+            table.getSelectionModel().clearSelection();
         });
     }
 

@@ -94,8 +94,6 @@ public class AddStudBookController {
                     default -> "No Message";
                 };
                 Tooltip tooltip  = initToolTip(message, event, errorToolTipStyle());
-                tooltip.setAutoHide(true);
-                tooltip.setShowDuration(Duration.seconds(3));
                 id.setTooltip(tooltip);
                 String window = switch (getPage()) {
                     case ADD_STUDENTS -> "add_students_window";

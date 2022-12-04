@@ -48,7 +48,7 @@ public class LibraryManagementSystem extends Application {
         Scene scene = new Scene(parent);
         LibraryManagementSystem.stage = primaryStage;
         Optional<ProgressBar> mainProgressBar = getMainProgressBar(parent);
-        mainProgressBar.ifPresent(Util::hideProgressBar);
+        mainProgressBar.ifPresent(p -> p.setVisible(false));
         getStage().initStyle(StageStyle.DECORATED);
         getStage().getIcons().add(new Image(requireNonNull(LibraryManagementSystem.class.getResourceAsStream("img/logo.png"), "logo not found")));
         getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
