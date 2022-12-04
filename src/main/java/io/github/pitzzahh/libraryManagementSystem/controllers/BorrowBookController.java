@@ -12,7 +12,6 @@ import javafx.scene.control.*;
 import java.time.LocalDate;
 import java.util.Optional;
 import javafx.fxml.FXML;
-import org.controlsfx.control.decoration.GraphicDecoration;
 
 public class BorrowBookController {
 
@@ -39,6 +38,9 @@ public class BorrowBookController {
 
     @FXML
     public TableView<Book> table;
+
+    @FXML
+    public Button separateWindowButton;
 
     @FXML
     public void onAdd(MouseEvent event) {
