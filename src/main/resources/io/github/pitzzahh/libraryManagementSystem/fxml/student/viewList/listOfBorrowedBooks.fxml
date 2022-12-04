@@ -33,7 +33,7 @@
                             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="1000.0" styleClass="nav-bar-title" stylesheets="@../../../css/common.css" text="LIST OF BORROWED BOOKS" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="76.0" HBox.hgrow="ALWAYS">
-                            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Button" />
+                            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" styleClass="refresh-table" stylesheets="@../../../css/table.css" text="Refresh Table" />
                         </HBox>
                     </HBox>
                 </AnchorPane>
