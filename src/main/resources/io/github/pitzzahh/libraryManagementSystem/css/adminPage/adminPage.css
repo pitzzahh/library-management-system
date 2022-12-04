@@ -3,11 +3,6 @@
     src: url('../../fonts/JetBrainsMono.ttf');
 }
 
-.start-info {
-    -fx-font-family: "JetBrains Mono Medium";
-    -fx-font-weight: bold;
-}
-
 .topBox {
     -fx-background-color: #006d77;
 }
