@@ -11,38 +11,52 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.ListOfBorrowedBooksController">
-    <top>
-        <HBox alignment="CENTER" prefHeight="58.0" prefWidth="600.0" styleClass="nav-bar" stylesheets="@../../../css/common.css" BorderPane.alignment="CENTER_RIGHT">
-            <AnchorPane prefHeight="65.0" prefWidth="1025.0" HBox.hgrow="ALWAYS">
-                <HBox.margin>
-                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                </HBox.margin>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="1000.0" styleClass="nav-bar-title" stylesheets="@../../../css/common.css" text="LIST OF BORROWED BOOKS" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                <Button fx:id="separateWindowButton" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="10.0" prefWidth="10.0" styleClass="separate-window-button" stylesheets="@../../../css/common.css" textAlignment="CENTER">
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                            <Image url="@../../../img/expand.png" />
-                        </ImageView>
-                    </graphic>
-                </Button>
-            </AnchorPane>
-        </HBox>
-    </top>
-    <center>
-      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/table.css" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="75.0" text="TITLE" />
-            <TableColumn prefWidth="75.0" text="AUTHOR" />
-            <TableColumn prefWidth="75.0" text="CATEGORY" />
-            <TableColumn prefWidth="75.0" text="DATE BORROWED" />
-            <TableColumn prefWidth="75.0" text="DATE TO RETURN" />
-        </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
-   </center>
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.ListOfBorrowedBooksController">
+    <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0"
+                prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <top>
+            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="600.0" styleClass="nav-bar"
+                  stylesheets="@../../../css/common.css" BorderPane.alignment="CENTER_RIGHT">
+                <AnchorPane prefHeight="65.0" prefWidth="1025.0" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </HBox.margin>
+                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="1000.0"
+                           styleClass="nav-bar-title" stylesheets="@../../../css/common.css"
+                           text="LIST OF BORROWED BOOKS" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0"
+                           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                    <Button fx:id="separateWindowButton" alignment="CENTER_RIGHT" contentDisplay="CENTER"
+                            mnemonicParsing="false" prefHeight="10.0" prefWidth="10.0"
+                            styleClass="separate-window-button" stylesheets="@../../../css/common.css"
+                            textAlignment="CENTER">
+                        <graphic>
+                            <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="INHERIT" pickOnBounds="true"
+                                       preserveRatio="true">
+                                <Image url="@../../../img/expand.png"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </AnchorPane>
+            </HBox>
+        </top>
+        <center>
+          <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/table.css"
+                     BorderPane.alignment="CENTER">
+              <columns>
+                  <TableColumn prefWidth="75.0" text="ID"/>
+                  <TableColumn prefWidth="75.0" text="TITLE"/>
+                  <TableColumn prefWidth="75.0" text="AUTHOR"/>
+                  <TableColumn prefWidth="75.0" text="CATEGORY"/>
+                  <TableColumn prefWidth="75.0" text="DATE BORROWED"/>
+                  <TableColumn prefWidth="75.0" text="DATE TO RETURN"/>
+              </columns>
+              <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+              </columnResizePolicy>
+          </TableView>
+        </center>
 
-</BorderPane>
+    </BorderPane>
+</AnchorPane>
