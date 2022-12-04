@@ -44,6 +44,7 @@ public class BorrowBookController {
 
     @FXML
     public void onAdd(MouseEvent event) {
+        event.consume();
         Optional<LocalDate> optionalDatePicker = Optional.ofNullable(returnDate.getValue());
         optionalDatePicker.ifPresentOrElse(this::addBook, () -> { // TODO: analyze flow
             Tooltip tooltip  = initToolTip("Cannot add book, Please Select a return date", null, errorToolTipStyle(), returnDate);
@@ -69,7 +70,7 @@ public class BorrowBookController {
         System.out.println("error = " + error);
 
         if (error) {
-            Tooltip tooltip  = initToolTip("Cannot add book, Book is already added", null, errorToolTipStyle(), table);
+            Tooltip tooltip  = initToolTip("Cannot add book, Book is already added", null, errorToolTipStyle(), availableBooks);
             availableBooks.setTooltip(tooltip);
             availableBooks.getTooltip().show(getParent("borrow_books_window").getScene().getWindow());
         } else {
@@ -118,7 +119,7 @@ public class BorrowBookController {
     public void onBorrowAll(MouseEvent ignoredMouseEvent) {
         saveAllBorrowedBooks();
         getBorrowedBooksDataSource().clear();
-        table.setItems(getBorrowedBooksDataSource());
+        table.getItems().clear();
     }
 
     @FXML
