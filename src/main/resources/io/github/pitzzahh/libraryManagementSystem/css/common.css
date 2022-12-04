@@ -96,3 +96,8 @@
     -fx-border-width: none;
     -fx-border-color: transparent;
 }
+
+.start-info {
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-font-weight: bold;
+}
