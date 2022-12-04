@@ -102,6 +102,7 @@ public class LibraryManagementSystem extends Application {
         Parent addBooksPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/admin/addBooks/addBooks.fxml"), "Cannot find addBooks.fxml"));
         Parent studentPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/studentPage.fxml"), "Cannot find studentPage.fxml"));
         Parent borrowBookPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/borrowBook/borrowBook.fxml"), "Cannot find borrowBook.fxml"));
+        Parent listOfBorrowedBooksPage = FXMLLoader.load(requireNonNull(LibraryManagementSystem.class.getResource("fxml/student/viewList/listOfBorrowedBooks.fxml"), "Cannot find listOfBorrowedBooks.fxml"));
 
         adminPage.setId("admin_window");
         mainPage.setId("main_window");
@@ -109,15 +110,16 @@ public class LibraryManagementSystem extends Application {
         addBooksPage.setId("add_books_window");
         studentPage.setId("student_window");
         borrowBookPage.setId("borrow_books_window");
+        listOfBorrowedBooksPage.setId("list_of_borrowed_books_window");
         addParents.accept(List.of
                 (
-                mainPage,
-                adminPage,
-                addStudentsPage,
-                addBooksPage,
-                studentPage,
-                borrowBookPage
-                )
+                        mainPage,
+                        adminPage,
+                        addStudentsPage,
+                        addBooksPage,
+                        studentPage,
+                        borrowBookPage,
+                        listOfBorrowedBooksPage                )
         );
     }
 
