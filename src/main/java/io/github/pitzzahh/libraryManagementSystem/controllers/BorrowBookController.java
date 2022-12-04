@@ -45,16 +45,14 @@ public class BorrowBookController {
     @FXML
     public void onAdd(MouseEvent event) {
         Optional<LocalDate> optionalDatePicker = Optional.ofNullable(returnDate.getValue());
-        optionalDatePicker.ifPresentOrElse(e -> addBook(e, event), () -> {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Return date is required");
-            alert.setContentText("Please select a return date");
-            alert.showAndWait();
+        optionalDatePicker.ifPresentOrElse(this::addBook, () -> { // TODO: analyze flow
+            Tooltip tooltip  = initToolTip("Cannot add book, Please Select a return date", null, errorToolTipStyle(), returnDate);
+            returnDate.setTooltip(tooltip);
+            returnDate.getTooltip().show(getParent("borrow_books_window").getScene().getWindow());
         });
     }
 
-    private void addBook(LocalDate date, MouseEvent event) {
+    private void addBook(LocalDate date) {
         ObservableList<Book> selectedItems = availableBooks
                 .getSelectionModel()
                 .getSelectedItems()
@@ -65,13 +63,15 @@ public class BorrowBookController {
                 })
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
-        boolean b = selectedItems.stream()
-                .anyMatch(books -> table.getItems().stream().anyMatch(book -> book.equals(books)));
+        boolean error = selectedItems.stream()
+                .noneMatch(books -> table.getItems().stream().noneMatch(book -> book.equals(books)));
 
-        if (b) {
-            Tooltip tooltip  = initToolTip("Cannot add book, Book is already added", event, errorToolTipStyle());
+        System.out.println("error = " + error);
+
+        if (error) {
+            Tooltip tooltip  = initToolTip("Cannot add book, Book is already added", null, errorToolTipStyle(), table);
             availableBooks.setTooltip(tooltip);
-            tooltip.show(availableBooks, event.getScreenX(), event.getScreenY());
+            availableBooks.getTooltip().show(getParent("borrow_books_window").getScene().getWindow());
         } else {
             getBorrowedBooksDataSource().addAll(selectedItems);
 
@@ -99,7 +99,7 @@ public class BorrowBookController {
 
     @FXML
     public void onHoverRemove(MouseEvent mouseEvent) {
-        showToolTipOnHover("Remove a book to borrow from the right", mouseEvent, remove);
+        showToolTipOnHover("Remove a book to borrow listed on the right", mouseEvent, remove);
     }
 
     @FXML
@@ -118,7 +118,7 @@ public class BorrowBookController {
     public void onBorrowAll(MouseEvent ignoredMouseEvent) {
         saveAllBorrowedBooks();
         getBorrowedBooksDataSource().clear();
-        table.setItems(getBooksDataSource());
+        table.setItems(getBorrowedBooksDataSource());
     }
 
     @FXML
