@@ -17,22 +17,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-    <AnchorPane prefHeight="538.0" prefWidth="1000.0" style="-fx-background-color: #D6DCF1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.BorrowBookController">
+<AnchorPane prefHeight="538.0" prefWidth="1000.0" style="-fx-background-color: #D6DCF1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.BorrowBookController">
     <BorderPane layoutX="111.0" layoutY="100.0" prefHeight="400.0" prefWidth="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <top>
-            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="600.0" styleClass="nav-bar" stylesheets="@../../../css/common.css" BorderPane.alignment="CENTER_RIGHT">
+            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="600.0" styleClass="nav-bar" stylesheets="@../../../css/common.css" BorderPane.alignment="CENTER">
                 <AnchorPane prefHeight="65.0" prefWidth="1025.0" HBox.hgrow="ALWAYS">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </HBox.margin>
-                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="1000.0" styleClass="nav-bar-title" stylesheets="@../../../css/common.css" text="Borrow a Book" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                    <Button fx:id="separateWindowButton" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="10.0" prefWidth="10.0" styleClass="separate-window-button" stylesheets="@../../../css/common.css" textAlignment="CENTER">
-                  <graphic>
-                            <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                                <Image url="@../../../img/expand.png" />
-                            </ImageView>
-                  </graphic>
-                    </Button>
+                    <HBox prefHeight="65.0" prefWidth="1222.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="105.0" HBox.hgrow="ALWAYS">
+                            <Button fx:id="separateWindowButton" alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="10.0" prefWidth="10.0" styleClass="separate-window-button" stylesheets="@../../../css/common.css" textAlignment="CENTER">
+                                <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                                        <Image url="@../../../img/expand.png" />
+                                    </ImageView>
+                                </graphic>
+                            </Button>
+                        </HBox>
+                        <HBox prefHeight="65.0" prefWidth="756.0">
+                            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="1000.0" styleClass="nav-bar-title" stylesheets="@../../../css/common.css" text="Borrow a Book" textAlignment="CENTER" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="76.0" HBox.hgrow="ALWAYS" />
+                    </HBox>
                 </AnchorPane>
             </HBox>
         </top>
