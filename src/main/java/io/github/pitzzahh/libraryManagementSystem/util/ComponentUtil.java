@@ -1,17 +1,15 @@
 package io.github.pitzzahh.libraryManagementSystem.util;
 
-import io.github.pitzzahh.libraryManagementSystem.entity.Book;
 import io.github.pitzzahh.libraryManagementSystem.entity.Category;
-import javafx.scene.Parent;
-import javafx.scene.control.*;
+import io.github.pitzzahh.libraryManagementSystem.entity.Book;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.GaussianBlur;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 import static java.lang.String.format;
+import java.util.stream.Collectors;
+import javafx.scene.control.*;
+import javafx.scene.Parent;
+import java.util.Optional;
+import java.util.List;
 
 public interface ComponentUtil {
     /**
