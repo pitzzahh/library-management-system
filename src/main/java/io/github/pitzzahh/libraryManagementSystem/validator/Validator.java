@@ -20,7 +20,7 @@ public final class Validator {
         if (credential.isEmpty()) throw new RuntimeException("Please enter your Student number");
         else if ((credential.length() != MAX_LENGTH && credential.length() != MAX_LENGTH - 1) && isWholeNumber().test(credential)) throw new IllegalArgumentException(format("Student number must be %d digits long", MAX_LENGTH));
         else if (isWholeNumber().negate().test(credential)) throw new IllegalArgumentException("Student number must be a number");
-        return getAllStudents().stream().map(Student::getStudentNumber).anyMatch(credential::equals);
+        return getAllStudents().stream().map(e -> (Student) e).map(Student::getStudentNumber).anyMatch(credential::equals);
     }
 
     static Predicate<String> isWholeNumber() {
