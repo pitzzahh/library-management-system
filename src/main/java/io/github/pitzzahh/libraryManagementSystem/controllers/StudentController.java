@@ -35,7 +35,7 @@ public class StudentController {
 
         Parent parent = getParent("borrow_books_window");
 
-        getTable(parent, "availableBooks")
+        getTable("borrow_books_window", "availableBooks")
                 .ifPresent(tableView -> {
                     Optional<ChoiceBox<?>> choiceBox = getChoiceBox(parent, "choiceBox");
                     choiceBox.ifPresent(objectChoiceBox -> setAvailableBooksData(tableView, (ChoiceBox<Category>) objectChoiceBox));
@@ -64,7 +64,7 @@ public class StudentController {
         actionEvent.consume();
         setPage(Page.VIEW_BORROWED_BOOKS);
         loadPage(actionEvent, "list_of_borrowed_books_window");
-        Optional<TableView> table = getTable(getParent("list_of_borrowed_books_window"), "table");
+        Optional<TableView<?>> table = getTable("list_of_borrowed_books_window", "table");
         table.ifPresent(this::setItemsToViewBooksTable);
     }
 
