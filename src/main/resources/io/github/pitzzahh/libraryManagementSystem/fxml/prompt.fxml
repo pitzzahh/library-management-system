@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="538.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.PromptController">
+<AnchorPane prefHeight="538.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19">
     <BorderPane layoutY="-2.0" prefHeight="598.0" prefWidth="1000.0" snapToPixel="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <center>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #CDCDCD;" stylesheets="@../css/common.css" BorderPane.alignment="CENTER">
