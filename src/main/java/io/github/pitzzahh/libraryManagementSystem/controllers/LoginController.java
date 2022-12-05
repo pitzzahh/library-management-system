@@ -82,8 +82,7 @@ public class LoginController {
      */
     private void checker(String fieldText, AtomicReference<String> debugMessage) {
         if (fieldText.equals(DataUtil.$admin)) {
-            getStage().close();
-            WindowUtil.loadParent(WindowUtil.getParent("admin_window"), "Administrator");
+            WindowUtil.loadParent(WindowUtil.getParent("admin_window"), "Administrator", false);
             progressBar.setVisible(false);
             credentialField.clear();
             credentialField.setVisible(true);
@@ -95,8 +94,7 @@ public class LoginController {
                 final boolean doesAccountExist = Validator.doesAccountExist(fieldText);
                 if (doesAccountExist) {
                     debugMessage.set("Account exists");
-                    getStage().close();
-                    WindowUtil.loadParent(WindowUtil.getParent("student_window"), "Student");
+                    WindowUtil.loadParent(WindowUtil.getParent("student_window"), "Student", false);
                     credentialField.clear();
                 } else {
                     debugMessage.set("Account does not exist");

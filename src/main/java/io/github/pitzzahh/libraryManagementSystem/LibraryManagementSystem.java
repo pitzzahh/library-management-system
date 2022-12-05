@@ -1,18 +1,15 @@
 package io.github.pitzzahh.libraryManagementSystem;
 
-import io.github.pitzzahh.libraryManagementSystem.entity.Category;
-import io.github.pitzzahh.libraryManagementSystem.entity.Course;
-
-import static java.util.Objects.requireNonNull;
-
 import io.github.pitzzahh.libraryManagementSystem.util.ComponentUtil;
 import io.github.pitzzahh.libraryManagementSystem.util.WindowUtil;
+import io.github.pitzzahh.libraryManagementSystem.entity.Category;
+import io.github.pitzzahh.libraryManagementSystem.entity.Course;
+import static java.util.Objects.requireNonNull;
 import javafx.scene.control.ProgressBar;
 import javafx.collections.FXCollections;
 import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
 import java.util.stream.Collectors;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
 import javafx.fxml.FXMLLoader;
@@ -44,20 +41,24 @@ public class LibraryManagementSystem extends Application {
      * @throws Exception if something goes wrong
      */
     @Override
+    @SuppressWarnings("unchecked")
     public void start(Stage primaryStage) throws Exception {
         initParents();
         Parent parent = WindowUtil.getParent("main_window");
         Scene scene = new Scene(parent);
+
         LibraryManagementSystem.stage = primaryStage;
-        Optional<ProgressBar> mainProgressBar = ComponentUtil.getMainProgressBar(parent);
-        mainProgressBar.ifPresent(p -> p.setVisible(false));
+
+        WindowUtil.loadParent(parent, "Library Management System", true);
+
         getStage().initStyle(StageStyle.DECORATED);
+
         getStage().getIcons().add(new Image(requireNonNull(getClass().getResourceAsStream("img/logo.png"), "logo not found")));
-        getStage().addEventHandler(KeyEvent.KEY_PRESSED, WindowUtil.eventHandler);
         getStage().setScene(scene);
-        getStage().centerOnScreen();
-        getStage().toFront();
-        getStage().setTitle("Library Management System");
+
+        Optional<ProgressBar> mainProgressBar = ComponentUtil.getMainProgressBar(parent);
+
+        mainProgressBar.ifPresent(p -> p.setVisible(false));
 
         ComponentUtil.getChoiceBox(WindowUtil.getParent("add_students_window"), "choiceBox")
                 .map(e -> (ChoiceBox<Course>) e)
@@ -68,18 +69,18 @@ public class LibraryManagementSystem extends Application {
                 );
 
         ComponentUtil.getChoiceBox(WindowUtil.getParent("add_books_window"), "choiceBox")
-                .map(e -> (ChoiceBox<Object>) e)
+                .map(e -> (ChoiceBox<Category>) e)
                 .ifPresent(LibraryManagementSystem::initCategory);
 
         ComponentUtil.getChoiceBox(WindowUtil.getParent("borrow_books_window"), "choiceBox")
-                .map(e -> (ChoiceBox<Object>) e)
+                .map(e -> (ChoiceBox<Category>) e)
                 .ifPresent(LibraryManagementSystem::initCategory);
 
         getStage().show();
         System.out.println("Application started");
     }
 
-    private static void initCategory(ChoiceBox<Object> borrowBookChoiceBox) {
+    private static void initCategory(ChoiceBox<Category> borrowBookChoiceBox) {
         borrowBookChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Category.values()).collect(Collectors.toList())));
         borrowBookChoiceBox.getSelectionModel().selectFirst();
     }

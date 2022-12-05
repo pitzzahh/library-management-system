@@ -8,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
 
+import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
+
 /**
  * FXML Controller class for Admin page
  */
@@ -73,6 +75,7 @@ public class AdminController {
     public void onLogout(ActionEvent actionEvent) {
         actionEvent.consume();
         WindowUtil.logoutSession();
+        getStage().show();
     }
 
     /**
