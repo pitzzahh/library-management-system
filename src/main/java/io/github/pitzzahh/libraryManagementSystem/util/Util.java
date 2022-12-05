@@ -360,13 +360,12 @@ public interface Util {
 
     /**
      * Used to get a table from a parent node.
-     * @param parent the parent node.
+     * @param parentId the parent parentId.
      * @param tableId the id of the table.
      * @return an {@code Optional<TableView<?>>}.
      */
-    @SuppressWarnings("rawtypes")
-    static Optional<TableView> getTable(String parentId, String tableId) {
-        return Optional.ofNullable((TableView) getParent(parentId).lookup(format("#%s", tableId)));
+    static Optional<TableView<?>> getTable(String parentId, String tableId) {
+        return Optional.ofNullable((TableView<?>) getParent(parentId).lookup(format("#%s", tableId)));
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
