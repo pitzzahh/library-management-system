@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.control.*;
 import java.util.Optional;
 import javafx.fxml.FXML;
+import java.util.List;
 
 public class AddStudBookController {
 
@@ -55,7 +56,8 @@ public class AddStudBookController {
                             id.getText().trim(),
                             firstInput.getText().trim(),
                             secondInput.getText().trim(),
-                            (Course) choiceBox.getSelectionModel().getSelectedItem()
+                            (Course) choiceBox.getSelectionModel().getSelectedItem(),
+                            List.of()
                     ));
                     ComponentUtil.initTableColumns(table, new String[]{"studentNumber", "firstName", "lastName", "course"});
 
