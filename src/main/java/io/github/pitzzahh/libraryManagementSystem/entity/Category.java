@@ -1,5 +1,8 @@
 package io.github.pitzzahh.libraryManagementSystem.entity;
 
+/**
+ * Book categories
+ */
 public enum Category {
     FICTION,
     NON_FICTION,
