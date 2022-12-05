@@ -114,12 +114,12 @@ public interface Util {
 
     /**
      * Sets the center border pane to the specific window.
-     * @param actionEvent the action event.
-     * @param id the id of the window.
+     * @param parentId the parent id.
+     * @param windowToCenter the page id to be put in the center pane.
      */
-    static void loadPage(ActionEvent actionEvent, String id) {
-        ((BorderPane)(((Button) actionEvent.getSource()).getParent().getParent()))
-                .setCenter(getParent(id));
+    static void loadPage(String parentId, String windowToCenter) {
+        ((BorderPane)(getParent(parentId)))
+                .setCenter(getParent(windowToCenter));
     }
 
     static void loadParent(Parent parent, String stageTitle) {
@@ -129,6 +129,7 @@ public interface Util {
         getStage().setTitle(stageTitle);
         getStage().centerOnScreen();
         getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
+        loadPage(parent.getId(), "promptPage_page");
         getStage().show();
     }
 
@@ -229,6 +230,7 @@ public interface Util {
     static boolean isStudentAlreadyAdded(String studentNumber) {
         return getAllStudents()
                 .stream()
+                .map(e -> (Student) e)
                 .noneMatch(e -> e.getStudentNumber().equals(studentNumber)) && getStudentsDataSource().stream()
                 .noneMatch(e -> e.getStudentNumber().equals(studentNumber));
     }
@@ -236,6 +238,7 @@ public interface Util {
     static boolean isBookAlreadyAdded(String bookId) {
         return getAllBooks()
                 .stream()
+                .map(e -> (Book) e)
                 .noneMatch(e -> e.getBookId().equals(bookId)) && getBooksDataSource().stream()
                 .noneMatch(e -> e.getBookId().equals(bookId));
     }
@@ -275,7 +278,7 @@ public interface Util {
         Fields.studentsList = new ArrayList<>(getStudentsDataSource());
     }
 
-    static List<Student> getAllStudents() {
+    static List<? super Student> getAllStudents() {
         return Fields.studentsList;
     }
 
@@ -283,7 +286,7 @@ public interface Util {
         Fields.booksList = new ArrayList<>(getBooksDataSource());
     }
 
-    static List<Book> getAllBooks() {
+    static List<? super Book> getAllBooks() {
         return Fields.booksList;
     }
 
@@ -297,7 +300,6 @@ public interface Util {
 
     static void logoutSession(ActionEvent actionEvent) {
         getStage().close();
-        loadPage(actionEvent, "promptPage_page");
         Parent mainWindow = getParent("main_window");
         getLabel(mainWindow, "message").ifPresent(label -> label.setText(""));
         getMainProgressBar(mainWindow).ifPresent(pb -> pb.setVisible(false));
@@ -330,11 +332,12 @@ public interface Util {
     static List<Book> getBooksByCategory(Category category) {
         return getAllBooks()
                 .stream()
+                .map(e -> (Book) e)
                 .filter(book -> book.getCategory().equals(category))
                 .collect(Collectors.toList());
     }
 
-    static ObservableList<Book> getAvailableBooksDataSource() {
+    static ObservableList<? super Book> getAvailableBooksDataSource() {
         return Fields.availableBooksDataSource;
     }
 
