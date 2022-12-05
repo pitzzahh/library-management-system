@@ -25,27 +25,27 @@ public interface DataUtil {
     }
 
     static ObservableList<Student> getStudentsDataSource() {
-        return DateUtilFields.studentsDataSource;
+        return DataUtilFields.studentsDataSource;
     }
 
     static ObservableList<Book> getBooksDataSource() {
-        return DateUtilFields.booksDataSource;
+        return DataUtilFields.booksDataSource;
     }
 
     static void saveAllStudents() {
-        DateUtilFields.studentsList = new ArrayList<>(getStudentsDataSource());
+        DataUtilFields.studentsList = new ArrayList<>(getStudentsDataSource());
     }
 
     static List<? super Student> getAllStudents() {
-        return DateUtilFields.studentsList;
+        return DataUtilFields.studentsList;
     }
 
     static void saveAllBooks() {
-        DateUtilFields.booksList = new ArrayList<>(getBooksDataSource());
+        DataUtilFields.booksList = new ArrayList<>(getBooksDataSource());
     }
 
     static List<? super Book> getAllBooks() {
-        return DateUtilFields.booksList;
+        return DataUtilFields.booksList;
     }
 
     static String decrypt(String data) throws IllegalArgumentException {
@@ -55,19 +55,19 @@ public interface DataUtil {
     }
 
     static ObservableList<? super Book> getAvailableBooksDataSource() {
-        return DateUtilFields.availableBooksDataSource;
+        return DataUtilFields.availableBooksDataSource;
     }
 
     static ObservableList<Book> getBorrowedBooksDataSource() {
-        return DateUtilFields.borrowBooksDataSource;
+        return DataUtilFields.borrowBooksDataSource;
     }
 
     static void saveAllBorrowedBooks() {
-        DateUtilFields.borowedBooksList = new ArrayList<>(getBorrowedBooksDataSource());
+        DataUtilFields.borowedBooksList = new ArrayList<>(getBorrowedBooksDataSource());
     }
 
     static List<Book> getAllBorrowedBooks() {
-        return DateUtilFields.borowedBooksList;
+        return DataUtilFields.borowedBooksList;
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -81,7 +81,7 @@ public interface DataUtil {
     }
 }
 
-class DateUtilFields {
+class DataUtilFields {
     static List<Student> studentsList = new ArrayList<>();
     static List<Book> booksList = new ArrayList<>();
     static List<Book> borowedBooksList = new ArrayList<>();

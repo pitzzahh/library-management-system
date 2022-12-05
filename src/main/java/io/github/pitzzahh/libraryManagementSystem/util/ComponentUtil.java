@@ -61,13 +61,13 @@ public interface ComponentUtil {
     }
 
     static void addActiveButtons(Button button) {
-        boolean anyMatch = DateUtilFields.activeButtons.stream()
+        boolean anyMatch = DataUtilFields.activeButtons.stream()
                 .anyMatch(b -> b.getId().equals(button.getId()));
-        if (!anyMatch) DateUtilFields.activeButtons.offer(button);
+        if (!anyMatch) DataUtilFields.activeButtons.offer(button);
     }
 
     static Optional<Button> getActiveButton(String id) {
-        return DateUtilFields.activeButtons.stream()
+        return DataUtilFields.activeButtons.stream()
                 .filter(button -> button.getId().equals(id))
                 .findAny();
     }
