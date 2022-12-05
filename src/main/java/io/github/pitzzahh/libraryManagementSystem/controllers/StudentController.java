@@ -16,6 +16,8 @@ import javafx.scene.Parent;
 import java.util.Optional;
 import javafx.fxml.FXML;
 
+import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
+
 public class StudentController {
 
     @FXML
@@ -94,6 +96,7 @@ public class StudentController {
     public void onLogout(ActionEvent actionEvent) {
         actionEvent.consume();
         WindowUtil.logoutSession();
+        getStage().show();
     }
 
     /**

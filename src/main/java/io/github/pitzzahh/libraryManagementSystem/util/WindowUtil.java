@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 import javafx.event.EventHandler;
+import java.util.Optional;
 import java.util.ArrayList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -47,15 +48,18 @@ public interface WindowUtil {
                 .setCenter(getParent(windowToCenter));
     }
 
-    static void loadParent(Parent parent, String stageTitle) {
+    static void loadParent(Parent parent, String stageTitle, boolean isMainWindow) {
         if (parent.getScene() != null)
             getStage().setScene(parent.getScene()); // if scene is present, get it
         else getStage().setScene(new Scene(parent)); // create new scene if new login
-        getStage().setTitle(stageTitle);
+
+        getStage().setTitle(Optional.ofNullable(getStage().getTitle()).orElse(stageTitle));
+
         getStage().centerOnScreen();
+
         getStage().addEventHandler(KeyEvent.KEY_PRESSED, eventHandler);
-        loadPage(parent.getId(), "promptPage_page");
-        getStage().show();
+        getStage().toFront();
+        if (!isMainWindow) loadPage(parent.getId(), "promptPage_page");
     }
 
     static void setPage(Page page) {
@@ -67,14 +71,10 @@ public interface WindowUtil {
     }
 
     static void logoutSession() {
-        getStage().close();
         Parent mainWindow = getParent("main_window");
+        loadParent(mainWindow, "Library Management System", true);
         ComponentUtil.getLabel(mainWindow, "message").ifPresent(label -> label.setText(""));
         ComponentUtil.getMainProgressBar(mainWindow).ifPresent(pb -> pb.setVisible(false));
-        getStage().setTitle("Library Management System");
-        getStage().centerOnScreen();
-        getStage().setScene(mainWindow.getScene());
-        getStage().show();
     }
 }
 
