@@ -83,15 +83,15 @@ public class AdminController {
     }
 
     @FXML
-    public void onAddStudents(ActionEvent actionEvent) {
+    public void onAddStudents(ActionEvent ignoredActionEvent) {
         setPage(Page.ADD_STUDENTS);
-        loadPage(actionEvent, "add_students_window");
+        loadPage("admin_window", "add_students_window");
     }
 
     @FXML
-    public void onAddBooks(ActionEvent actionEvent) {
+    public void onAddBooks(ActionEvent ignoredActionEvent) {
         setPage(Page.ADD_BOOKS);
-        loadPage(actionEvent, "add_books_window");
+        loadPage("admin_window", "add_books_window");
     }
 
 }
