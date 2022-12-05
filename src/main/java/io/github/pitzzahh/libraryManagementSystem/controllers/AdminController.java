@@ -1,6 +1,7 @@
 package io.github.pitzzahh.libraryManagementSystem.controllers;
 
-import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
+import io.github.pitzzahh.libraryManagementSystem.util.ToolTipUtil;
+import io.github.pitzzahh.libraryManagementSystem.util.WindowUtil;
 import io.github.pitzzahh.libraryManagementSystem.entity.Page;
 import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
@@ -33,7 +34,7 @@ public class AdminController {
      */
     @FXML
     public void onMouseEnteredAddStudentsButton(MouseEvent mouseEvent) {
-        showToolTipOnHover("Add Students", mouseEvent, addStudents);
+        ToolTipUtil.showToolTipOnHover("Add Students", mouseEvent, addStudents);
     }
 
     /**
@@ -42,7 +43,7 @@ public class AdminController {
      */
     @FXML
     public void onMouseEnteredAddBooksButton(MouseEvent mouseEvent) {
-        showToolTipOnHover("Add Books", mouseEvent, addBooks);
+        ToolTipUtil.showToolTipOnHover("Add Books", mouseEvent, addBooks);
     }
 
     /**
@@ -51,7 +52,7 @@ public class AdminController {
      */
     @FXML
     public void onMouseEnteredManageStudentsButton(MouseEvent mouseEvent) {
-        showToolTipOnHover("Manage Students Records", mouseEvent, manageStudents);
+        ToolTipUtil.showToolTipOnHover("Manage Students Records", mouseEvent, manageStudents);
     }
 
     /**
@@ -60,7 +61,7 @@ public class AdminController {
      */
     @FXML
     public void onMouseEnteredManageBooksButton(MouseEvent mouseEvent) {
-        showToolTipOnHover("Manage Borrowed Books", mouseEvent, manageBooks);
+        ToolTipUtil.showToolTipOnHover("Manage Borrowed Books", mouseEvent, manageBooks);
     }
 
     /**
@@ -70,7 +71,8 @@ public class AdminController {
      */
     @FXML
     public void onLogout(ActionEvent actionEvent) {
-        logoutSession(actionEvent);
+        actionEvent.consume();
+        WindowUtil.logoutSession();
     }
 
     /**
@@ -79,19 +81,21 @@ public class AdminController {
      */
     @FXML
     public void onMouseEnteredLogout(MouseEvent mouseEvent) {
-        showToolTipOnHover("Logout Session", mouseEvent, logout);
+        ToolTipUtil.showToolTipOnHover("Logout Session", mouseEvent, logout);
     }
 
     @FXML
-    public void onAddStudents(ActionEvent ignoredActionEvent) {
-        setPage(Page.ADD_STUDENTS);
-        loadPage("admin_window", "add_students_window");
+    public void onAddStudents(ActionEvent actionEvent) {
+        actionEvent.consume();
+        WindowUtil.setPage(Page.ADD_STUDENTS);
+        WindowUtil.loadPage("admin_window", "add_students_window");
     }
 
     @FXML
-    public void onAddBooks(ActionEvent ignoredActionEvent) {
-        setPage(Page.ADD_BOOKS);
-        loadPage("admin_window", "add_books_window");
+    public void onAddBooks(ActionEvent actionEvent) {
+        actionEvent.consume();
+        WindowUtil.setPage(Page.ADD_BOOKS);
+        WindowUtil.loadPage("admin_window", "add_books_window");
     }
 
 }

@@ -1,10 +1,12 @@
 package io.github.pitzzahh.libraryManagementSystem;
 
-import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
 import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Course;
-import io.github.pitzzahh.libraryManagementSystem.util.Util;
+
 import static java.util.Objects.requireNonNull;
+
+import io.github.pitzzahh.libraryManagementSystem.util.ComponentUtil;
+import io.github.pitzzahh.libraryManagementSystem.util.WindowUtil;
 import javafx.scene.control.ProgressBar;
 import javafx.collections.FXCollections;
 import javafx.application.Application;
@@ -44,20 +46,20 @@ public class LibraryManagementSystem extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         initParents();
-        Parent parent = getParent("main_window");
+        Parent parent = WindowUtil.getParent("main_window");
         Scene scene = new Scene(parent);
         LibraryManagementSystem.stage = primaryStage;
-        Optional<ProgressBar> mainProgressBar = getMainProgressBar(parent);
+        Optional<ProgressBar> mainProgressBar = ComponentUtil.getMainProgressBar(parent);
         mainProgressBar.ifPresent(p -> p.setVisible(false));
         getStage().initStyle(StageStyle.DECORATED);
         getStage().getIcons().add(new Image(requireNonNull(getClass().getResourceAsStream("img/logo.png"), "logo not found")));
-        getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
+        getStage().addEventHandler(KeyEvent.KEY_PRESSED, WindowUtil.eventHandler);
         getStage().setScene(scene);
         getStage().centerOnScreen();
         getStage().toFront();
         getStage().setTitle("Library Management System");
 
-        getChoiceBox(getParent("add_students_window"), "choiceBox")
+        ComponentUtil.getChoiceBox(WindowUtil.getParent("add_students_window"), "choiceBox")
                 .map(e -> (ChoiceBox<Course>) e)
                 .ifPresentOrElse(e -> {
                     e.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Course.values()).collect(Collectors.toList())));
@@ -65,11 +67,11 @@ public class LibraryManagementSystem extends Application {
                     }, () -> System.out.println("Course choice box not found")
                 );
 
-        getChoiceBox(getParent("add_books_window"), "choiceBox")
+        ComponentUtil.getChoiceBox(WindowUtil.getParent("add_books_window"), "choiceBox")
                 .map(e -> (ChoiceBox<Object>) e)
                 .ifPresent(LibraryManagementSystem::initCategory);
 
-        getChoiceBox(getParent("borrow_books_window"), "choiceBox")
+        ComponentUtil.getChoiceBox(WindowUtil.getParent("borrow_books_window"), "choiceBox")
                 .map(e -> (ChoiceBox<Object>) e)
                 .ifPresent(LibraryManagementSystem::initCategory);
 
@@ -114,7 +116,7 @@ public class LibraryManagementSystem extends Application {
         listOfBorrowedBooksPage.setId("list_of_borrowed_books_window");
         promptPage.setId("promptPage_page");
 
-        addParents.accept(List.of
+        WindowUtil.addParents.accept(List.of
                 (
                         mainPage,
                         adminPage,
