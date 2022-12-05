@@ -306,9 +306,9 @@ public interface Util {
         getStage().setScene(mainWindow.getScene());
         getStage().show();
     }
-    static void showToolTipOnHover(String Logout_Session, MouseEvent mouseEvent, Button logout) {
+    static void showToolTipOnHover(String tip, MouseEvent mouseEvent, Button logout) {
         Tooltip tooltip = initToolTip(
-                Logout_Session,
+                tip,
                 mouseEvent,
                 leftButtonSelectionFunctionStyle(),
                 null
@@ -365,8 +365,8 @@ public interface Util {
      * @return an {@code Optional<TableView<?>>}.
      */
     @SuppressWarnings("rawtypes")
-    static Optional<TableView> getTable(Parent parent, String tableId) {
-        return Optional.ofNullable((TableView) parent.lookup(format("#%s", tableId)));
+    static Optional<TableView> getTable(String parentId, String tableId) {
+        return Optional.ofNullable((TableView) getParent(parentId).lookup(format("#%s", tableId)));
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
