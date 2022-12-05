@@ -1,5 +1,8 @@
 package io.github.pitzzahh.libraryManagementSystem.entity;
 
+/**
+ * Available courses for students
+ */
 public enum Course {
     BSIT("Bachelor of Science in Information Technology"),
     BSHM("Bachelor of Science in Hotel Management"),

@@ -1,7 +1,11 @@
 package io.github.pitzzahh.libraryManagementSystem.controllers;
 
-import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
+import io.github.pitzzahh.libraryManagementSystem.util.ComponentUtil;
+import io.github.pitzzahh.libraryManagementSystem.util.ToolTipUtil;
+import io.github.pitzzahh.libraryManagementSystem.util.WindowUtil;
 import io.github.pitzzahh.libraryManagementSystem.entity.Category;
+import io.github.pitzzahh.libraryManagementSystem.util.DataUtil;
+import io.github.pitzzahh.libraryManagementSystem.entity.Book;
 import io.github.pitzzahh.libraryManagementSystem.entity.Page;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
@@ -11,6 +15,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import java.util.Optional;
 import javafx.fxml.FXML;
+
+import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
 
 public class StudentController {
 
@@ -30,62 +36,67 @@ public class StudentController {
     @SuppressWarnings({"unchecked"})
     public void onBorrowBook(ActionEvent actionEvent) {
         actionEvent.consume();
-        setPage(Page.BORROW_BOOK);
-        loadPage(actionEvent, "borrow_books_window");
+        WindowUtil.setPage(Page.BORROW_BOOK);
+        WindowUtil.loadPage("student_window", "borrow_books_window");
 
-        Parent parent = getParent("borrow_books_window");
+        Parent parent = WindowUtil.getParent("borrow_books_window");
 
-        getTable(parent, "availableBooks")
+        ComponentUtil.getTable("borrow_books_window", "availableBooks")
                 .ifPresent(tableView -> {
-                    Optional<ChoiceBox<?>> choiceBox = getChoiceBox(parent, "choiceBox");
-                    choiceBox.ifPresent(objectChoiceBox -> setAvailableBooksData(tableView, (ChoiceBox<Category>) objectChoiceBox));
+                    Optional<ChoiceBox<?>> choiceBox = ComponentUtil.getChoiceBox(parent, "choiceBox");
+                    choiceBox.ifPresent(objectChoiceBox -> DataUtil.setAvailableBooksData(tableView, (ChoiceBox<Category>) objectChoiceBox));
                 });
     }
 
     @FXML
     public void onHoverBorrowBook(MouseEvent mouseEvent) {
-        showToolTipOnHover("Borrow a Book", mouseEvent, borrowBook);
+        ToolTipUtil.showToolTipOnHover("Borrow a Book", mouseEvent, borrowBook);
     }
 
     @FXML
     public void onReturnBook(ActionEvent actionEvent) {
         actionEvent.consume();
-        setPage(Page.RETURN_BOOK);
+        WindowUtil.setPage(Page.RETURN_BOOK);
     }
 
     @FXML
     public void onHoverReturnBook(MouseEvent mouseEvent) {
-        showToolTipOnHover("Return a book", mouseEvent, returnBook);
+        ToolTipUtil.showToolTipOnHover("Return a book", mouseEvent, returnBook);
     }
 
     @FXML
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({"unchecked"})
     public void onViewBooks(ActionEvent actionEvent) {
         actionEvent.consume();
-        setPage(Page.VIEW_BORROWED_BOOKS);
-        loadPage(actionEvent, "list_of_borrowed_books_window");
-        Optional<TableView> table = getTable(getParent("list_of_borrowed_books_window"), "table");
-        table.ifPresent(t -> {
-            getBorrowedBooksDataSource().clear();
-            getBorrowedBooksDataSource().addAll(getAllBorrowedBooks());
-            initTableColumns(t, new String[]{"bookId", "title", "author", "category", "dateBorrowed", "dateReturned"});
-            t.setItems(getBorrowedBooksDataSource());
-        });
+        WindowUtil.setPage(Page.VIEW_BORROWED_BOOKS);
+        WindowUtil.loadPage("student_window", "list_of_borrowed_books_window");
+        Optional<TableView<?>> table = ComponentUtil.getTable("list_of_borrowed_books_window", "table");
+        table.map(e ->  (TableView<Book> )e)
+                .ifPresent(this::setItemsToViewBooksTable);
+    }
+
+    private void setItemsToViewBooksTable(TableView<Book> t) {
+        DataUtil.getBorrowedBooksDataSource().clear();
+        DataUtil.getBorrowedBooksDataSource().addAll(DataUtil.getAllBorrowedBooks());
+        ComponentUtil.initTableColumns(t, new String[]{"bookId", "title", "author", "category", "dateBorrowed", "dateReturned"});
+        t.setItems(DataUtil.getBorrowedBooksDataSource());
     }
 
     @FXML
     public void onHoverViewBooks(MouseEvent mouseEvent) {
-        showToolTipOnHover("View borrowed Books", mouseEvent, viewBorrowedBooks);
+        ToolTipUtil.showToolTipOnHover("View borrowed Books", mouseEvent, viewBorrowedBooks);
     }
 
     /**
      * Logs out the current session.
      * Returns to the main page.
-     * @param ignoredActionEvent the action event.
+     * @param actionEvent the action event.
      */
     @FXML
-    public void onLogout(ActionEvent ignoredActionEvent) {
-        logoutSession();
+    public void onLogout(ActionEvent actionEvent) {
+        actionEvent.consume();
+        WindowUtil.logoutSession();
+        getStage().show();
     }
 
     /**
@@ -94,6 +105,6 @@ public class StudentController {
      */
     @FXML
     public void onHoverLogout(MouseEvent mouseEvent) {
-        showToolTipOnHover("Logout Session", mouseEvent, logout);
+        ToolTipUtil.showToolTipOnHover("Logout Session", mouseEvent, logout);
     }
 }

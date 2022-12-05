@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
- <BorderPane prefHeight="690.0" prefWidth="1200.0" snapToPixel="false" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.AdminController">
+<BorderPane prefHeight="690.0" prefWidth="1200.0" snapToPixel="false" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.AdminController">
      <top>
          <HBox alignment="CENTER_LEFT" focusTraversable="true" prefHeight="61.0" styleClass="topBox" stylesheets="@../../css/adminPage/adminPage.css" BorderPane.alignment="CENTER_LEFT">
              <padding>
@@ -101,13 +101,4 @@
          </padding>
          </VBox>
      </left>
-   <center>
-       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #CDCDCD;" BorderPane.alignment="CENTER">
-           <Label styleClass="start-info" stylesheets="@../../css/adminPage/adminPage.css" text="Select an option from the left" wrapText="true">
-              <font>
-                  <Font name="Segoe UI Bold" size="34.0" />
-              </font>
-           </Label>
-       </HBox>
-   </center>
  </BorderPane>

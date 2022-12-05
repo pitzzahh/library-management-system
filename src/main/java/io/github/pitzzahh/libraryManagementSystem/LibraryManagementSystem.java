@@ -1,16 +1,15 @@
 package io.github.pitzzahh.libraryManagementSystem;
 
-import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
+import io.github.pitzzahh.libraryManagementSystem.util.ComponentUtil;
+import io.github.pitzzahh.libraryManagementSystem.util.WindowUtil;
 import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Course;
-import io.github.pitzzahh.libraryManagementSystem.util.Util;
 import static java.util.Objects.requireNonNull;
 import javafx.scene.control.ProgressBar;
 import javafx.collections.FXCollections;
 import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
 import java.util.stream.Collectors;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
 import javafx.fxml.FXMLLoader;
@@ -42,22 +41,26 @@ public class LibraryManagementSystem extends Application {
      * @throws Exception if something goes wrong
      */
     @Override
+    @SuppressWarnings("unchecked")
     public void start(Stage primaryStage) throws Exception {
         initParents();
-        Parent parent = getParent("main_window");
+        Parent parent = WindowUtil.getParent("main_window");
         Scene scene = new Scene(parent);
-        LibraryManagementSystem.stage = primaryStage;
-        Optional<ProgressBar> mainProgressBar = getMainProgressBar(parent);
-        mainProgressBar.ifPresent(p -> p.setVisible(false));
-        getStage().initStyle(StageStyle.DECORATED);
-        getStage().getIcons().add(new Image(requireNonNull(LibraryManagementSystem.class.getResourceAsStream("img/logo.png"), "logo not found")));
-        getStage().addEventHandler(KeyEvent.KEY_PRESSED, getToggleFullScreenEvent());
-        getStage().setScene(scene);
-        getStage().centerOnScreen();
-        getStage().toFront();
-        getStage().setTitle("Library Management System");
 
-        getChoiceBox(getParent("add_students_window"), "choiceBox")
+        LibraryManagementSystem.stage = primaryStage;
+
+        WindowUtil.loadParent(parent, "Library Management System", true);
+
+        getStage().initStyle(StageStyle.DECORATED);
+
+        getStage().getIcons().add(new Image(requireNonNull(getClass().getResourceAsStream("img/logo.png"), "logo not found")));
+        getStage().setScene(scene);
+
+        Optional<ProgressBar> mainProgressBar = ComponentUtil.getMainProgressBar(parent);
+
+        mainProgressBar.ifPresent(p -> p.setVisible(false));
+
+        ComponentUtil.getChoiceBox(WindowUtil.getParent("add_students_window"), "choiceBox")
                 .map(e -> (ChoiceBox<Course>) e)
                 .ifPresentOrElse(e -> {
                     e.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Course.values()).collect(Collectors.toList())));
@@ -65,19 +68,19 @@ public class LibraryManagementSystem extends Application {
                     }, () -> System.out.println("Course choice box not found")
                 );
 
-        getChoiceBox(getParent("add_books_window"), "choiceBox")
-                .map(e -> (ChoiceBox<Object>) e)
+        ComponentUtil.getChoiceBox(WindowUtil.getParent("add_books_window"), "choiceBox")
+                .map(e -> (ChoiceBox<Category>) e)
                 .ifPresent(LibraryManagementSystem::initCategory);
 
-        getChoiceBox(getParent("borrow_books_window"), "choiceBox")
-                .map(e -> (ChoiceBox<Object>) e)
+        ComponentUtil.getChoiceBox(WindowUtil.getParent("borrow_books_window"), "choiceBox")
+                .map(e -> (ChoiceBox<Category>) e)
                 .ifPresent(LibraryManagementSystem::initCategory);
 
         getStage().show();
         System.out.println("Application started");
     }
 
-    private static void initCategory(ChoiceBox<Object> borrowBookChoiceBox) {
+    private static void initCategory(ChoiceBox<Category> borrowBookChoiceBox) {
         borrowBookChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Category.values()).collect(Collectors.toList())));
         borrowBookChoiceBox.getSelectionModel().selectFirst();
     }
@@ -103,6 +106,7 @@ public class LibraryManagementSystem extends Application {
         Parent studentPage = FXMLLoader.load(requireNonNull(getClass().getResource("fxml/student/studentPage.fxml"), "Cannot find studentPage.fxml"));
         Parent borrowBookPage = FXMLLoader.load(requireNonNull(getClass().getResource("fxml/student/borrowBook/borrowBook.fxml"), "Cannot find borrowBook.fxml"));
         Parent listOfBorrowedBooksPage = FXMLLoader.load(requireNonNull(getClass().getResource("fxml/student/viewList/listOfBorrowedBooks.fxml"), "Cannot find listOfBorrowedBooks.fxml"));
+        Parent promptPage = FXMLLoader.load(requireNonNull(getClass().getResource("fxml/prompt.fxml"), "Cannot find prompt.fxml"));
 
         adminPage.setId("admin_window");
         mainPage.setId("main_window");
@@ -111,8 +115,9 @@ public class LibraryManagementSystem extends Application {
         studentPage.setId("student_window");
         borrowBookPage.setId("borrow_books_window");
         listOfBorrowedBooksPage.setId("list_of_borrowed_books_window");
+        promptPage.setId("promptPage_page");
 
-        addParents.accept(List.of
+        WindowUtil.addParents.accept(List.of
                 (
                         mainPage,
                         adminPage,
@@ -120,7 +125,8 @@ public class LibraryManagementSystem extends Application {
                         addBooksPage,
                         studentPage,
                         borrowBookPage,
-                        listOfBorrowedBooksPage
+                        listOfBorrowedBooksPage,
+                        promptPage
                 )
         );
     }

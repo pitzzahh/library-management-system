@@ -2,8 +2,7 @@ package io.github.pitzzahh.libraryManagementSystem.controllers;
 
 import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.*;
 import io.github.pitzzahh.libraryManagementSystem.validator.Validator;
-import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
-import io.github.pitzzahh.libraryManagementSystem.util.PBar;
+import io.github.pitzzahh.libraryManagementSystem.util.*;
 import java.util.concurrent.atomic.AtomicReference;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
@@ -51,7 +50,7 @@ public class LoginController {
     private void checkCredential() {
         final String fieldText = credentialField.getText();
         AtomicReference<String> debugMessage = new AtomicReference<>("");
-        System.out.printf("Credential: %s%n", $admin);
+        System.out.printf("Credential: %s%n", DataUtil.$admin);
 
         final Service<Void> progressBarService = PBar.initProgressBar(progressBar);
 
@@ -82,9 +81,8 @@ public class LoginController {
      * @param debugMessage the message for debugging. also the error message.
      */
     private void checker(String fieldText, AtomicReference<String> debugMessage) {
-        if (fieldText.equals($admin)) {
-            getStage().close();
-            loadParent(getParent("admin_window"), "Administrator");
+        if (fieldText.equals(DataUtil.$admin)) {
+            WindowUtil.loadParent(WindowUtil.getParent("admin_window"), "Administrator", false);
             progressBar.setVisible(false);
             credentialField.clear();
             credentialField.setVisible(true);
@@ -96,8 +94,7 @@ public class LoginController {
                 final boolean doesAccountExist = Validator.doesAccountExist(fieldText);
                 if (doesAccountExist) {
                     debugMessage.set("Account exists");
-                    getStage().close();
-                    loadParent(getParent("student_window"), "Student");
+                    WindowUtil.loadParent(WindowUtil.getParent("student_window"), "Student", false);
                     credentialField.clear();
                 } else {
                     debugMessage.set("Account does not exist");
@@ -119,7 +116,7 @@ public class LoginController {
      */
     @FXML
     public void onKeyTyped(KeyEvent keyEvent) {
-        addTextLimiter(credentialField, MAX_LENGTH);
+        TextFieldUtil.addTextLimiter(credentialField, DataUtil.MAX_LENGTH);
         if (credentialField.getText().isEmpty() && keyEvent.getCode() != KeyCode.ENTER) {
             message.setText("");
         }
@@ -151,10 +148,11 @@ public class LoginController {
      */
     @FXML
     private static Tooltip getFieldToolTip(MouseEvent mouseEvent) {
-        return initToolTip(
+        return ToolTipUtil.initToolTip(
                 "Enter your credentials",
                 mouseEvent,
-                errorToolTipStyle()
+                Style.errorToolTipStyle(),
+                null
         );
     }
 }

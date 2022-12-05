@@ -1,11 +1,14 @@
 package io.github.pitzzahh.libraryManagementSystem.controllers;
 
-import static io.github.pitzzahh.libraryManagementSystem.util.Util.*;
+import io.github.pitzzahh.libraryManagementSystem.util.ToolTipUtil;
+import io.github.pitzzahh.libraryManagementSystem.util.WindowUtil;
 import io.github.pitzzahh.libraryManagementSystem.entity.Page;
 import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
+
+import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
 
 /**
  * FXML Controller class for Admin page
@@ -33,7 +36,7 @@ public class AdminController {
      */
     @FXML
     public void onMouseEnteredAddStudentsButton(MouseEvent mouseEvent) {
-        showToolTipOnHover("Add Students", mouseEvent, addStudents);
+        ToolTipUtil.showToolTipOnHover("Add Students", mouseEvent, addStudents);
     }
 
     /**
@@ -42,7 +45,7 @@ public class AdminController {
      */
     @FXML
     public void onMouseEnteredAddBooksButton(MouseEvent mouseEvent) {
-        showToolTipOnHover("Add Books", mouseEvent, addBooks);
+        ToolTipUtil.showToolTipOnHover("Add Books", mouseEvent, addBooks);
     }
 
     /**
@@ -51,7 +54,7 @@ public class AdminController {
      */
     @FXML
     public void onMouseEnteredManageStudentsButton(MouseEvent mouseEvent) {
-        showToolTipOnHover("Manage Students Records", mouseEvent, manageStudents);
+        ToolTipUtil.showToolTipOnHover("Manage Students Records", mouseEvent, manageStudents);
     }
 
     /**
@@ -60,17 +63,19 @@ public class AdminController {
      */
     @FXML
     public void onMouseEnteredManageBooksButton(MouseEvent mouseEvent) {
-        showToolTipOnHover("Manage Borrowed Books", mouseEvent, manageBooks);
+        ToolTipUtil.showToolTipOnHover("Manage Borrowed Books", mouseEvent, manageBooks);
     }
 
     /**
      * Logs out the current session.
      * Returns to the main page.
-     * @param ignoredActionEvent the action event.
+     * @param actionEvent the action event.
      */
     @FXML
-    public void onLogout(ActionEvent ignoredActionEvent) {
-        logoutSession();
+    public void onLogout(ActionEvent actionEvent) {
+        actionEvent.consume();
+        WindowUtil.logoutSession();
+        getStage().show();
     }
 
     /**
@@ -79,19 +84,21 @@ public class AdminController {
      */
     @FXML
     public void onMouseEnteredLogout(MouseEvent mouseEvent) {
-        showToolTipOnHover("Logout Session", mouseEvent, logout);
+        ToolTipUtil.showToolTipOnHover("Logout Session", mouseEvent, logout);
     }
 
     @FXML
     public void onAddStudents(ActionEvent actionEvent) {
-        setPage(Page.ADD_STUDENTS);
-        loadPage(actionEvent, "add_students_window");
+        actionEvent.consume();
+        WindowUtil.setPage(Page.ADD_STUDENTS);
+        WindowUtil.loadPage("admin_window", "add_students_window");
     }
 
     @FXML
     public void onAddBooks(ActionEvent actionEvent) {
-        setPage(Page.ADD_BOOKS);
-        loadPage(actionEvent, "add_books_window");
+        actionEvent.consume();
+        WindowUtil.setPage(Page.ADD_BOOKS);
+        WindowUtil.loadPage("admin_window", "add_books_window");
     }
 
 }
