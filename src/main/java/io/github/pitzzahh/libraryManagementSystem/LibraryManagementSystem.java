@@ -1,18 +1,15 @@
 package io.github.pitzzahh.libraryManagementSystem;
 
-import io.github.pitzzahh.libraryManagementSystem.entity.Category;
-import io.github.pitzzahh.libraryManagementSystem.entity.Course;
-
-import static java.util.Objects.requireNonNull;
-
 import io.github.pitzzahh.libraryManagementSystem.util.ComponentUtil;
 import io.github.pitzzahh.libraryManagementSystem.util.WindowUtil;
+import io.github.pitzzahh.libraryManagementSystem.entity.Category;
+import io.github.pitzzahh.libraryManagementSystem.entity.Course;
+import static java.util.Objects.requireNonNull;
 import javafx.scene.control.ProgressBar;
 import javafx.collections.FXCollections;
 import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
 import java.util.stream.Collectors;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
 import javafx.fxml.FXMLLoader;
