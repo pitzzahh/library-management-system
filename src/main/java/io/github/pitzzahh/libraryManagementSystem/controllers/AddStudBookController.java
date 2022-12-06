@@ -187,7 +187,7 @@ public class AddStudBookController {
             DataUtil.getAllStudents()
                     .stream()
                     .map(e -> (Student) e)
-                    .map(u -> new User<>(u, u.getStudentNumber()))
+                    .map(u -> new User<Student>(u.getStudentNumber()))
                     .forEach(DataUtil::addUser);
 
         } else if (WindowUtil.getPage().equals(ADD_BOOKS)) {

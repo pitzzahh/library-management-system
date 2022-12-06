@@ -3,7 +3,8 @@ package io.github.pitzzahh.libraryManagementSystem.entity;
 import java.util.List;
 import java.util.Objects;
 
-public class Student {
+public class Student extends User<Student> {
+
     private String studentNumber;
     private String firstName;
     private String lastName;
@@ -11,6 +12,7 @@ public class Student {
     private List<Book> borrowedBooks;
 
     public Student(String studentNumber, String firstName, String lastName, Course course, List<Book> borrowedBooks) {
+        super(studentNumber);
         this.studentNumber = studentNumber;
         this.firstName = firstName;
         this.lastName = lastName;

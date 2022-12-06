@@ -3,10 +3,8 @@ package io.github.pitzzahh.libraryManagementSystem.entity;
 public class User<T> {
 
     private final String username;
-    private final T user;
 
-    public User(T user, String username) {
-        this.user = user;
+    public User(String username) {
         this.username = username;
     }
 
@@ -14,7 +12,4 @@ public class User<T> {
         return username;
     }
 
-    public T getUser() {
-        return user;
-    }
 }

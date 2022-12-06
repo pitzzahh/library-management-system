@@ -89,7 +89,6 @@ public class LoginController {
             credentialField.setVisible(true);
             debugMessage.set("Welcome admin!");
             progressBar.progressProperty().unbind();
-            DataUtil.setCurrentUser(new User<>(new Librarian(DataUtil.$admin), DataUtil.$admin));
         }
         else {
             try {
@@ -98,10 +97,6 @@ public class LoginController {
                     debugMessage.set("Account exists");
                     WindowUtil.loadParent(WindowUtil.getParent("student_window"), "Student", false);
                     credentialField.clear();
-                    DataUtil.setCurrentUser(new User<>(DataUtil.getUser(fieldText).orElseThrow(), fieldText));
-                    Student student = (Student) DataUtil.getCurrentUser().getUser();
-
-                    System.out.println("student = " + student);
 
                 } else {
                     debugMessage.set("Account does not exist");
