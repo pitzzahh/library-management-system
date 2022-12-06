@@ -1,5 +1,6 @@
 package io.github.pitzzahh.libraryManagementSystem.entity;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Student {
@@ -7,12 +8,14 @@ public class Student {
     private String firstName;
     private String lastName;
     private Course course;
+    private List<Book> borrowedBooks;
 
-    public Student(String studentNumber, String firstName, String lastName, Course course) {
+    public Student(String studentNumber, String firstName, String lastName, Course course, List<Book> borrowedBooks) {
         this.studentNumber = studentNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.course = course;
+        this.borrowedBooks = borrowedBooks;
     }
 
     public Student() {
@@ -38,6 +41,10 @@ public class Student {
         return this.course;
     }
 
+    public List<Book> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
     public void setStudentNumber(String studentNumber) {
         this.studentNumber = studentNumber;
     }
@@ -52,6 +59,10 @@ public class Student {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public void setBorrowedBooks(List<Book> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
     }
 
     public boolean equals(final Object o) {
@@ -102,6 +113,7 @@ public class Student {
         private String firstName;
         private String lastName;
         private Course course;
+        private List<Book> borrowedBooks;
 
         StudentBuilder() {
         }
@@ -126,8 +138,13 @@ public class Student {
             return this;
         }
 
+        public StudentBuilder borrowedBooks(List<Book> borrowedBooks) {
+            this.borrowedBooks = borrowedBooks;
+            return this;
+        }
+
         public Student build() {
-            return new Student(studentNumber, firstName, lastName, course);
+            return new Student(studentNumber, firstName, lastName, course, borrowedBooks);
         }
 
         public String toString() {
