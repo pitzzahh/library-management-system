@@ -18,9 +18,6 @@ public class Student {
         this.borrowedBooks = borrowedBooks;
     }
 
-    public Student() {
-    }
-
     public static StudentBuilder builder() {
         return new StudentBuilder();
     }

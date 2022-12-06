@@ -183,6 +183,13 @@ public class AddStudBookController {
             DataUtil.saveAllStudents();
             DataUtil.getStudentsDataSource().clear();
             table.setItems(DataUtil.getStudentsDataSource());
+
+            DataUtil.getAllStudents()
+                    .stream()
+                    .map(e -> (Student) e)
+                    .map(u -> new User<>(u, u.getStudentNumber()))
+                    .forEach(DataUtil::addUser);
+
         } else if (WindowUtil.getPage().equals(ADD_BOOKS)) {
             DataUtil.saveAllBooks();
             DataUtil.getBooksDataSource().clear();

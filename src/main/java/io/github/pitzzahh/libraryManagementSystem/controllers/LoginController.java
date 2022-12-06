@@ -1,6 +1,8 @@
 package io.github.pitzzahh.libraryManagementSystem.controllers;
 
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.*;
+import io.github.pitzzahh.libraryManagementSystem.entity.Librarian;
+import io.github.pitzzahh.libraryManagementSystem.entity.Student;
+import io.github.pitzzahh.libraryManagementSystem.entity.User;
 import io.github.pitzzahh.libraryManagementSystem.validator.Validator;
 import io.github.pitzzahh.libraryManagementSystem.util.*;
 import java.util.concurrent.atomic.AtomicReference;
@@ -21,7 +23,6 @@ public class LoginController {
 
     @FXML
     public ProgressBar progressBar;
-
 
     @FXML
     private PasswordField credentialField;
@@ -88,6 +89,7 @@ public class LoginController {
             credentialField.setVisible(true);
             debugMessage.set("Welcome admin!");
             progressBar.progressProperty().unbind();
+            DataUtil.setCurrentUser(new User<>(new Librarian(DataUtil.$admin), DataUtil.$admin));
         }
         else {
             try {
@@ -96,6 +98,11 @@ public class LoginController {
                     debugMessage.set("Account exists");
                     WindowUtil.loadParent(WindowUtil.getParent("student_window"), "Student", false);
                     credentialField.clear();
+                    DataUtil.setCurrentUser(new User<>(DataUtil.getUser(fieldText).orElseThrow(), fieldText));
+                    Student student = (Student) DataUtil.getCurrentUser().getUser();
+
+                    System.out.println("student = " + student);
+
                 } else {
                     debugMessage.set("Account does not exist");
                     message.setText(debugMessage.get());
