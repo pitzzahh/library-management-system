@@ -1,5 +1,6 @@
 package io.github.pitzzahh.libraryManagementSystem.controllers;
 
+import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
 import io.github.pitzzahh.libraryManagementSystem.util.ComponentUtil;
 import io.github.pitzzahh.libraryManagementSystem.util.ToolTipUtil;
 import io.github.pitzzahh.libraryManagementSystem.util.WindowUtil;
@@ -16,7 +17,6 @@ import javafx.scene.Parent;
 import java.util.Optional;
 import javafx.fxml.FXML;
 
-import static io.github.pitzzahh.libraryManagementSystem.LibraryManagementSystem.getStage;
 
 public class StudentController {
 

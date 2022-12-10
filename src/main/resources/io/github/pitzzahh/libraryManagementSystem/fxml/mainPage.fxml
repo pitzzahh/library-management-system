@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" snapToPixel="false" stylesheets="@../css/mainPage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.LoginController">
+<BorderPane prefHeight="553.0" prefWidth="740.0" snapToPixel="false" stylesheets="@../css/mainPage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.LoginController">
    <bottom>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-            <HBox alignment="CENTER_RIGHT" prefHeight="55.0" prefWidth="646.0">
+            <HBox alignment="CENTER_RIGHT">
                <padding>
                   <Insets right="10.0" />
                </padding>
@@ -45,32 +45,44 @@
                   <Image url="@../img/adminPage/manageBooks.png" />
                </ImageView>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="34.0" prefWidth="601.0" VBox.vgrow="ALWAYS">
-               <Label fx:id="message" alignment="CENTER" prefHeight="34.0" prefWidth="702.0" styleClass="message" HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+               <Label fx:id="message" alignment="CENTER" styleClass="message" HBox.hgrow="ALWAYS" />
             </HBox>
             <HBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS">
-               <ProgressBar fx:id="progressBar" blendMode="SRC_ATOP" cache="true" cacheHint="SPEED" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="727.0" progress="0.0" stylesheets="@../css/mainPage.css" HBox.hgrow="ALWAYS" />
+               <ProgressBar fx:id="progressBar" blendMode="SRC_ATOP" cache="true" cacheHint="SPEED" maxWidth="1.7976931348623157E308" progress="0.0" stylesheets="@../css/mainPage.css" HBox.hgrow="ALWAYS" />
             </HBox>
          </VBox>
       </HBox>
    </bottom>
    <top>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-         <HBox alignment="CENTER" prefHeight="60.0" prefWidth="601.0">
+      <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+         <HBox alignment="CENTER" prefHeight="72.0" prefWidth="727.0">
             <VBox.margin>
-               <Insets top="20.0" />
+               <Insets />
             </VBox.margin>
-            <Label alignment="TOP_CENTER" prefHeight="174.0" prefWidth="321.0" styleClass="main-label" stylesheets="@../css/mainPage.css" text="LMS" textAlignment="CENTER">
+            <Label alignment="TOP_CENTER" styleClass="main-label" stylesheets="@../css/mainPage.css" text="LMS" textAlignment="CENTER">
             </Label>
          </HBox>
-         <HBox alignment="CENTER">
+         <HBox alignment="CENTER" prefHeight="16.0" prefWidth="727.0">
             <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" style="fx-font-family: JetBrains Mono; -fx-font-size: 25px; -fx-text-fill: white; -fx-font-weight: bold;" text="Library Management System" textAlignment="CENTER" wrappingWidth="337.896484375" />
          </HBox>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
       </VBox>
    </top>
    <center>
-      <HBox alignment="CENTER" prefHeight="179.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <PasswordField fx:id="credentialField" alignment="CENTER" onKeyPressed="#onEnter" onKeyTyped="#onKeyTyped" onMouseEntered="#onMouseEntered" styleClass="credentials" />
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="30.0" />
+         </padding>
       </HBox>
    </center>
 </BorderPane>

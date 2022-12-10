@@ -49,14 +49,11 @@ public interface WindowUtil {
     }
 
     static void loadParent(Parent parent, String stageTitle, boolean isMainWindow) {
-        if (parent.getScene() != null)
-            getStage().setScene(parent.getScene()); // if scene is present, get it
-        else getStage().setScene(new Scene(parent)); // create new scene if new login
-
+        getStage().setHeight(getStage().getWidth());
+        getStage().setWidth(getStage().getWidth());
+        getStage().setScene(Optional.ofNullable(getStage().getScene())
+                .orElseGet(() -> new Scene(parent)));
         getStage().setTitle(Optional.ofNullable(getStage().getTitle()).orElse(stageTitle));
-
-        getStage().centerOnScreen();
-
         getStage().addEventHandler(KeyEvent.KEY_PRESSED, eventHandler);
         getStage().toFront();
         if (!isMainWindow) loadPage(parent.getId(), "promptPage_page");

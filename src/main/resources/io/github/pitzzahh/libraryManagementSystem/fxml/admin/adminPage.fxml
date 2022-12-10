@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="690.0" prefWidth="1200.0" snapToPixel="false" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.AdminController">
+<BorderPane prefHeight="526.0" prefWidth="758.0" snapToPixel="false" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.libraryManagementSystem.controllers.AdminController">
      <top>
-         <HBox alignment="CENTER_LEFT" focusTraversable="true" prefHeight="61.0" styleClass="topBox" stylesheets="@../../css/adminPage/adminPage.css" BorderPane.alignment="CENTER_LEFT">
+         <HBox alignment="CENTER_LEFT" focusTraversable="true" styleClass="topBox" stylesheets="@../../css/adminPage/adminPage.css" BorderPane.alignment="CENTER_LEFT">
              <padding>
                  <Insets left="20.0" />
              </padding>
@@ -27,7 +27,7 @@
          </HBox>
      </top>
      <left>
-         <VBox styleClass="leftBox" stylesheets="@../../css/adminPage/adminPage.css" BorderPane.alignment="CENTER">
+         <VBox alignment="TOP_CENTER" styleClass="leftBox" stylesheets="@../../css/adminPage/adminPage.css" BorderPane.alignment="CENTER">
              <Button fx:id="addStudents" graphicTextGap="20.0" mnemonicParsing="false" onAction="#onAddStudents" onMouseEntered="#onMouseEnteredAddStudentsButton" prefWidth="192.0" stylesheets="@../../css/adminPage/adminPage.css" text="Add Students" textAlignment="RIGHT" wrapText="true" VBox.vgrow="ALWAYS">
                  <font>
                      <Font size="1.0" />

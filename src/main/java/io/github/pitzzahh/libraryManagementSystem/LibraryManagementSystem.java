@@ -49,12 +49,13 @@ public class LibraryManagementSystem extends Application {
 
         LibraryManagementSystem.stage = primaryStage;
 
-        WindowUtil.loadParent(parent, "Library Management System", true);
-
         getStage().initStyle(StageStyle.DECORATED);
-
         getStage().getIcons().add(new Image(requireNonNull(getClass().getResourceAsStream("img/logo.png"), "logo not found")));
         getStage().setScene(scene);
+
+        WindowUtil.loadParent(parent, "Library Management System", true);
+
+        getStage().centerOnScreen();
 
         Optional<ProgressBar> mainProgressBar = ComponentUtil.getMainProgressBar(parent);
 
@@ -62,19 +63,21 @@ public class LibraryManagementSystem extends Application {
 
         ComponentUtil.getChoiceBox(WindowUtil.getParent("add_students_window"), "choiceBox")
                 .map(e -> (ChoiceBox<Course>) e)
-                .ifPresentOrElse(e -> {
-                    e.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Course.values()).collect(Collectors.toList())));
-                    e.getSelectionModel().selectFirst();
-                    }, () -> System.out.println("Course choice box not found")
+                .ifPresentOrElse(e -> e.getItems().addAll(FXCollections.observableArrayList(Arrays.stream(Course.values()).collect(Collectors.toList()))),
+                        () -> System.out.println("Add Students Window Course choice box not found")
                 );
 
         ComponentUtil.getChoiceBox(WindowUtil.getParent("add_books_window"), "choiceBox")
                 .map(e -> (ChoiceBox<Category>) e)
-                .ifPresent(LibraryManagementSystem::initCategory);
+                .ifPresentOrElse(LibraryManagementSystem::initCategory,
+                        () -> System.out.println("Add Books Window Category choice box not found")
+                );
 
         ComponentUtil.getChoiceBox(WindowUtil.getParent("borrow_books_window"), "choiceBox")
                 .map(e -> (ChoiceBox<Category>) e)
-                .ifPresent(LibraryManagementSystem::initCategory);
+                .ifPresentOrElse(LibraryManagementSystem::initCategory,
+                        () -> System.out.println("Borrow Books Window Category choice box not found")
+                );
 
         getStage().show();
         System.out.println("Application started");
