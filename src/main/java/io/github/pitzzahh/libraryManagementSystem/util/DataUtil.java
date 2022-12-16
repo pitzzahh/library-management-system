@@ -3,6 +3,7 @@ package io.github.pitzzahh.libraryManagementSystem.util;
 import io.github.pitzzahh.libraryManagementSystem.entity.Category;
 import io.github.pitzzahh.libraryManagementSystem.entity.Student;
 import io.github.pitzzahh.libraryManagementSystem.entity.Book;
+import io.github.pitzzahh.libraryManagementSystem.entity.User;
 import javafx.collections.ObservableList;
 import javafx.scene.control.SelectionMode;
 import javafx.collections.FXCollections;
@@ -79,10 +80,31 @@ public interface DataUtil {
         ComponentUtil.initTableColumns(tableView, new String[]{"bookId", "title", "author", "category"});
         tableView.setItems(getAvailableBooksDataSource());
     }
+
+    static  void setCurrentUser(User<?> user) {
+        DataUtilFields.currentUser = user;
+    }
+
+    static User<?> getCurrentUser() {
+        return DataUtilFields.currentUser;
+    }
+
+    static void addUser(User<?> user) {
+        DataUtilFields.usersList.add(user);
+    }
+
+    static Optional<User<?>> getUser(String username) {
+        return DataUtilFields.usersList.stream()
+                .filter(user -> user.getUsername().equals(username))
+                .findAny();
+    }
+
 }
 
 class DataUtilFields {
+    static User<?> currentUser;
     static List<Student> studentsList = new ArrayList<>();
+    static List<User<?>> usersList = new ArrayList<>();
     static List<Book> booksList = new ArrayList<>();
     static List<Book> borowedBooksList = new ArrayList<>();
     static Queue<Button> activeButtons = new LinkedList<>();

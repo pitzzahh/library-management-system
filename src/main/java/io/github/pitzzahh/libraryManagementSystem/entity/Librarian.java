@@ -1,13 +1,12 @@
 package io.github.pitzzahh.libraryManagementSystem.entity;
 
-public class Librarian {
+public class Librarian extends User<Librarian> {
+
     private String name;
 
     public Librarian(String name) {
+        super(name);
         this.name = name;
-    }
-
-    public Librarian() {
     }
 
     public static LibrarianBuilder builder() {
